@@ -105,15 +105,17 @@ Protocol Features available:
 
 # Dynamic Properties
 
-Dynamic Path Properties are expected to change on the timescale of milliseconds and can usually only be approximated and sampled.
-They usually relate to performance within the network, e.g. available end-to-end bandwidth.
+Dynamic Path Properties are expected to change on the timescale of milliseconds.
+They usually relate to the state of the path, e.g., regarding performance such as currently available end-to-end bandwidth.
+Some of these properties may depend only on the first hop or on the access network, some may depend on the entire path.
+
+Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
+Dynamic Path Properties can be measured by the endpoint itself or somethere in the network.
+See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the endpoint.
 
 
-Some of these apply more to the first hop, some apply on the entire path.
+Some of these properties may be symmetric and some may be asymmetric, i.e., be different in the upstream direction and in the downstream direction from the point of view of a particular host.
 
-Some of them may be symmetric and some may be asymmetric, i.e., be different in the upstream direction and in the downstream direction from the point of view of a particular host.
-
-Of some of these properties it can be useful to compute aggregates, e.g., averages or minimums.
 
 
 Available bandwidth:
@@ -137,10 +139,9 @@ Wireless Signal strength:
 Wireless Modulation Rate:
 : Modulation bitrate of the wireless signal. The modulation rate determines how many bytes are transmitted within a symbol on the wireless channel. A high modulation rate leads to a higher possible bitrate, given sufficient signal strength.
 
-Wireless Channel utilization: 
+Wireless Channel utilization:
 : Percentage of time during which there is a transmission on the wireless medium. A high channel utilization indicates a congested wireless network.
 
-See also {{ANRW18-Metrics}}.
 
 
 # Technologies to disseminate Path Properties
