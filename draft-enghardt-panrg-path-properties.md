@@ -27,7 +27,7 @@ author:
 
 informative:
 
-    I-D.panrg-questions:
+    I-D.irtf-panrg-questions:
 
     RFC7556:
 
@@ -38,7 +38,7 @@ informative:
 This document defines and categorizes
 information about paths that an endpoint might have or want to have.
 It addresses the first of the questions
-in Path-Aware Networking {{I-D.panrg-questions}}.
+in Path-Aware Networking {{I-D.irtf-panrg-questions}}.
 
 --- middle
 
@@ -72,6 +72,8 @@ Monetary Cost:
 
 
 # Topology Properties
+
+\[FIXME: Can we come up with a better name?]
 
 Topology Properties can change within the lifetime of a connection to a another endpoint, but usually on the timescale of seconds, minutes, or hours, e.g., when the routes change.
 
