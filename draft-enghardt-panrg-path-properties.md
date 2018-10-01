@@ -36,15 +36,14 @@ informative:
 --- abstract
 
 This document defines and categorizes
-information about paths that an endpoint might have or want to have.
-It addresses the first of the questions
-in Path-Aware Networking {{I-D.irtf-panrg-questions}}.
+information about Internet paths that an endpoint might have or want to have.
+This information is expressed as properties of the path between two endpoints.
 
 --- middle
 
 # Introduction
 
-As the current Internet provides a best-effort bit pipe, endpoints do not know much about the path to other endpoints.
+Because the current Internet provides a best-effort bit pipe, endpoints do not know much about the path to other endpoints.
 A Path Aware Network exposes information about one or multiple paths through the network to endpoints,
 so that endpoints can use this information.
 
@@ -53,11 +52,13 @@ e.g., the nature of the access technology on the first hop,
 or relatively dynamic,
 e.g., current Round Trip Time.
 
+This document addresses the first of the questions
+in Path-Aware Networking {{I-D.irtf-panrg-questions}}, which is a product of the PANRG in the IRTF.
 
 
 # Static Properties
 
-Static Path Properties are not expected to change very often, e.g., they stay constant within the lifetime of a connection to another endpoint.
+Static Path Properties are not expected to change very often: they stay constant within the lifetime of a connection to another endpoint.
 They usually relate to the access network within the first hop or the first few hops.
 
 
@@ -106,7 +107,7 @@ Protocol Features available:
 # Dynamic Properties
 
 Dynamic Path Properties are expected to change on the timescale of milliseconds.
-They usually relate to the state of the path, e.g., regarding performance such as currently available end-to-end bandwidth.
+They usually relate to the state of the path, such as the currently available end-to-end bandwidth.
 Some of these properties may depend only on the first hop or on the access network, some may depend on the entire path.
 
 Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
@@ -114,7 +115,7 @@ Dynamic Path Properties can be measured by the endpoint itself or somethere in t
 See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the endpoint.
 
 
-Some of these properties may be symmetric and some may be asymmetric, i.e., be different in the upstream direction and in the downstream direction from the point of view of a particular host.
+These properties may be symmetric or asymmetric. For example, an asymmetric property may be different in the upstream direction and in the downstream direction from the point of view of a particular host.
 
 
 
@@ -173,4 +174,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-TODO
+Thanks to Paul Hoffman for feedback and editorial changes.
