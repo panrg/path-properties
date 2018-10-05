@@ -87,7 +87,7 @@ They are likely to stay constant within the lifetime of a connection, since Inte
 These properties usually change on the timescale of seconds, minutes, or hours, when the route changes.
 
 Even if these properties change, endpoints can neither specify which backbone nodes to use, nor verify data was sent over these nodes.
-For example, switching between different cellular technologies or different cellular access points within the same ISP will most likely not influence the backbone properties.
+An endpoint can for example choose its access provider, but cannot choose the backbone path to a given destination since the access provider will make their own policy-based routing decision.
 
 Presence of certain device on the path:
 : Could be the presence of a certain kind of middlebox, e.g., a proxy, a firewall, a NAT.
