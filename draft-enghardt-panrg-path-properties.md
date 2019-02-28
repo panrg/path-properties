@@ -99,7 +99,7 @@ Disjointness:
 : How disjoint a path is from another path.
 
 Path MTU:
-: The end-to-end maximum transmission unit in one packet.
+: The maximum size, in octets, of an IP packet that can be transmitted without fragmentation on a path segment or path.
 
 Transport Protocols available:
 : Whether a specific transport protocol can be used to establish a connection over this path. An endpoint may know this because it has cached whether it could successfully establish, e.g., a QUIC connection, or an MPTCP subflow.
@@ -122,9 +122,11 @@ See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path prop
 These properties may be symmetric or asymmetric. For example, an asymmetric property may be different in the upstream direction and in the downstream direction from the point of view of a particular host.
 
 
+Maximum Data Rate (Transmit/Receive):
+: The theoretical maximum data rate, in bits per second, that can be achieved on a link, path segment, or path, for receiving or transmitting traffic.
 
-Available bandwidth:
-: Maximum number of bytes per second that can be sent or received over this path. This depends on the available bandwidth at the bottleneck, and on crosstraffic.
+Current Data Rate (Transmit/Receive):
+: The data rate, in bits per second, at which a link is currently receiving or transmitting traffic.
 
 Round Trip Time:
 : Time from sending a packet to receiving a response from the remote endpoint.
@@ -137,15 +139,6 @@ Packet Loss:
 
 Congestion:
 : Whether there is any indication of congestion on the path.
-
-Wireless Signal strength:
-: Power level of the wireless signal being received. Lower signal strength, relative to the same noise floor, is correlated with higher bit error rates and lower modulation rates.
-
-Wireless Modulation Rate:
-: Modulation bitrate of the wireless signal. The modulation rate determines how many bytes are transmitted within a symbol on the wireless channel. A high modulation rate leads to a higher possible bitrate, given sufficient signal strength.
-
-Wireless Channel utilization:
-: Percentage of time during which there is a transmission on the wireless medium. A high channel utilization indicates a congested wireless network.
 
 
 # Security Considerations
