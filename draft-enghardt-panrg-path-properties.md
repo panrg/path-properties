@@ -111,7 +111,7 @@ Protocol Features available:
 # Dynamic Properties
 
 Dynamic Path Properties are expected to change on the timescale of milliseconds.
-They usually relate to the state of the path, such as the currently available end-to-end bandwidth.
+They usually relate to the state of the path, such as the current end-to-end latency.
 Some of these properties may depend only on the first hop or on the access network, some may depend on the entire path.
 
 Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
