@@ -31,6 +31,8 @@ informative:
 
     RFC7556:
 
+    RFC8175:
+
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
 --- abstract
@@ -113,6 +115,7 @@ Protocol Features available:
 Dynamic Path Properties are expected to change on the timescale of milliseconds.
 They usually relate to the state of the path, such as the current end-to-end latency.
 Some of these properties may depend only on the first hop or on the access network, some may depend on the entire path.
+Properties related to a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
 Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
 Dynamic Path Properties can be measured by the endpoint itself or somethere in the network.
