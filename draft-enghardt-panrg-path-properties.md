@@ -65,29 +65,24 @@ in Path-Aware Networking {{I-D.irtf-panrg-questions}}, which is a product of the
 
 # Terminology
 
-This section defines a set of terms used throughout this document. In some cases these terms have been used in other contexts with different meanings so this section attempts to describe each term's meaning with respect to the PANRG activities.
-
-Connection:
-: Connections, as used in this draft, incorporate application, transport, network, data link, and physical layer connections between a set of endpoints. Hereinafter, connections refer to bidirectional or unidirectional connections between two endpoints. How concepts of paths and path properties can be extended to other connection models such as one-to-many or many-to-many connections is not described in this draft.
+Path element:
+: A path element is a device (including the endpoints), or link used to connect two endpoints and transmit information on a specific layer.
+Path elements may exist on multiple layers (e.g., the endpoint corresponds to a path element on every layer), may be hidden on higher layers (e.g., a layer 2 switch in the local network), or a path element may be an aggregation of several path elements on a lower layer (e.g., the link connecting the endpoints on the transport layer being an aggregation of all network layer path elements).
 
 Path:
-: A path element is a device (including the endpoints), or link used to connect two endpoints and transmit information.
-A path is defined as an ordered set of path elements that can be traversed by a packet at specific points in time.
+: A path is defined as an ordered set of path elements at the network layer that can be traversed by a packet at specific points in time.
 For the sake of simplicity, we use the term packet, typically used at the network layer, to describe bit strings transmitted on any layer.
-Depending on which layer the path is looked at, devices, links, and their properties might differ.
-Devices may be hidden, and a set of links may be abstracted into a single link.
-The lifetime of a path overlaps with the lifetime of the corresponding connection but is not restricted to it.
 
 Flow:
-: Several packets traversing the same path elements at specific points in time, can be combined into a flow (e.g., all packets sent within a UDP session).
+: Several packets traversing the same path elements at specific points in time, can be combined into a flow (e.g., all packets sent within a UDP session which traverse the same path elements).
 As a special case, a flow can consist of just one packet.
 
 Property:
-: A property describes a trait of a set of path elements (e.g., capacity of a link, is device X a firewall, one-way bandwidth which is the minimum of all link bandwidths), or a trait of a flow being sent on a set of path elements (e.g., RTT, one-way delay).
-A property is thus described by a tuple containing the ordered set of path elements, the set of packets traversing the path (the flow) or an empty set if no packets are relevant for the property, the type of trait (e.g., bandwidth), and the value of the trait (e.g., 100mbps).
+: A property describes a trait of a set of path elements (e.g., capacity of a link, is device X a firewall, one-way maximum data rate which is the minimum of all links' maximum data rates), or a trait of a flow being sent on a set of path elements (e.g., RTT, one-way delay).
+A property is thus described by a tuple containing the ordered set of path elements, the set of packets traversing the path (the flow) or an empty set if no packets are relevant for the property, the name of the trait (e.g., maximum data rate), and the value of the trait (e.g., 100mbps).
 
 Aggregated Property:
-: A property can be aggregated over a set of path elements (e.g., loss rate in network backbone calculated using the individual link loss rates), or over a set of packets (e.g., median one-way latency of all packets during the last second), or over both (e.g., average time spent in buffers in the network backbone).
+: A property can be aggregated over a set of path elements (e.g., MTU in the network backbone as the minimum MTU of the individual path element), or over a set of packets (e.g., median one-way latency of all packets during the last second), or over both (e.g., average time a packets spends in buffers outside the local network).
 Aggregation can be numerical (average, sum, min, ...), logical (true if all are true, true if at least X are true, ...), or an arbitrary function which maps a set of input properties to an output property.
 
 Measured & Potential Property:
