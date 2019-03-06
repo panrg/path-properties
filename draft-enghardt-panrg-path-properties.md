@@ -33,6 +33,8 @@ informative:
 
     RFC8175:
 
+    RFC5693:
+
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
 --- abstract
@@ -46,8 +48,21 @@ This information is expressed as properties of paths between two endpoints.
 # Introduction
 
 Because the current Internet provides an IP-based best-effort bit pipe, endpoints have little information about paths to other endpoints.
-A Path Aware Network exposes information about one or multiple paths through the network to endpoints,
-so that endpoints can use this information.
+A Path Aware Network exposes information about one or multiple paths through the network to endpoints or the network infrastructure.
+
+It is impossible to provide an exhaustive list of path properties, as with every new technology and protocol, novel properties might become relevant.
+In order to specify broadly relevant path properties, scenarios in which knowledge about (additional) path information gives advantages are described here.
+
+Traffic policies leveraging path awareness can be defined.
+Such policies can allow or disallow sending traffic over specific networks or nodes, select an appropriate protocol depending on the capabilities of the on-path devices (e.g., using QUIC instead of TCP if no device blocks UDP traffic), or adjust protocol parameters to the used path.
+
+Network monitoring systems in a path aware network can associate their measurements with the actual path used, and observe if the measurements conform with the advertised path properties.
+Network operators can use the path information to specify comprehensive Quality of Service (QoS) guarantees.
+
+In the case that an entity can choose between a set of different paths, richer path information can lead to more optimal usage of networked resources.
+An AS can use path information as additional routing metric leading to more informed routing decisions.
+An endpoint can choose an optimal path to a destination if there are several paths, or choose an optimal destination if there are several destinations providing the same service.
+An example of the latter is Application-Layer Traffic Optimization (ALTO), an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection.
 
 Such path properties may be relatively dynamic, e.g. current Round Trip Time, close to the origin, e.g. nature of the access technology on the first hop, or far from the origin, e.g. list of ASes traversed.
 
