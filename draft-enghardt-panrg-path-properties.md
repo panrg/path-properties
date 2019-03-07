@@ -29,8 +29,6 @@ informative:
 
     I-D.irtf-panrg-questions:
 
-    RFC7556:
-
     RFC8175:
 
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
@@ -66,63 +64,62 @@ in Path-Aware Networking {{I-D.irtf-panrg-questions}}, which is a product of the
 
 # Domain Properties
 
-Domain path properties usually relate to the access network within the first hop or the first few hops.
-Endpoints can influence domain properties for example by switching from a WiFi to a cellular interface, changing their data plan to increase throughput, or moving closer to a wireless access point which increases the signal strength.
+Domain path properties relate to path elements within the same Autonomous System (AS), thus, in the same administrative domain as an endpoint considering them.
 
-A large amount of information about domain properties exists.
-Properties related to configuration can be queried using provisioning domains (PvDs).
-A PvD is a consistent set of network configuration information as defined in {{RFC7556}}, e.g., relating to a local network interface.
-This may include source IP address prefixes, IP addresses of DNS servers, name of an HTTP proxy server, DNS suffixes associated with the network, or default gateway IP address.
-As one PvD is not restricted to one local network interface, a PvD may also apply to multiple paths.
+Due to the potential physical proximity and pre-existing trust or contractual relationships between endpoints and path elements within the same administrative domain, domain properties may be more easily available to the endpoint than the properties of path elements outside of its administrative domain.
 
-Access Technology present on the path:
-: The lower layer technology on the first hop, for example, WiFi, Wired Ethernet, or Cellular. This can also be more detailed, e.g., further specifying the Cellular as 2G, 3G, 4G, or 5G technology, or the WiFi as 802.11a, b, g, n, or ac. These are just examples, this list is not exhaustive, and there is no common index of identifiers here. Note that access technologies further along the path may also be relevant, e.g., a cellular backbone is not only the first hop, and there may be a DSL line behind the WiFi.
+Furthermore, endpoints may be able to influence both which domain they are in and which path elements in this domain to connect to, and they may be able to influence the properties of path elements within this domain.
+For example, a user might select between multiple potential path elements which are directly adjacent by selecting between multiple available WiFi Access Points. When connected to an Access Point, they may move closer to a it to enable their device to use a different access technology, potentially increasing the data rate available to the device.
+Another example is a user changing their data plan to reduce the Monetary Cost to transmit a given amount of data across a network.
+
+
+Access Technology:
+: The physical or link layer technology used on one or multiple path elements for transmitting a flow. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link, or as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
-: This is information related to billing, data caps, etc. It could be the allowed monthly data cap, the start and end of a billing period, the monetary cost per Megabyte sent or received, etc.
+: The price to be paid to transmit a specific flow across a set of path elements.
+
+Presence of a certain network function on the path:
+: Indicates that a certain path element performs a certain network function on a flow, e.g., whether the path element acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This path element may be either in the same administrative domain as the endpoint or in a different administrative domain, i.e., the backbone.
 
 
 # Backbone Properties
 
-Backbone path properties relate to non-dynamic path properties that are not within the endpoint's domain.
-They are likely to stay constant within the lifetime of a connection, since Internet "backbone" routes change infrequently.
-These properties usually change on the timescale of seconds, minutes, or hours, when the route changes.
+Backbone path properties relate to path elements that are in a different administrative domain than an endpoint considering them, thus, in the backbone from the endpoint's point of view.
 
-Even if these properties change, endpoints can neither specify which backbone nodes to use, nor verify data was sent over these nodes.
-An endpoint can for example choose its access provider, but cannot choose the backbone path to a given destination since the access provider will make their own policy-based routing decision.
+Typically, backbone properties are less easily available to an endpoint than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
 
-Presence of certain device on the path:
-: Could be the presence of a certain kind of middlebox, e.g., a proxy, a firewall, a NAT.
+Additionally, endpoints are less likely to be able to influence which path elements form their path in the backbone, as well as their properties.
 
-Presence of a packet forwarding node or specific Autonomous System on a path:
-: Indicates that traffic goes through a certain node or AS, which might be relevant for deciding the level of trust this path provides.
+Some path properties relate to the entire path, part of which often lies outside of an endpoint's administrative domain. Thus, such properties are listed as Backbone Properties.
+
+
+Administrative Entity:
+: The administrative entity, e.g., the AS, to which a path element or set of path elements belongs.
 
 Disjointness:
-: How disjoint a path is from another path.
+: For a set of two paths, the set of path elements which are shared.
 
 Path MTU:
 : The maximum size, in octets, of an IP packet that can be transmitted without fragmentation on a path segment or path.
 
 Transport Protocols available:
-: Whether a specific transport protocol can be used to establish a connection over this path. An endpoint may know this because it has cached whether it could successfully establish, e.g., a QUIC connection, or an MPTCP subflow.
+: Whether a specific transport protocol can be used to establish a connection over a path or path segment (ordered set of path elements). An endpoint may cache its knowledge about recent successfully established connections using specific protocols, e.g., a QUIC connection, or an MPTCP subflow, over a specific path.
 
 Protocol Features available:
-: Whether a specific feature within a protocol is known to work over this path, e.g., ECN, or TCP Fast Open.
+: Whether a specific protocol feature is available over this path, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
 
 
 # Dynamic Properties
 
-Dynamic Path Properties are expected to change on the timescale of milliseconds.
-They usually relate to the state of the path, such as the current end-to-end latency.
-Some of these properties may depend only on the first hop or on the access network, some may depend on the entire path.
-Properties related to a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
+Dynamic path properties relate to a path or path element with respect to the transmission of an individual packet or of a flow over a path element or path.
+Properties related to a path element which constitutes single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
 Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
 Dynamic Path Properties can be measured by the endpoint itself or somethere in the network.
 See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the endpoint.
 
-
-These properties may be symmetric or asymmetric. For example, an asymmetric property may be different in the upstream direction and in the downstream direction from the point of view of a particular host.
+Some dynamic properties are defined in different directions for the same path element, e.g., for transmitting and receiving packets.
 
 
 Maximum Data Rate (Transmit/Receive):
@@ -131,17 +128,17 @@ Maximum Data Rate (Transmit/Receive):
 Current Data Rate (Transmit/Receive):
 : The data rate, in bits per second, at which a link is currently receiving or transmitting traffic.
 
-Round Trip Time:
-: Time from sending a packet to receiving a response from the remote endpoint.
+Latency:
+: The time delay between sending a packet on a path element and receiving the same packet on a different path element.
 
-Round Trip Time variation:
-: Disparity of Round Trip Time values either over time or among multiple concurrent connections. A high RTT variation often indicates congestion.
+Latency variation:
+: The variation of the Latency within a flow.
 
 Packet Loss:
-: Percentage of sent packets that are not received on the other end.
+: The percentage of packets within a flow which are sent by one path element, but not received by a different path element.
 
 Congestion:
-: Whether there is any indication of congestion on the path.
+: Whether a protocol feature such as ECN has provided information that there currently is congestion on a path.
 
 
 # Security Considerations
