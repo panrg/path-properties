@@ -146,10 +146,8 @@ Congestion:
 
 # Security Considerations
 
-Some of these properties may have security implications for endpoints.
-For example, a corporate policy might require to have a firewall on the path.
-
-For properties provided by the network, their authenticity and correctness may need to be verified by an endpoint.
+If devices are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
+In order to be able to trust such path properties, devices may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another device.
 
 
 # IANA Considerations
@@ -163,4 +161,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thanks to Paul Hoffman for feedback and editorial changes.
+Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Thanks to Paul Hoffman for feedback and editorial changes.
