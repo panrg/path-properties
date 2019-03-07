@@ -51,18 +51,22 @@ Because the current Internet provides an IP-based best-effort bit pipe, endpoint
 A Path Aware Network exposes information about one or multiple paths through the network to endpoints or the network infrastructure.
 
 It is impossible to provide an exhaustive list of path properties, as with every new technology and protocol, novel properties might become relevant.
-In order to specify broadly relevant path properties, scenarios in which knowledge about (additional) path information gives advantages are described here.
+In this document, we specify a set of path properties which might be useful in the following use cases: Traffic policies, network monitoring, and path selection.
 
-Traffic policies leveraging path awareness can be defined.
-Such policies can allow or disallow sending traffic over specific networks or nodes, select an appropriate protocol depending on the capabilities of the on-path devices (e.g., using QUIC instead of TCP if no device blocks UDP traffic), or adjust protocol parameters to the used path.
+- Traffic policies: Network operators or end users can define traffic policies leveraging path awareness.
+Such policies can allow or disallow sending traffic over specific networks or nodes, select an appropriate protocol depending on the capabilities of the on-path devices, or adjust protocol parameters to an existing path.
+An example of a traffic policy is a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost of the link using a volume-based or flat-rate cost model.
+Another example is an enterprise network where all traffic has to go through a firewall, in which case the endpoint needs to be aware of on-path firewalls.
 
-Network monitoring systems in a path aware network can associate their measurements with the actual path used, and observe if the measurements conform with the advertised path properties.
-Network operators can use the path information to specify comprehensive Quality of Service (QoS) guarantees.
+- Network monitoring: Network operators can use path properties, (e.g., measured by on-path devices), to check whether recent end-user traffic satisfies specific Quality of Service (QoS) requirements, and identify potential problems with their network early on, before the end-user complains.
 
-In the case that an entity can choose between a set of different paths, richer path information can lead to more optimal usage of networked resources.
-An AS can use path information as additional routing metric leading to more informed routing decisions.
-An endpoint can choose an optimal path to a destination if there are several paths, or choose an optimal destination if there are several destinations providing the same service.
-An example of the latter is Application-Layer Traffic Optimization (ALTO), an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection.
+- Path selection: In some cases, entities can choose to use a certain path (or subset of paths) from a set of paths to achieve a specific goal.
+The possible benefits of a well chosen path varies based on the goal, and thus the only guarantee that a path aware network should give is to not perform worse than the default case without path selection.
+Depending on the goal, paths with different properties are preferred, e.g., retrieving a webpage as quickly as possible requires low latency paths, retrieving a large file in a peer-to-peer network requires paths with high achievable data rate.
+A network (e.g., an AS) can adjust its path selection for internal or external routing based on the path properties.
+In BGP, the Multi Exit Discriminator (MED) attribute decides which path to choose if other attributes are equal; in a path aware network, instead of using this single MED value, other properties such as maximum or available/expected data rate could additionally be used to improve load balancing.
+An endpoint might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the endpoint is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
+Care needs to be taken when selecting paths based on path properties, as some path properties that depend on the current state of the network can become outdated and not related to path properties of packets sent now.
 
 Such path properties may be relatively dynamic, e.g. current Round Trip Time, close to the origin, e.g. nature of the access technology on the first hop, or far from the origin, e.g. list of ASes traversed.
 
