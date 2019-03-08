@@ -33,6 +33,8 @@ informative:
 
     RFC8175:
 
+    RFC5693:
+
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
 --- abstract
@@ -46,8 +48,26 @@ This information is expressed as properties of paths between two endpoints.
 # Introduction
 
 Because the current Internet provides an IP-based best-effort bit pipe, endpoints have little information about paths to other endpoints.
-A Path Aware Network exposes information about one or multiple paths through the network to endpoints,
-so that endpoints can use this information.
+A Path Aware Network exposes information about one or multiple paths through the network to endpoints or the network infrastructure.
+
+It is impossible to provide an exhaustive list of path properties, as with every new technology and protocol, novel properties might become relevant.
+In this document, we specify a set of path properties which might be useful in the following use cases: Traffic policies, network monitoring, and path selection.
+
+- Traffic policies: Entities such as network operators or end users may want to define traffic policies leveraging path awareness.
+Such policies can allow or disallow sending traffic over specific networks or nodes, select an appropriate protocol depending on the capabilities of the on-path devices, or adjust protocol parameters to an existing path.
+An example of a traffic policy is a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost of the link using a volume-based or flat-rate cost model.
+Another example is an enterprise network where all traffic has to go through a firewall, in which case the endpoint needs to be aware of on-path firewalls.
+
+- Network monitoring: Network operators can use path properties (e.g., measured by on-path devices), to observe Quality of Service (QoS) characteristics of recent end-user traffic, and identify potential problems with their network early on, before the end-user complains.
+
+- Path selection: In some cases, entities can choose to use a certain path (or subset of paths) from a set of paths to achieve a specific goal.
+As the possible benefits of a well chosen path varies based on the goal, as a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
+Depending on the goal, an entity may prefer paths with different properties, e.g., retrieving a small webpage as quickly as possible requires low latency paths, or retrieving a large file in a peer-to-peer network requires paths with high achievable data rate.
+Additionally, there may be trade-offs between path properties (e.g., latency and data rate), and entities may influence these trade-offs with their choices.
+A network (e.g., an AS) can adjust its path selection for internal or external routing based on the path properties.
+In BGP, the Multi Exit Discriminator (MED) attribute decides which path to choose if other attributes are equal; in a path aware network, instead of using this single MED value, other properties such as maximum or available/expected data rate could additionally be used to improve load balancing.
+An endpoint might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the endpoint is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
+Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may have become outdated and, thus, useless to predict the path properties of packets sent now.
 
 Such path properties may be relatively dynamic, e.g. current Round Trip Time, close to the origin, e.g. nature of the access technology on the first hop, or far from the origin, e.g. list of ASes traversed.
 
