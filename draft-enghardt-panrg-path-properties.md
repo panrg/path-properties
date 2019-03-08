@@ -67,8 +67,14 @@ Path element:
 : A path element is a device (including the endpoints), or link used to connect two devices and transmit information on a specific layer.
 Path elements may exist on multiple layers (e.g., the endpoint corresponds to a path element on every layer), may be hidden on higher layers (e.g., a layer 2 switch in the local network), or a path element may be an aggregation of several path elements on a lower layer (e.g., the link connecting the endpoints on the transport layer being an aggregation of all network layer path elements).
 
+Path segment:
+: A path segment is an ordered set of path elements at the network layer that can be traversed by a packet.
+
 Path:
-: A path is defined as an ordered set of path elements at the network layer that can be traversed by a packet.
+: A path is defined as an ordered set of path elements at the network layer between two endpoints. A path can be traversed by a packet.
+
+Domain:
+: A path segment that is under the administrative control of a single entity.
 
 Flow:
 : Several packets traversing the same path elements can be combined into a flow (e.g., all packets sent within a UDP session which traverse the same path elements).
@@ -89,47 +95,47 @@ The notion of reliability depends on the property, it might be the confidence le
 
 # Domain Properties
 
-Domain path properties relate to path elements within the same Autonomous System (AS), thus, in the same administrative domain as an endpoint considering them.
+Domain path properties relate to path elements within the first hop or the first few hops, which are usually in the same administrative domain as an endpoint considering them.
 
-Due to the potential physical proximity and pre-existing trust or contractual relationships between endpoints and path elements within the same administrative domain, domain properties may be more easily available to the endpoint than the properties of path elements outside of its administrative domain.
+Due to the potential physical proximity and pre-existing trust or contractual relationships between endpoints and path elements within the same administrative domain, domain properties may be more accessible to the endpoint than other properties.
 
 Furthermore, endpoints may be able to influence both which domain they are in and which path elements in this domain to connect to, and they may be able to influence the properties of path elements within this domain.
-For example, a user might select between multiple potential path elements which are directly adjacent by selecting between multiple available WiFi Access Points. When connected to an Access Point, they may move closer to a it to enable their device to use a different access technology, potentially increasing the data rate available to the device.
+For example, a user might select between multiple potential adjacent path elements by selecting between multiple available WiFi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
 Another example is a user changing their data plan to reduce the Monetary Cost to transmit a given amount of data across a network.
 
 
 Access Technology:
-: The physical or link layer technology used on one or multiple path elements for transmitting a flow. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link, or as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
+: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same administative domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link, or as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
 : The price to be paid to transmit a specific flow across a set of path elements.
 
-Presence of a certain network function on the path:
-: Indicates that a certain path element performs a certain network function on a flow, e.g., whether the path element acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This path element may be either in the same administrative domain as the endpoint or in a different administrative domain, i.e., the backbone.
-
 
 # Backbone Properties
 
-Backbone path properties relate to path elements that are in a different administrative domain than an endpoint considering them, thus, in the backbone from the endpoint's point of view.
+Backbone path properties relate to path elements that not within the same domain as an endpoint considering them, thus, in the backbone from the endpoint's point of view.
 
-Typically, backbone properties are less easily available to an endpoint than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
+Typically, backbone properties are less accessible to an endpoint than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
 
 Additionally, endpoints are less likely to be able to influence which path elements form their path in the backbone, as well as their properties.
 
-Some path properties relate to the entire path, part of which often lies outside of an endpoint's administrative domain. Thus, such properties are listed as Backbone Properties.
+Some path properties relate to the entire path, part of which often lies outside of an endpoint's domain. Thus, such properties are listed as Backbone Properties.
 
+
+Presence of a certain network function on the path:
+: Indicates that a certain path element performs a certain network function on a flow, e.g., whether the path element acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This path element may be either in the same domain as the endpoint or in a different domain, i.e., the backbone.
 
 Administrative Entity:
 : The administrative entity, e.g., the AS, to which a path element or set of path elements belongs.
 
 Disjointness:
-: For a set of two paths, the set of path elements which are shared.
+: For a set of two paths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness of paths as a metric to reduce the number of single points of failure.
 
 Path MTU:
-: The maximum size, in octets, of an IP packet that can be transmitted without fragmentation on a path segment or path.
+: The maximum size, in octets, of an IP packet that can be transmitted without fragmentation on a path segment.
 
 Transport Protocols available:
-: Whether a specific transport protocol can be used to establish a connection over a path or path segment (ordered set of path elements). An endpoint may cache its knowledge about recent successfully established connections using specific protocols, e.g., a QUIC connection, or an MPTCP subflow, over a specific path.
+: Whether a specific transport protocol can be used to establish a connection over a path or path segment. An endpoint may cache its knowledge about recent successfully established connections using specific protocols, e.g., a QUIC connection, or an MPTCP subflow, over a specific path.
 
 Protocol Features available:
 : Whether a specific protocol feature is available over this path, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
@@ -137,7 +143,7 @@ Protocol Features available:
 
 # Dynamic Properties
 
-Dynamic path properties relate to a path or path element with respect to the transmission of an individual packet or of a flow over a path element or path.
+Dynamic path properties relate to a path segment with respect to the transmission of an individual packet or of a flow over this path segment.
 Properties related to a path element which constitutes single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
 Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
