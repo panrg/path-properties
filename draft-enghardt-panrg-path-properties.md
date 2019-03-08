@@ -63,6 +63,31 @@ There are exceptions such as dynamic wireless access properties, but these do no
 This document addresses the first of the questions
 in Path-Aware Networking {{I-D.irtf-panrg-questions}}, which is a product of the PANRG in the IRTF.
 
+# Terminology
+
+Path element:
+: A path element is a device (including the endpoints), or link used to connect two devices and transmit information on a specific layer.
+Path elements may exist on multiple layers (e.g., the endpoint corresponds to a path element on every layer), may be hidden on higher layers (e.g., a layer 2 switch in the local network), or a path element may be an aggregation of several path elements on a lower layer (e.g., the link connecting the endpoints on the transport layer being an aggregation of all network layer path elements).
+
+Path:
+: A path is defined as an ordered set of path elements at the network layer that can be traversed by a packet.
+
+Flow:
+: Several packets traversing the same path elements can be combined into a flow (e.g., all packets sent within a UDP session which traverse the same path elements).
+As a special case, a flow can consist of just one packet.
+
+Property:
+: A property describes a trait of a set of path elements (e.g., capacity of a link, is device X a firewall, one-way maximum data rate which is the minimum of all links' maximum data rates), or a trait of a flow being sent on a set of path elements (e.g., RTT, one-way delay).
+A property is thus described by a tuple containing the ordered set of path elements, the set of packets traversing the path (the flow) or an empty set if no packets are relevant for the property, the name of the trait (e.g., maximum data rate), and the value of the trait (e.g., 100mbps).
+
+Aggregated Property:
+: A property can be aggregated over a set of path elements (e.g., MTU in the network backbone as the minimum MTU of the individual path elements), or over a set of packets (e.g., median one-way latency of all packets during the last second), or over both (e.g., average time a packets spends in buffers outside the local network).
+Aggregation can be numerical (average, sum, min, ...), logical (true if all are true, true if at least X are true, ...), or an arbitrary function which maps a set of input properties to an output property.
+
+Measured & Potential Property:
+: A property can be classified by timescale into a measured property, based on concrete previous and current measurements, and a potential property, which is a property with predicted characteristics, possibly including the reliability of such predictions.
+An example of a potential property with a high reliability is the maximum data rate of an ethernet link in the local network during the next day, while a potential property with a lower reliability is the expected one-way latency of packets sent to an endpoint on the other side of the planet during the next second.
+The notion of reliability depends on the property, it might be the confidence level and interval for numerical properties or the likelihood that a property holds for non-numerical properties.
 
 # Domain Properties
 
