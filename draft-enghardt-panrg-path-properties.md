@@ -73,9 +73,6 @@ Path segment:
 Path:
 : A path is defined as an ordered set of path elements at the network layer between two endpoints. A path can be traversed by a packet.
 
-Domain:
-: A path segment that is under the administrative control of a single entity.
-
 Flow:
 : Several packets traversing the same path elements can be combined into a flow (e.g., all packets sent within a UDP session which traverse the same path elements).
 As a special case, a flow can consist of just one packet.
