@@ -161,4 +161,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Thanks to Paul Hoffman for feedback and editorial changes.
+Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Thanks to Adrian Perrig for the feedback. Thanks to Paul Hoffman for the editorial changes.
