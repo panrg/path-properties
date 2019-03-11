@@ -102,7 +102,7 @@ Another example is a user changing their data plan to reduce the Monetary Cost t
 
 
 Access Technology:
-: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same administative domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link, or as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
+: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link, or as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
 : The price to be paid to transmit a specific flow across a set of path elements.
@@ -110,7 +110,7 @@ Monetary Cost:
 
 # Backbone Properties
 
-Backbone path properties relate to path elements that not within the same domain as an endpoint considering them, thus, in the backbone from the endpoint's point of view.
+Backbone path properties relate to path elements not within the same domain as an endpoint considering them, thus, in the backbone from the endpoint's point of view.
 
 Typically, backbone properties are less accessible to an endpoint than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
 
@@ -141,7 +141,7 @@ Protocol Features available:
 # Dynamic Properties
 
 Dynamic path properties relate to a path segment with respect to the transmission of an individual packet or of a flow over this path segment.
-Properties related to a path element which constitutes single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
+Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
 Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
 Dynamic Path Properties can be measured by the endpoint itself or somethere in the network.
