@@ -94,7 +94,7 @@ The notion of reliability depends on the property, it might be the confidence le
 
 Domain path properties relate to path elements within the first hop or the first few hops, which are usually in the same administrative domain as an endpoint considering them.
 
-Due to the potential physical proximity and pre-existing trust or contractual relationships between endpoints and path elements within the same administrative domain, domain properties may be more accessible to the endpoint than other properties.
+Due to the potential physical proximity and pre-existing trust or contractual relationships between endpoints and path elements within the same domain, domain properties may be more accessible to the endpoint than other properties.
 
 Furthermore, endpoints may be able to influence both which domain they are in and which path elements in this domain to connect to, and they may be able to influence the properties of path elements within this domain.
 For example, a user might select between multiple potential adjacent path elements by selecting between multiple available WiFi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
@@ -102,10 +102,10 @@ Another example is a user changing their data plan to reduce the Monetary Cost t
 
 
 Access Technology:
-: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link, or as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
+: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link. It may also be given as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
-: The price to be paid to transmit a specific flow across a set of path elements.
+: The price to be paid to transmit a specific flow across a path segment.
 
 
 # Backbone Properties
@@ -123,7 +123,7 @@ Presence of a certain network function on the path:
 : Indicates that a certain path element performs a certain network function on a flow, e.g., whether the path element acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This path element may be either in the same domain as the endpoint or in a different domain, i.e., the backbone.
 
 Administrative Entity:
-: The administrative entity, e.g., the AS, to which a path element or set of path elements belongs.
+: The administrative entity, e.g., the AS, to which a path element or path segment belongs.
 
 Disjointness:
 : For a set of two paths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness of paths as a metric to reduce the number of single points of failure.
