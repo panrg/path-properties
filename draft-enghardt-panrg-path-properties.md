@@ -40,7 +40,7 @@ informative:
 --- abstract
 
 This document defines and categorizes
-information about Internet paths that an endpoint might have or want to have.
+information about Internet paths that an entity, such as an endpoint, might have or want to have.
 This information is expressed as properties of paths between two endpoints.
 
 --- middle
