@@ -84,7 +84,7 @@ in Path-Aware Networking {{I-D.irtf-panrg-questions}}, which is a product of the
 # Terminology
 
 Node:
-: An entity which implements a function that processes packets, e.g., sends, receives, forwards, or modifies them.
+: An entity which processes packets, e.g., sends, receives, forwards, or modifies them.
 
 Host:
 : A node that processes packets that are explicitly addressed to itself.
@@ -99,7 +99,7 @@ Path element:
 : Either a node or a link.
 
 Path:
-: A sequence of directly adjacent path elements, alternating between nodes and links, starting and ending with a host. A path can be viewed as an abstraction on a specific layer, omitting lower layer path elements. For example, a router implementing IPv6 may be a path element on a path when considering the network layer. If this router does not implement transport layer functionality, it is hidden when a higher layer, such as the transport or application layer, is considered. Paths can be traversed by packets. With multicast or broadcast, a single packet may be sent over multiple paths at once -- one path for each combination of sending and receiving host.
+: A sequence of directly adjacent path elements, alternating between nodes and links, starting and ending with a host. A path can be viewed as an abstraction on a specific layer, omitting lower layer path elements. For example, a router implementing IPv6 may be a path element on a path when considering the network layer. If this router does not implement transport layer functionality, it is hidden when a higher layer, such as the transport or application layer, is considered. In the case of multicast or broadcast, a single packet may be sent over multiple paths at once -- one path for each combination of sending and receiving host.
 
 Subpath:
 : Given a path, a subpath is a sequence of directly adjacent path elements of this path, starting and ending with a node.
