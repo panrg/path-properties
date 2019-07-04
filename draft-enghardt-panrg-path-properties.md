@@ -99,10 +99,10 @@ Path element:
 : Either a node or a link.
 
 Path:
-: A sequence of directly adjacent path elements, alternating between nodes and links, starting and ending with a host. A path can be viewed as an abstraction on a specific layer, omitting lower layer path elements. For example, a router implementing IPv6 may be a path element on a path when considering the network layer. If this router does not implement transport layer functionality, it is hidden when a higher layer, such as the transport or application layer, is considered. In the case of multicast or broadcast, a single packet may be sent over multiple paths at once -- one path for each combination of sending and receiving host.
+: A sequence of adjacent path elements, alternating between nodes and links, starting and ending with a host. A path can be viewed as an abstraction on a specific layer, omitting lower layer path elements. For example, a router implementing IPv6 may be a path element on a path when considering the network layer. If this router does not implement transport layer functionality, it is hidden when a higher layer, such as the transport or application layer, is considered. In the case of multicast or broadcast, a single packet may be sent over multiple paths at once -- one path for each combination of sending and receiving host.
 
 Subpath:
-: Given a path, a subpath is a sequence of directly adjacent path elements of this path, starting and ending with a node.
+: Given a path, a subpath is a sequence of adjacent path elements of this path, starting and ending with a node.
 
 Flow:
 : One or multiple packets which are traversing the same subpath or path. For example, a flow can consist of all packets sent within a TCP session with the same five-tuple between two hosts, or it can consist of all packets sent on the same physical link.
