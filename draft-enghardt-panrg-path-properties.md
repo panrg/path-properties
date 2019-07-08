@@ -38,15 +38,15 @@ informative:
 --- abstract
 
 This document defines and categorizes
-information about Internet paths that an entity, such as an endpoint, might have or want to have.
-This information is expressed as properties of paths between two endpoints.
+information about Internet paths that an entity, such as a host, might have or want to have.
+This information is expressed as properties of paths between two hosts.
 
 --- middle
 
 # Introduction
 
-Because the current Internet provides an IP-based best-effort bit pipe, endpoints have little information about paths to other endpoints.
-A Path Aware Network exposes information about one or multiple paths through the network to endpoints or the network infrastructure.
+Because the current Internet provides an IP-based best-effort bit pipe, hosts have little information about paths to other hosts.
+A Path Aware Network exposes information about one or multiple paths through the network to hosts or the network infrastructure.
 
 It is impossible to provide an exhaustive list of path properties, as with every new technology and protocol, novel properties might become relevant.
 In this document, we specify a set of path properties which might be useful in the following use cases: Traffic policies, network monitoring, and path selection.
@@ -54,7 +54,7 @@ In this document, we specify a set of path properties which might be useful in t
 - Traffic policies: Entities such as network operators or end users may want to define traffic policies leveraging path awareness.
 Such policies can allow or disallow sending traffic over specific networks or nodes, select an appropriate protocol depending on the capabilities of the on-path devices, or adjust protocol parameters to an existing path.
 An example of a traffic policy is a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost of the link using a volume-based or flat-rate cost model.
-Another example is an enterprise network where all traffic has to go through a firewall, in which case the endpoint needs to be aware of on-path firewalls.
+Another example is an enterprise network where all traffic has to go through a firewall, in which case the host needs to be aware of on-path firewalls.
 
 - Network monitoring: Network operators can use path properties (e.g., measured by on-path devices), to observe Quality of Service (QoS) characteristics of recent end-user traffic, and identify potential problems with their network early on, before the end-user complains.
 
@@ -64,7 +64,7 @@ Depending on the goal, an entity may prefer paths with different properties, e.g
 Additionally, there may be trade-offs between path properties (e.g., latency and data rate), and entities may influence these trade-offs with their choices.
 A network (e.g., an AS) can adjust its path selection for internal or external routing based on the path properties.
 In BGP, the Multi Exit Discriminator (MED) attribute decides which path to choose if other attributes are equal; in a path aware network, instead of using this single MED value, other properties such as maximum or available/expected data rate could additionally be used to improve load balancing.
-An endpoint might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the endpoint is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
+A host might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the host is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
 Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may have become outdated and, thus, useless to predict the path properties of packets sent now.
 
 Such path properties may be relatively dynamic, e.g. current Round Trip Time, close to the origin, e.g. nature of the access technology on the first hop, or far from the origin, e.g. list of ASes traversed.
@@ -73,7 +73,7 @@ Usefulness over time is fundamentally different for dynamic and non-dynamic prop
 The merit of a momentary measurement of a dynamic path property diminishes greatly as time goes on, e.g. the merit of an RTT measurement from a few seconds ago is quite small, while a non-dynamic path property might stay relevant, e.g. a NAT can be assumed to stay on a path during the lifetime of a connection, as the removal of the NAT would break the connection.
 
 Non-dynamic properties are further separated into (local) domain properties related to the first few hops of the connection, and backbone properties related to the remaining hops.
-Domain properties expose a high amount of information to endpoints and strongly influence the connection behavior while there is little influence and information about backbone properties.
+Domain properties expose a high amount of information to hosts and strongly influence the connection behavior while there is little influence and information about backbone properties.
 
 Dynamic properties are not separated into domain and backbone properties, since most of these properties are defined for a complete path and it is difficult and seldom useful to define them on part of the path.
 There are exceptions such as dynamic wireless access properties, but these do not justify separation into different categories.
@@ -123,12 +123,12 @@ Estimated property:
 
 # Domain Properties
 
-Domain path properties relate to path elements within the first hop or the first few hops, which are usually in the same administrative domain as an endpoint considering them.
+Domain path properties relate to path elements within the first hop or the first few hops, which are usually in the same administrative domain as a host considering them.
 
-Due to the potential physical proximity and pre-existing trust or contractual relationships between endpoints and path elements within the same domain, domain properties may be more accessible to the endpoint than other properties.
+Due to the potential physical proximity and pre-existing trust or contractual relationships between hosts and path elements within the same domain, domain properties may be more accessible to the host than other properties.
 
-Furthermore, endpoints may be able to influence both which domain they are in and which path elements in this domain to connect to, and they may be able to influence the properties of path elements within this domain.
-For example, a user might select between multiple potential adjacent path elements by selecting between multiple available WiFi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
+Furthermore, hosts may be able to influence both which domain they are in and which path elements in this domain to connect to, and they may be able to influence the properties of path elements within this domain.
+For example, a user might select between multiple potential adjacent links by selecting between multiple available WiFi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
 Another example is a user changing their data plan to reduce the Monetary Cost to transmit a given amount of data across a network.
 
 
@@ -136,65 +136,64 @@ Access Technology:
 : The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link. It may also be given as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
-: The price to be paid to transmit a specific flow across a path segment.
+: The price to be paid to transmit a specific flow across a subpath.
 
 
 # Backbone Properties
 
-Backbone path properties relate to path elements not within the same domain as an endpoint considering them, thus, in the backbone from the endpoint's point of view.
+Backbone path properties relate to path elements not within the same domain as a host considering them, thus, in the backbone from the host's point of view.
 
-Typically, backbone properties are less accessible to an endpoint than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
+Typically, backbone properties are less accessible to a host than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
 
-Additionally, endpoints are less likely to be able to influence which path elements form their path in the backbone, as well as their properties.
+Additionally, hosts are less likely to be able to influence which path elements form their path in the backbone, as well as their properties.
 
-Some path properties relate to the entire path, part of which often lies outside of an endpoint's domain. Thus, such properties are listed as Backbone Properties.
-
+Some path properties relate to the entire path or to subpaths, part of which often lies outside of a host's domain. Thus, such properties are listed as Backbone Properties.
 
 Presence of a certain network function on the path:
-: Indicates that a certain path element performs a certain network function on a flow, e.g., whether the path element acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This path element may be either in the same domain as the endpoint or in a different domain, i.e., the backbone.
+: Indicates that a node performs a certain network function on a flow, e.g., whether the node acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This node may be either in the same domain as the host or in a different domain, i.e., the backbone.
 
 Administrative Entity:
-: The administrative entity, e.g., the AS, to which a path element or path segment belongs.
+: The administrative entity, e.g., the AS, to which a path element or subpath belongs.
 
 Disjointness:
 : For a set of two paths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness of paths as a metric to reduce the number of single points of failure.
 
 Path MTU:
-: The maximum size, in octets, of an IP packet that can be transmitted without fragmentation on a path segment.
+: The maximum size, in octets, of an IP packet that can be transmitted without fragmentation on a subpath.
 
 Transport Protocols available:
-: Whether a specific transport protocol can be used to establish a connection over a path or path segment. An endpoint may cache its knowledge about recent successfully established connections using specific protocols, e.g., a QUIC connection, or an MPTCP subflow, over a specific path.
+: Whether a specific transport protocol can be used to establish a connection over a path or subpath. A host may cache its knowledge about recent successfully established connections using specific protocols, e.g., a QUIC connection, or an MPTCP subflow.
 
 Protocol Features available:
-: Whether a specific protocol feature is available over this path, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
+: Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
 
 
 # Dynamic Properties
 
-Dynamic path properties relate to a path segment with respect to the transmission of an individual packet or of a flow over this path segment.
+Dynamic path properties relate to the transmission of an individual packet or of a flow over a subpath.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
-Typically, Dynamic Properties can only be approximated and sampled, and might be made available in an aggregated form, such as averages or minimums.
-Dynamic Path Properties can be measured by the endpoint itself or somethere in the network.
-See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the endpoint.
+Typically, Dynamic Properties can be measured or approximated, and might be made available in an aggregated form, such as averages or minimums.
+Dynamic Path Properties can be measured by the host itself or by a different entity.
+See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the host.
 
 Some dynamic properties are defined in different directions for the same path element, e.g., for transmitting and receiving packets.
 
 
 Maximum Data Rate (Transmit/Receive):
-: The theoretical maximum data rate, in bits per second, that can be achieved on a link, path segment, or path, for receiving or transmitting traffic.
+: The theoretical maximum data rate, in bits per second, that can be achieved on a link, subpath, or path, for receiving or transmitting traffic.
 
 Current Data Rate (Transmit/Receive):
 : The data rate, in bits per second, at which a link is currently receiving or transmitting traffic.
 
 Latency:
-: The time delay between sending a packet on a path element and receiving the same packet on a different path element.
+: The time delay between a node sending a packet and a different node on the same path receiving the same packet.
 
 Latency variation:
-: The variation of the Latency within a flow.
+: The variation of the latency within a flow.
 
 Packet Loss:
-: The percentage of packets within a flow which are sent by one path element, but not received by a different path element.
+: The percentage of packets within a flow which are sent by one node, but not received by a different node.
 
 Congestion:
 : Whether a protocol feature such as ECN has provided information that there currently is congestion on a path.
@@ -202,8 +201,8 @@ Congestion:
 
 # Security Considerations
 
-If devices are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
-In order to be able to trust such path properties, devices may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another device.
+If nodes are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
+In order to be able to trust such path properties, nodes may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another node.
 
 
 # IANA Considerations
@@ -217,4 +216,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Thanks to Adrian Perrig for the feedback. Thanks to Paul Hoffman for the editorial changes.
+Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Thanks to Adrian Perrig and Matthias Rost for the feedback. Thanks to Paul Hoffman for the editorial changes.
