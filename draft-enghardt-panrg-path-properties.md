@@ -149,9 +149,8 @@ Additionally, hosts are less likely to be able to influence which path elements 
 
 Some path properties relate to the entire path or to subpaths, part of which often lies outside of a host's domain. Thus, such properties are listed as Backbone Properties.
 
-
 Presence of a certain network function on the path:
-: Indicates that a certain path element performs a certain network function on a flow, e.g., whether the path element acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This path element may be either in the same domain as the host or in a different domain, i.e., the backbone.
+: Indicates that a node performs a certain network function on a flow, e.g., whether the node acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This node may be either in the same domain as the host or in a different domain, i.e., the backbone.
 
 Administrative Entity:
 : The administrative entity, e.g., the AS, to which a path element or subpath belongs.
