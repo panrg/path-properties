@@ -37,9 +37,10 @@ informative:
 
 --- abstract
 
-This document defines and categorizes
-information about Internet paths that an entity, such as a host, might have or want to have.
-This information is expressed as properties of paths between two hosts.
+Path properties express information about paths across a network and the services provided via such paths.
+In a path-aware network, path properties may be fully or partially available to entities such as hosts.
+This document defines and categorizes path properties.
+Furthermore, the document specifies several path properties which might be useful to hosts or other entities.
 
 --- middle
 
