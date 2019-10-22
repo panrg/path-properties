@@ -33,6 +33,18 @@ informative:
 
     RFC5693:
 
+    RFC5136:
+
+    RFC7679:
+
+    RFC3393:
+
+    RFC7680:
+
+    RFC3357:
+
+    RFC6534:
+
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
 --- abstract
@@ -180,20 +192,26 @@ See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path prop
 Some dynamic properties are defined in different directions for the same path element, e.g., for transmitting and receiving packets.
 
 
-Maximum Data Rate (Transmit/Receive):
-: The theoretical maximum data rate, in bits per second, that can be achieved on a link, subpath, or path, for receiving or transmitting traffic.
+Link Capacity:
+: The link capacity is the maximum data rate at which data that was sent over a link can correctly be received at the node adjacent to the link.
+This property is analogous to the link capacity defined in {{RFC5136}} but not restricted to IP-layer traffic.
 
-Current Data Rate (Transmit/Receive):
-: The data rate, in bits per second, at which a link is currently receiving or transmitting traffic.
+Link Usage:
+: The link usage is the actual data rate at which data that was sent over a link is correctly received at the node adjacent to the link.
+This property is analogous to the link usage defined in {{RFC5136}} but not restricted to IP-layer traffic.
 
-Latency:
-: The time delay between a node sending a packet and a different node on the same path receiving the same packet.
+One-Way Delay:
+: The one-way delay is the delay between a node sending a packet and another node on the same path receiving the packet.
+This property is analogous to the one-way delay defined in {{RFC7679}} but not restricted to IP-layer traffic.
 
-Latency variation:
-: The variation of the latency within a flow.
+One-Way Delay Variation:
+: The variation of the one-way delays within a flow.
+This property is similar to the one-way delay variation defined in {{RFC3393}} but not restricted to IP-layer traffic and defined for packets on the same flow instead of packets sent between a source and destination IP address.
 
-Packet Loss:
-: The percentage of packets within a flow which are sent by one node, but not received by a different node.
+One-Way Packet Loss:
+: Packets sent by a node but not received by another node on the same path after a certain time interval are considered lost.
+This property is analogous to the one-way loss defined in {{RFC7680}} but not restricted to IP-layer traffic.
+Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be expressed as aggregated properties.
 
 Congestion:
 : Whether a protocol feature such as ECN has provided information that there currently is congestion on a path.
