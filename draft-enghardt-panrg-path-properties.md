@@ -96,42 +96,41 @@ in Path-Aware Networking {{I-D.irtf-panrg-questions}}, which is a product of the
 # Terminology
 
 Node:
-: An entity which processes packets, e.g., sends, receives, forwards, or modifies them.
+: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a machine or a service function. A node may also be the collection of multiple entities which, as a collection, processes packets, e.g., an entire Autonomous System (AS).
 
 Host:
-: A node that processes packets that are explicitly addressed to itself.
-
-Router:
-: A node that processes packets that are not explicitly addressed to itself.
+: A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
 
 Link:
-: A medium or communication facility that connects two or more nodes with each other and enables them to exchange packets. A link can be physical, e.g., a WiFi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine.
+: A medium or communication facility that connects two or more nodes with each other. A link enables a node to send a packet such that another node receives the packet.
+Links can be physical, e.g., a WiFi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional and the collection of two links between the same nodes in different directions can be used to model bidirectional communication.
 
 Path element:
 : Either a node or a link.
 
 Path:
-: A sequence of adjacent path elements, alternating between nodes and links, starting and ending with a host. A path can be viewed as an abstraction on a specific layer, omitting lower layer path elements. For example, a router implementing IPv6 may be a path element on a path when considering the network layer. If this router does not implement transport layer functionality, it is hidden when a higher layer, such as the transport or application layer, is considered. In the case of multicast or broadcast, a single packet may be sent over multiple paths at once -- one path for each combination of sending and receiving host.
+: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. Note that paths are time-dependent, i.e., the sequence of path elements over which packets are sent between two nodes may change frequently. Furthermore, an entity may have only partial visibility of the path elements that comprise a path.
 
 Subpath:
-: Given a path, a subpath is a sequence of adjacent path elements of this path, starting and ending with a node.
+: Given a path, a subpath is a sequence of adjacent path elements of this path.
 
 Flow:
-: One or multiple packets which are traversing the same subpath or path. For example, a flow can consist of all packets sent within a TCP session with the same five-tuple between two hosts, or it can consist of all packets sent on the same physical link.
+: An entity made of packets to which the traits of a path or set of subpaths may be applied in a functional sense. For example, a flow can consist of all packets sent within a TCP session with the same five-tuple between two hosts, or it can consist of all packets sent on the same physical link.
 
 Property:
-: A trait of one or a sequence of path elements, or a trait of a flow with respect to one or a sequence of path elements. An example of a link property is the maximum data rate that can be sent over the link. An example of a node property is the administrative domain that the node belongs to. An example of a property of a flow with respect to a subpath is the aggregated one-way delay of the flow being sent from one node to another node over a subpath.
-A property is thus described by a tuple containing the sequence of path elements, the flow or an empty set if no packets are relevant for the property, the name of the property (e.g., maximum data rate), and the value of the property (e.g., 1Gbps).
+: A trait of one or a sequence of path elements, or a trait of a flow with respect to one or multiple subpaths. An example of a link property is the maximum data rate that can be sent over the link. An example of a node property is the administrative domain that the node belongs to. An example of a property of a flow with respect to a subpath is the aggregated one-way delay of the flow being sent from one node to another node over this subpath.
+A property is thus described by a tuple containing the subpath(s), the flow or an empty set if no packets are relevant for the property, the name of the property (e.g., maximum data rate), and the value of the property (e.g., 1Gbps).
 
 Aggregated property:
 : A collection of multiple values of a property into a single value, according to a function. A property can be aggregated over multiple path elements (i.e., a path), e.g., the MTU of a path as the minimum MTU of all links on the path, over multiple packets (i.e., a flow), e.g., the median one-way latency of all packets between two nodes, or over both, e.g., the mean of the queueing delays of a flow on all nodes along a path.
 The aggregation function can be numerical, e.g., median, sum, minimum, it can be logical, e.g., "true if all are true", "true if at least 50\% of values are true", or an arbitrary function which maps multiple input values to an output value.
 
-Measured property:
-: A property that is observed for a specific path element or path, e.g., using measurements. For example, the one-way delay of a specific packet can be measured.
+Observed property:
+: A property that is observed for a specific path element or path, e.g., using measurements. For example, the one-way delay of a specific packet transmitted from one node to another node can be measured.
 
-Estimated property:
-: An approximate calculation or judgment of the value of a property. For example, an estimated property may describe the expected median one-way latency of packets sent on a path within the next second. An estimated property includes the reliability of the estimate. The notion of reliability depends on the property. For example, it may be the confidence level and interval for numerical properties or the likelihood that a property holds for non-numerical properties.
+Assessed property:
+: An approximate calculation or assessment of the value of a property. An assessed property includes the reliability of the calculation or assessment. The notion of reliability depends on the property.
+For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
 
 # Domain Properties
 
