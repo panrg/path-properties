@@ -102,8 +102,8 @@ Host:
 : A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
 
 Link:
-: A medium or communication facility that connects two or more nodes with each other. A link enables a node to send a packet such that another node receives the packet.
-Links can be physical, e.g., a WiFi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional and the collection of two links between the same nodes in different directions can be used to model bidirectional communication.
+: A medium or communication facility that connects two or more nodes with each other. A link enables a node to send packets to other nodes.
+Links can be physical, e.g., a WiFi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional and bidirectional communication can be modeled as two links between the same nodes in opposite directions.
 
 Path element:
 : Either a node or a link.
