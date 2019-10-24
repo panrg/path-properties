@@ -64,45 +64,9 @@ A path-aware network, as introduced in {{I-D.irtf-panrg-questions}}, exposes inf
 This document defines such information as path properties, addressing the first of the questions in path-aware networking {{I-D.irtf-panrg-questions}}.
 
 As terms related to paths have different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and path properties.
-Then, this document classifies path properties according to different criteria, e.g., how dynamic they are and to what path elements they apply.
-Finally, this document specifies a set of path properties
-which might be useful in the following use cases: Performance monitoring and enhancement, path selection, and traffic configuration.
-Note that with every new technology and protocol, novel properties might become relevant.
-
-## Use Cases for Path Properties
-
-When a path-aware network exposes path properties to hosts or other entities,
-these entities may use this information to achieve different goals.
-
-### Performance Monitoring and Enhancement
-
-Network operators can observe path properties (e.g., measured by on-path devices), to monitor Quality of Service (QoS) characteristics of recent end-user traffic on a path or subpath through their network. Such properties may help identify potential performance problems or trigger countermeasures to enhance performance.
-
-### Path Selection
-
-Entities can choose what traffic to send over which path or subset of paths.
-Entities may select their paths to fulfill a specific goal, e.g., related to security or performance.
-As an example of security-related path selection, an entity may allow or disallow sending traffic over paths involving specific networks or nodes to enforce traffic policies. In an enterprise network where all traffic has to go through a specific firewall, a path-aware host can implement this policy using path selection, in which case the host needs to be aware of paths involving that firewall.
-As an example of performance-related path selection,
-an entity may prefer paths with performance properties that best match its traffic, e.g., retrieving a small webpage as quickly as possible over a path with short One-Way Delays in both directions, or retrieving a large file over a path with high Link Capacities on all links.
-Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
-As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
-
-Path selection can be done both by hosts and by entities within the network:
-A network (e.g., an AS) can adjust its path selection for internal or external routing based on the path properties.
-In BGP, the Multi Exit Discriminator (MED) attribute decides which path to choose if other attributes are equal; in a path aware network, instead of using this single MED value, other properties such as maximum or available/expected data rate could additionally be used to improve load balancing.
-A host might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the host is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
-Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may have become outdated and, thus, useless to predict the path properties of packets sent now.
-
-### Traffic Configuration
-
-When sending traffic over a specific path, entities can adjust this traffic based on the properties of the path.
-For example, an entity may select an appropriate protocol depending on the capabilities of the on-path devices,
-or adjust protocol parameters to an existing path.
-An example of traffic configuration is a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost to send data across a network, eventually on a given path, using a volume-based or flat-rate cost model.
-
-Conversely, the selection of a protocol may influence the devices that will be involved in a path.
-For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path. Another example of traffic policies is a connection which may be composed of multiple streams; each stream with specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
+Then, this document provides some examples for use cases for path properties.
+Further, this document classifies path properties according to different criteria, e.g., how dynamic they are and to what path elements they apply.
+Finally, the document lists several path properties that may be useful for the mentioned use cases.
 
 # Terminology
 
@@ -143,6 +107,44 @@ Measured property:
 
 Estimated property:
 : An approximate calculation or judgment of the value of a property. For example, an estimated property may describe the expected median one-way latency of packets sent on a path within the next second. An estimated property includes the reliability of the estimate. The notion of reliability depends on the property. For example, it may be the confidence level and interval for numerical properties or the likelihood that a property holds for non-numerical properties.
+
+# Use Cases for Path Properties
+
+When a path-aware network exposes path properties to hosts or other entities,
+these entities may use this information to achieve different goals.
+This section lists several use cases for path properties.
+Note that this is not an exhaustive list, as with every new technology and protocol, novel use cases may emerge, and new path properties may become relevant.
+
+## Performance Monitoring and Enhancement
+
+Network operators can observe path properties (e.g., measured by on-path devices), to monitor Quality of Service (QoS) characteristics of recent end-user traffic on a path or subpath through their network. Such properties may help identify potential performance problems or trigger countermeasures to enhance performance.
+
+## Path Selection
+
+Entities can choose what traffic to send over which path or subset of paths.
+Entities may select their paths to fulfill a specific goal, e.g., related to security or performance.
+As an example of security-related path selection, an entity may allow or disallow sending traffic over paths involving specific networks or nodes to enforce traffic policies. In an enterprise network where all traffic has to go through a specific firewall, a path-aware host can implement this policy using path selection, in which case the host needs to be aware of paths involving that firewall.
+As an example of performance-related path selection,
+an entity may prefer paths with performance properties that best match its traffic, e.g., retrieving a small webpage as quickly as possible over a path with short One-Way Delays in both directions, or retrieving a large file over a path with high Link Capacities on all links.
+Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
+As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
+
+Path selection can be done both by hosts and by entities within the network:
+A network (e.g., an AS) can adjust its path selection for internal or external routing based on the path properties.
+In BGP, the Multi Exit Discriminator (MED) attribute decides which path to choose if other attributes are equal; in a path aware network, instead of using this single MED value, other properties such as maximum or available/expected data rate could additionally be used to improve load balancing.
+A host might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the host is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
+Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may have become outdated and, thus, useless to predict the path properties of packets sent now.
+
+## Traffic Configuration
+
+When sending traffic over a specific path, entities can adjust this traffic based on the properties of the path.
+For example, an entity may select an appropriate protocol depending on the capabilities of the on-path devices,
+or adjust protocol parameters to an existing path.
+An example of traffic configuration is a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost to send data across a network, eventually on a given path, using a volume-based or flat-rate cost model.
+
+Conversely, the selection of a protocol may influence the devices that will be involved in a path.
+For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path. Another example of traffic policies is a connection which may be composed of multiple streams; each stream with specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
+
 
 # Path Property Classification
 
