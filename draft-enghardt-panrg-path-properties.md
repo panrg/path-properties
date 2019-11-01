@@ -153,17 +153,11 @@ For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be in
 
 This Section gives some examples of Path Properties which may be useful, e.g., for the use cases described in {{use-cases}}.
 
-Path properties may be relatively dynamic or non-dynamic.
-Dynamic path properties relate to the transmission of an individual packet or of a flow over a subpath, e.g., the one-way delay of a packet sent over a specific path.
-Non-dynamic path properties relate to individual path elements or subpaths.
-Usefulness over time is fundamentally different for dynamic and non-dynamic properties.
+Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, i.e., only change infrequently.
+Usefulness over time differs depending on how dynamic a property is:
 The merit of a momentary measurement of a dynamic path property diminishes greatly as time goes on, e.g. the merit of an RTT measurement from a few seconds ago is quite small, while a non-dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
 
-
-## Non-dynamic Path Properties
-
-Non-dynamic path properties relate to individual path elements or subpaths.
-From the point of view of a host, such path properties may relate to path elements close to the host, i.e., within the first few hops, or they may include path elements far from the host, e.g. list of ASes traversed.
+From the point of view of a host, path properties may relate to path elements close to the host, i.e., within the first few hops, or they may include path elements far from the host, e.g. list of ASes traversed.
 The visibility of path properties to a specific entity may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the entity and the path element(s).
 
 Furthermore, entities may or may not be able to influence the path elements on their path and their path properties.
@@ -196,16 +190,10 @@ Protocol Features available:
 : Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
 
 
-## Dynamic Path Properties
-
-Dynamic path properties relate to the transmission of an individual packet or of a flow over a subpath.
-
-Typically, Dynamic Properties can be measured or approximated, and might be made available in an aggregated form, such as averages or minimums.
-Dynamic Path Properties can be measured by the host itself or by a different entity.
-See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the host.
+Some path properties express the performance of the transmission of a packet or flow over a link or subpath.
+Such transmission performance properties can be measured or approximated, e.g., by hosts or by path elements on the path. They might be made available in an aggregated form, such as averages or minimums.
+See {{ANRW18-Metrics}} for a discussion of how to measure some transmission performance properties at the host.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
-
-Some dynamic properties are defined in different directions for the same path element, e.g., for transmitting and receiving packets.
 
 
 Link Capacity:
