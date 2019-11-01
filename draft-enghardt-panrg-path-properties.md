@@ -68,7 +68,6 @@ This document defines such information as path properties, addressing the first 
 
 As terms related to paths have different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and path properties.
 Then, this document provides some examples for use cases for path properties.
-Further, this document classifies path properties according to different criteria, e.g., how dynamic they are and to what path elements they apply.
 Finally, the document lists several path properties that may be useful for the mentioned use cases.
 
 # Terminology
