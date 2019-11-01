@@ -164,7 +164,7 @@ The merit of a momentary measurement of a dynamic path property diminishes great
 
 Non-dynamic path properties relate to individual path elements or subpaths.
 From the point of view of a host, such path properties may relate to path elements close to the host, i.e., within the first few hops, or they may include path elements far from the host, e.g. list of ASes traversed.
-The visibility of path properties to a specific entity may depend based on the physical or network distance, the existence of any trust or contractual relationships between the entity and the path element(s), or other factors.
+The visibility of path properties to a specific entity may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the entity and the path element(s).
 
 Furthermore, entities may or may not be able to influence the path elements on their path and their path properties.
 For example, a user might select between multiple potential adjacent links by selecting between multiple available WiFi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
