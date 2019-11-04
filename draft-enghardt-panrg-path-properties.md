@@ -47,6 +47,8 @@ informative:
 
     RFC6534:
 
+    RFC7665:
+
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
 --- abstract
@@ -66,7 +68,6 @@ This document defines such information as path properties, addressing the first 
 
 As terms related to paths have different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and path properties.
 Then, this document provides some examples for use cases for path properties.
-Further, this document classifies path properties according to different criteria, e.g., how dynamic they are and to what path elements they apply.
 Finally, the document lists several path properties that may be useful for the mentioned use cases.
 
 # Terminology
@@ -108,7 +109,7 @@ Assessed property:
 : An approximate calculation or assessment of the value of a property. An assessed property includes the reliability of the calculation or assessment. The notion of reliability depends on the property.
 For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
 
-# Use Cases for Path Properties
+# Use Cases for Path Properties {#use-cases}
 
 When a path-aware network exposes path properties to hosts or other entities,
 these entities may use this information to achieve different goals.
@@ -146,57 +147,33 @@ Conversely, the selection of a protocol may influence the devices that will be i
 For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path. Another example of traffic policies is a connection which may be composed of multiple streams; each stream with specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
 
-# Path Property Classification
+# Examples of Path Properties
 
-Path properties may be relatively dynamic, e.g. median one-way delay of packets sent over a specific path within the last second.
-Path properties may also be non-dynamic, i.e., change less frequently, i.e., on a timescale of seconds or more.
-Usefulness over time is fundamentally different for dynamic and non-dynamic properties.
+This Section gives some examples of Path Properties which may be useful, e.g., for the use cases described in {{use-cases}}.
+
+Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an ethernet link which only changes infrequently.
+Usefulness over time differs depending on how dynamic a property is:
 The merit of a momentary measurement of a dynamic path property diminishes greatly as time goes on, e.g. the merit of an RTT measurement from a few seconds ago is quite small, while a non-dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
 
-Moreover, path properties may relate to path elements close to the origin, e.g. nature of the access technology on the first hop, or extend to path elements far from the origin, e.g. list of ASes traversed.
+From the point of view of a host, path properties may relate to path elements close to the host, i.e., within the first few hops, or they may include path elements far from the host, e.g. list of ASes traversed.
+The visibility of path properties to a specific entity may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the entity and the path element(s).
 
-\[TODO: Remove split between domain and backbone properties? Or at least remove some of those claims? \]
-
-Non-dynamic properties are further separated into (local) domain properties related to the first few hops of the connection, and backbone properties related to the remaining hops.
-Domain properties expose a high amount of information to hosts and strongly influence the connection behavior while there is little influence and information about backbone properties.
-
-Dynamic properties are not separated into domain and backbone properties, since most of these properties are defined for a complete path and it is difficult and seldom useful to define them on part of the path.
-There are exceptions such as dynamic wireless access properties, but these do not justify separation into different categories.
-
-
-# Domain Properties
-
-Domain path properties relate to path elements within the first hop or the first few hops, which are usually in the same administrative domain as a host considering them.
-
-Due to the potential physical proximity and pre-existing trust or contractual relationships between hosts and path elements within the same domain, domain properties may be more accessible to the host than other properties.
-
-Furthermore, hosts may be able to influence both which domain they are in and which path elements in this domain to connect to, and they may be able to influence the properties of path elements within this domain.
+Furthermore, entities may or may not be able to influence the path elements on their path and their path properties.
 For example, a user might select between multiple potential adjacent links by selecting between multiple available WiFi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
 Another example is a user changing their data plan to reduce the Monetary Cost to transmit a given amount of data across a network.
 
 
 Access Technology:
-: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements in the same domain. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link. It may also be given as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
+: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link. It may also be given as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
-: The price to be paid to transmit a specific flow across a subpath.
+: The price to be paid to transmit a specific flow across a network to which one or multiple path elements belong.
 
+Service function:
+: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers.
 
-# Backbone Properties
-
-Backbone path properties relate to path elements not within the same domain as a host considering them, thus, in the backbone from the host's point of view.
-
-Typically, backbone properties are less accessible to a host than domain properties, due to the potential increased distance and the lack of pre-existing trust or contractual relationship.
-
-Additionally, hosts are less likely to be able to influence which path elements form their path in the backbone, as well as their properties.
-
-Some path properties relate to the entire path or to subpaths, part of which often lies outside of a host's domain. Thus, such properties are listed as Backbone Properties.
-
-Presence of a certain network function on the path:
-: Indicates that a node performs a certain network function on a flow, e.g., whether the node acts as a proxy, as a firewall, or performs Network Address Translation (NAT). This node may be either in the same domain as the host or in a different domain, i.e., the backbone.
-
-Administrative Entity:
-: The administrative entity, e.g., the AS, to which a path element or subpath belongs.
+Administrative Domain:
+: The administrative domain, e.g., the ICP area, AS, or Service provider network to which a path element or subpath belongs.
 
 Disjointness:
 : For a set of two paths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness of paths as a metric to reduce the number of single points of failure.
@@ -211,16 +188,10 @@ Protocol Features available:
 : Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
 
 
-# Dynamic Properties
-
-Dynamic path properties relate to the transmission of an individual packet or of a flow over a subpath.
+Some path properties express the performance of the transmission of a packet or flow over a link or subpath.
+Such transmission performance properties can be measured or approximated, e.g., by hosts or by path elements on the path. They might be made available in an aggregated form, such as averages or minimums.
+See {{ANRW18-Metrics}} for a discussion of how to measure some transmission performance properties at the host.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
-
-Typically, Dynamic Properties can be measured or approximated, and might be made available in an aggregated form, such as averages or minimums.
-Dynamic Path Properties can be measured by the host itself or by a different entity.
-See {{ANRW18-Metrics}} for a discussion of how to measure some dynamic path properties at the host.
-
-Some dynamic properties are defined in different directions for the same path element, e.g., for transmitting and receiving packets.
 
 
 Link Capacity:
@@ -243,9 +214,6 @@ One-Way Packet Loss:
 : Packets sent by a node but not received by another node on the same path after a certain time interval are considered lost.
 This property is analogous to the one-way loss defined in {{RFC7680}} but not restricted to IP-layer traffic.
 Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be expressed as aggregated properties.
-
-Congestion:
-: Whether a protocol feature such as ECN has provided information that there currently is congestion on a path.
 
 
 # Security Considerations
