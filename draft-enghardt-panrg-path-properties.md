@@ -152,7 +152,7 @@ For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be in
 
 This Section gives some examples of Path Properties which may be useful, e.g., for the use cases described in {{use-cases}}.
 
-Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, i.e., only change infrequently.
+Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
 The merit of a momentary measurement of a dynamic path property diminishes greatly as time goes on, e.g. the merit of an RTT measurement from a few seconds ago is quite small, while a non-dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
 
@@ -215,9 +215,6 @@ One-Way Packet Loss:
 : Packets sent by a node but not received by another node on the same path after a certain time interval are considered lost.
 This property is analogous to the one-way loss defined in {{RFC7680}} but not restricted to IP-layer traffic.
 Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be expressed as aggregated properties.
-
-Congestion:
-: Whether a protocol feature such as ECN has provided information that there currently is congestion on a path.
 
 
 # Security Considerations
