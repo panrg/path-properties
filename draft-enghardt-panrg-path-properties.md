@@ -126,34 +126,32 @@ Note that this is not an exhaustive list, as with every new technology and proto
 
 Entities can choose what traffic to send over which path or subset of paths.
 A node might be able to select between a set of paths, either if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
-Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may have become outdated and, thus, useless to predict current or future path properties.
+Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
 
 Entities may select their paths to fulfill a specific goal, e.g., related to security or performance.
 As an example of security-related path selection, an entity may allow or disallow sending traffic over paths involving specific networks or nodes to enforce traffic policies. In an enterprise network where all traffic has to go through a specific firewall, a path-aware host can implement this policy using path selection, in which case the host needs to be aware of paths involving that firewall.
 As an example of performance-related path selection,
-an entity may prefer paths with performance properties that best match its traffic's requirements.
-For example, for sending a small interactive query, a host may select a path with a short One-Way Delay,
+an entity may prefer paths with performance properties that best match its traffic requirements.
+For example, for sending a small delay sensitive query, a host may select a path with a short One-Way Delay,
 while for retrieving a large file, it may select a path with high Link Capacities on all links.
 Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
 
 Path selection can be done both by hosts and by entities within the network:
 A network (e.g., an AS) can adjust its path selection for internal or external routing based on path properties.
-In BGP, the Multi Exit Discriminator (MED) attribute is used to feed the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
+In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
 
 ## Protocol Selection
 
 When sending traffic over a specific path, an entity may select an appropriate protocol or configure protocol parameters depending on path properties.
-For example, a host may cache state on whether a path allows the use of QUIC {{I-D.ietf-quic-transport}}, and then attempt to open a connection using this protocol first before falling back to another protocol.
-
-An example of configuring protocol parameters based on path properties is
-a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost to send data across a network, eventually on a given path, using a volume-based or flat-rate cost model.
+A host may cache state on whether a path allows the use of QUIC {{I-D.ietf-quic-transport}} and if so, first attempt to connect using QUIC before falling back to another protocol when connecting over this path again.
+A video streaming application may choose an (initial) video quality based on the achievable data rate or the monetary cost of sending data (e.g., volume-base or flat-rate cost model).
 
 ## Service Invocation
 
-Conversely to path or protocol selection, after selecting a protocol to use over a specific adjacent path element, an entity may choose to invoke additional functions, influencing the nodes to be involved in the path.
+Conversely to path or protocol selection, in addition to selecting a protocol to use over a specific adjacent path element, an entity may choose to invoke additional functions influencing the nodes to be involved in the path.
 For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path.
-Another example is a connection which is composed of multiple streams; each stream with specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
+Another example is a connection which is composed of multiple streams where each stream has specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
 # Examples of Path Properties
 
