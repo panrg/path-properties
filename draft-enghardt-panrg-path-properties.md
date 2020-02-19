@@ -31,23 +31,29 @@ informative:
 
     I-D.ietf-tcpm-converters:
 
-    RFC8175:
+    I-D.ietf-quic-transport:
 
-    RFC5693:
+    I-D.ietf-idr-performance-routing:
 
-    RFC5136:
-
-    RFC7679:
+    RFC3357:
 
     RFC3393:
 
-    RFC7680:
+    RFC4271:
 
-    RFC3357:
+    RFC5136:
+
+    RFC5693:
 
     RFC6534:
 
     RFC7665:
+
+    RFC7679:
+
+    RFC7680:
+
+    RFC8175:
 
     ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
@@ -116,36 +122,36 @@ these entities may use this information to achieve different goals.
 This section lists several use cases for path properties.
 Note that this is not an exhaustive list, as with every new technology and protocol, novel use cases may emerge, and new path properties may become relevant.
 
-## Performance Monitoring and Enhancement
-
-Network operators can observe path properties (e.g., measured by on-path devices), to monitor Quality of Service (QoS) characteristics of recent end-user traffic on a path or subpath through their network. Such properties may help identify potential performance problems or trigger countermeasures to enhance performance.
-
 ## Path Selection
 
 Entities can choose what traffic to send over which path or subset of paths.
+A node might be able to select between a set of paths, either if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
+Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
+
 Entities may select their paths to fulfill a specific goal, e.g., related to security or performance.
 As an example of security-related path selection, an entity may allow or disallow sending traffic over paths involving specific networks or nodes to enforce traffic policies. In an enterprise network where all traffic has to go through a specific firewall, a path-aware host can implement this policy using path selection, in which case the host needs to be aware of paths involving that firewall.
 As an example of performance-related path selection,
-an entity may prefer paths with performance properties that best match its traffic, e.g., retrieving a small webpage as quickly as possible over a path with short One-Way Delays in both directions, or retrieving a large file over a path with high Link Capacities on all links.
+an entity may prefer paths with performance properties that best match its traffic requirements.
+For example, for sending a small delay sensitive query, a host may select a path with a short One-Way Delay,
+while for retrieving a large file, it may select a path with high Link Capacities on all links.
 Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
 
 Path selection can be done both by hosts and by entities within the network:
-A network (e.g., an AS) can adjust its path selection for internal or external routing based on the path properties.
-In BGP, the Multi Exit Discriminator (MED) attribute decides which path to choose if other attributes are equal; in a path aware network, instead of using this single MED value, other properties such as maximum or available/expected data rate could additionally be used to improve load balancing.
-A host might be able to select between a set of paths, either if there are several paths to the same destination (e.g., if the host is a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
-Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may have become outdated and, thus, useless to predict the path properties of packets sent now.
+A network (e.g., an AS) can adjust its path selection for internal or external routing based on path properties.
+In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
 
-## Traffic Configuration
+## Protocol Selection
 
-When sending traffic over a specific path, entities can adjust this traffic based on the properties of the path.
-For example, an entity may select an appropriate protocol depending on the capabilities of the on-path devices,
-or adjust protocol parameters to an existing path.
-An example of traffic configuration is a video streaming application choosing an (initial) video quality based on the achievable data rate, or the monetary cost to send data across a network, eventually on a given path, using a volume-based or flat-rate cost model.
+When sending traffic over a specific path, an entity may select an appropriate protocol or configure protocol parameters depending on path properties.
+A host may cache state on whether a path allows the use of QUIC {{I-D.ietf-quic-transport}} and if so, first attempt to connect using QUIC before falling back to another protocol when connecting over this path again.
+A video streaming application may choose an (initial) video quality based on the achievable data rate or the monetary cost of sending data (e.g., volume-base or flat-rate cost model).
 
-Conversely, the selection of a protocol may influence the devices that will be involved in a path.
-For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path. Another example of traffic policies is a connection which may be composed of multiple streams; each stream with specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
+## Service Invocation
 
+Conversely to path or protocol selection, in addition to selecting a protocol to use over a specific adjacent path element, an entity may choose to invoke additional functions influencing the nodes to be involved in the path.
+For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path.
+Another example is a connection which is composed of multiple streams where each stream has specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
 # Examples of Path Properties
 
