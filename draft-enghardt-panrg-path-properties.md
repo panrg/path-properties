@@ -76,6 +76,8 @@ As terms related to paths have different meanings in different areas of networki
 Then, this document provides some examples for use cases for path properties.
 Finally, the document lists several path properties that may be useful for the mentioned use cases.
 
+Note that this document does not assume that any of the listed path properties are actually available to any entity. The question of how entities can discover and distribute path properties in a trustworthy way is out of scope for this document.
+
 # Terminology
 
 Node:
@@ -92,7 +94,7 @@ Path element:
 : Either a node or a link.
 
 Path:
-: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change frequently. A path is defined between two nodes. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node. Note that an entity may have only partial visibility of the path elements that comprise a path, and entities may treat path elements at different levels of abstraction.
+: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change frequently. A path is defined between two nodes. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node. Note that an entity may have only partial visibility of the path elements that comprise a path, and entities may treat path elements at different levels of abstraction. For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, or it may be given as a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO). Similarly, the representation of a path and its properties, as it is known to a specific entity, may be more complex and include details about the physical layer technology, or it may be more abstract and only consist of a specific source and destination which is known to be reachable from that source.
 
 Subpath:
 : Given a path, a subpath is a sequence of adjacent path elements of this path.
@@ -170,7 +172,7 @@ Another example is a user changing their data plan to reduce the Monetary Cost t
 
 
 Access Technology:
-: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements. The Access Technology may be given in an abstract way, e.g., as a WiFi, Wired Ethernet, or Cellular link. It may also be given as a specific technology, e.g., as a 2G, 3G, 4G, or 5G cellular link, or an 802.11a, b, g, n, or ac WiFi link. Other path elements relevant to the access technology may include on-path devices, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
+: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements. If known, the Access Technology may be given as an abstract link type, e.g., as WiFi, Wired Ethernet, or Cellular. It may also be given as a specific technology used on a link, e.g., 2G, 3G, 4G, or 5G cellular, or 802.11a, b, g, n, or ac WiFi. Other path elements relevant to the access technology may include nodes related to processing packets on the physical or link layer, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
 : The price to be paid to transmit a specific flow across a network to which one or multiple path elements belong.
