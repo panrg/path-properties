@@ -229,6 +229,9 @@ Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be e
 If nodes are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
 In order to be able to trust such path properties, nodes may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another node.
 
+Security related properties such as secrecy and integrity protection of payloads are difficult to characterize since they are defined with respect to a threat model which differs depending on the protocol and application.
+Such properties are orthogonal to the path terminology and path properties defined in this document, e.g., a VPN tunnel between two nodes offers secrecy and integrity protection for the flow on the (sub-)path between these nodes.
+
 
 # IANA Considerations
 
