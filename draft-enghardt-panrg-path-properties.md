@@ -92,9 +92,6 @@ Path:
 Reverse Path:
 : The path that is used by a remote node in the context of bidirectional communication.
 
-Symmetric Path:
-: Denotes the case where the reverse path can be inferred from the path. For example, if the path is composed of path elements (PE1, PE2, PE3), if the path is symmetric, the reverse path is (PE3, PE2, PE1).
-
 Subpath:
 : Given a path, a subpath is a sequence of adjacent path elements of this path.
 
@@ -183,7 +180,7 @@ Administrative Domain:
 : The administrative domain, e.g., the IGP area, AS, or Service provider network to which a path element belongs.
 
 Disjointness:
-: For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
+: For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). We typically say that a bidirectional path is symmetric if the path and reverse path have a Jaccard coefficient of one. A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
 
 Path MTU:
 : The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.
