@@ -180,7 +180,10 @@ Administrative Domain:
 : The administrative domain, e.g., the IGP area, AS, or Service provider network to which a path element belongs.
 
 Disjointness:
-: For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). We typically say that a bidirectional path is symmetric if the path and reverse path have a Jaccard coefficient of one. A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
+: For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
+
+Symmetric Path:
+: Two paths are symmetric if a path and its reverse path consist of the same path elements, but in reverse order, i.e., the paths have a Jaccard coefficient of one.
 
 Path MTU:
 : The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.
