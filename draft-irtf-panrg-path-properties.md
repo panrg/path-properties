@@ -1,7 +1,7 @@
 ---
 title: A Vocabulary of Path Properties
 abbrev: Path Properties
-docname: draft-enghardt-panrg-path-properties-latest
+docname: draft-irtf-panrg-path-properties-latest
 date:
 category: info
 

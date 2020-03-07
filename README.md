@@ -2,9 +2,9 @@
 
 This is the working area for the individual Internet-Draft, "A Vocabulary of Path Properties".
 
-* [Editor's Copy](https://theri.github.io/draft-enghardt-panrg-path-properties/#go.draft-enghardt-panrg-path-properties.html)
-* [Individual Draft](https://tools.ietf.org/html/draft-enghardt-panrg-path-properties)
-* [Compare Editor's Copy to Individual Draft](https://theri.github.io/draft-enghardt-panrg-path-properties/#go.draft-enghardt-panrg-path-properties.diff)
+* [Editor's Copy](https://theri.github.io/draft-enghardt-panrg-path-properties/#go.draft-irtf-panrg-path-properties.html)
+* [Individual Draft](https://tools.ietf.org/html/draft-irtf-panrg-path-properties)
+* [Compare Editor's Copy to Individual Draft](https://theri.github.io/draft-enghardt-panrg-path-properties/#go.draft-irtf-panrg-path-properties.diff)
 
 ## Building the Draft
 
