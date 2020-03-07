@@ -180,6 +180,10 @@ Monetary Cost:
 Service function:
 : A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers.
 
+Transparency:
+: A node is transparent with respect to a protocol if it does not modify headers of this protocol and it processes packets independently of protocol-specific meta-information.
+An IP router could be transparent for transport protocols such as TCP and UDP, in contrast to a NAT that actively modifies TCP and UDP header information.
+
 Administrative Domain:
 : The administrative domain, e.g., the ICP area, AS, or Service provider network to which a path element or subpath belongs.
 
