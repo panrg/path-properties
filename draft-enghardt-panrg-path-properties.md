@@ -18,7 +18,7 @@ author:
     ins: T. Enghardt
     name: Theresa Enghardt
     organization: TU Berlin
-    email: theresa@inet.tu-berlin.de
+    email: ietf@tenghardt.net
  -
     ins: C. Krähenbühl
     name: Cyrill Krähenbühl
