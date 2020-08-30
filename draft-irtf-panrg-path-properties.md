@@ -185,7 +185,18 @@ Service function:
 : A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, require the same instance to be involved in both directions, i.e., on the path and the reverse path.
 
 Transparency:
-: A node is transparent with respect to a protocol if it does not modify headers of this protocol and it processes packets independently of protocol-specific meta-information.
+: A node perform an action transparently with respect to a protocol to a certain degree.
+The following table shows which action of a node (block packet, modify header, modify header+payload) is influenced by which inputs (while ignoring the not listed inputs).
+As a simplification, we consider a modifying action as a blocking action for the same input, i.e., a node that modifies a packet based on its header could also block the packet based on its header.
+
+|Action|Input|Degree|
+|Block|-|Header+Payload Transparent|
+|Block|Header|Payload Transparent Blocking|
+|Modify Header|Header|Payload Transparent Header Modification|
+|Block|Header+Payload|Blocking|
+|Modify Header|Header+Payload|Header Modification|
+|Modify Header+Payload|Header+Payload|Header+Payload Modification|
+
 An IP router could be transparent for transport protocols such as TCP and UDP, in contrast to a NAT that actively modifies TCP and UDP header information.
 
 Administrative Domain:
