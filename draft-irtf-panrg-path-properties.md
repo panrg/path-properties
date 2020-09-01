@@ -69,8 +69,8 @@ e.g., for selecting between paths or for invoking some of the provided services.
 
 # Introduction
 
-In the current Internet architecture, hosts generally do not have information about forwarding paths through the network and about services associated with these paths.
-A path-aware network, as introduced in {{I-D.irtf-panrg-questions}}, exposes information about paths to hosts or to other entities.
+The current Internet architecture does not explicitly support endpoint discovery of forwarding paths through the network as well as the discovery of properties and services associated with these paths.
+Path-aware networking, as defined in Section 1.1 of {{I-D.irtf-panrg-questions}}, describes "endpoint discovery of the properties of paths they use for communication, and endpoint reaction to these properties that affects routing and/or transmission".
 This document defines such information as path properties, addressing the first of the questions in path-aware networking {{I-D.irtf-panrg-questions}}.
 
 As terms related to paths have different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and path properties.
