@@ -86,7 +86,7 @@ Node:
 
 Host:
 : A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
-Note that hosts include both client nodes (e.g., running a web browser) and server nodes (e.g., deploying a web server).
+Note that hosts include both client nodes (e.g., running a web browser) and server nodes (e.g., running a web server).
 
 Link:
 : A medium or communication facility that connects two or more nodes with each other. A link enables a node to send packets to other nodes.
