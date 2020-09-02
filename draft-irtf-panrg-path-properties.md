@@ -182,7 +182,7 @@ Monetary Cost:
 : The price to be paid to transmit or receive a specific flow across a network to which one or multiple path elements belong.
 
 Service function:
-: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, require the same instance to be involved in both directions, i.e., on the path and the reverse path.
+: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
 
 Transparency:
 : A node is transparent with respect to a protocol if it does not modify headers of this protocol and it processes packets independently of protocol-specific meta-information.
