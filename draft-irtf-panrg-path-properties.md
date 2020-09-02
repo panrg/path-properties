@@ -242,8 +242,9 @@ In order to be able to trust such path properties, nodes may need to establish a
 
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
 Likewise, properties for trust relations between nodes cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
-Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document, as they are tied to the communicating entities and protocols used (e.g., client and server using HTTPS, or client and remote network node using VPN) and the path is typically oblivious to these properties.
-Intuitively, the path describes what function the network applies to packets, while confidentiality and integrity describe what function the communicating parties apply to packets.
+Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document.
+Such properties are tied to the communicating entities and protocols used (e.g., client and server using HTTPS, or client and remote network node using VPN) while the path is typically oblivious to them.
+Intuitively, the path describes what function the network applies to packets, while confidentiality, integrity, and trust describe what function the communicating parties apply to packets.
 
 
 # IANA Considerations
