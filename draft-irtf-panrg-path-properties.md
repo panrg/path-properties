@@ -35,6 +35,10 @@ informative:
 
     I-D.ietf-idr-performance-routing:
 
+    I-D.ietf-alto-path-vector:
+
+    I-D.ietf-alto-performance-metrics:
+
     RFC3357:
 
     RFC3393:
@@ -54,8 +58,6 @@ informative:
     RFC7680:
 
     RFC8175:
-
-    ANRW18-Metrics: DOI.10.1145/3232755.3232764
 
 --- abstract
 
@@ -93,7 +95,7 @@ Link:
 Links can be physical, e.g., a Wi-Fi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional. As such, bidirectional communication can be modeled as two links between the same nodes in opposite directions.
 
 Path element:
-: Either a node or a link.
+: Either a node or a link. For example, a path element can be an Abstract Network Element (ANE) as defined in {{I-D.ietf-alto-path-vector}}.
 
 Path:
 : A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. A path is unidirectional. Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change. A path is defined between two nodes. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node; these paths do not have to be disjoint. Note that an entity may have only partial visibility of the path elements that comprise a path and visibility may change over time. Different entities may have different visibility of a path and/or treat path elements at different levels of abstraction. For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, or it may be given as a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO). Similarly, the representation of a path and its properties, as it is known to a specific entity, may be more complex and include details about the physical layer technology, or it may be more abstract and only consist of a specific source and destination which is known to be reachable from that source.
@@ -209,8 +211,8 @@ Protocol Features available:
 
 
 Some path properties express the performance of the transmission of a packet or flow over a link or subpath.
-Such transmission performance properties can be measured or approximated, e.g., by hosts or by path elements on the path. They might be made available in an aggregated form, such as averages or minimums.
-See {{ANRW18-Metrics}} for a discussion of how to measure some transmission performance properties at the host.
+Such transmission performance properties can be measured or approximated, e.g., by hosts or by path elements on the path, or they may be available as cost metrics, see {{I-D.ietf-alto-performance-metrics}}.
+Transmission performance properties may be made available in an aggregated form, such as averages or minimums.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
 
