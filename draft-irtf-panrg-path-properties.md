@@ -185,7 +185,7 @@ Monetary Cost:
 : The price to be paid to transmit or receive a specific flow across a network to which one or multiple path elements belong.
 
 Service function:
-: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, require the same instance to be involved in both directions, i.e., on the path and the reverse path.
+: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
 
 Transparency:
 : A node is transparent with respect to a protocol header, payload, or both for a specific action if the node performs this action independently of the given (meta-)information.
@@ -199,7 +199,8 @@ Disjointness:
 : For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
 
 Symmetric Path:
-: Two paths are symmetric if a path and its reverse path consist of the same path elements, but in reverse order, i.e., the paths have a Jaccard coefficient of one.
+: Two paths are symmetric if the path and its reverse path consist of the same path elements on the same level of abstraction, but in reverse order.
+For example, a path which consists of layer 3 switches and links between them and a reverse path with the same path elements but in reverse order are considered "routing" symmetric, as the same path elements on the same level of abstraction (IP forwarding) are traversed in the opposite direction.
 
 Path MTU:
 : The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.
