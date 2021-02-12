@@ -72,11 +72,12 @@ e.g., for selecting between paths or for invoking some of the provided services.
 # Introduction
 
 The current Internet architecture does not explicitly support endpoint discovery of forwarding paths through the network as well as the discovery of properties and services associated with these paths.
-Path-aware networking, as defined in Section 1.1 of {{I-D.irtf-panrg-questions}}, describes "endpoint discovery of the properties of paths they use for communication, and endpoint reaction to these properties that affects routing and/or transmission".
-This document defines such information as path properties, addressing the first of the questions in path-aware networking {{I-D.irtf-panrg-questions}}.
+Path-aware networking, as defined in Section 1.1 of {{I-D.irtf-panrg-questions}}, describes
+"endpoint discovery of the properties of paths they use for communication across an internetwork, and endpoint reaction to these properties that affects routing and/or data transfer".
+This document provides a generic definition of path properties, addressing the first of the questions in path-aware networking {{I-D.irtf-panrg-questions}}.
 
-As terms related to paths have different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and path properties.
-Then, this document provides some examples for use cases for path properties.
+As terms related to paths have been used with different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and flows. Based on these terms, the document defines path properties.
+Then, this document provides some examples of use cases for path properties.
 Finally, the document lists several path properties that may be useful for the mentioned use cases.
 
 Note that this document does not assume that any of the listed path properties are actually available to any entity. The question of how entities can discover and distribute path properties in a trustworthy way is out of scope for this document.
@@ -129,7 +130,10 @@ For example, a path property based on an approximate calculation may describe th
 When a path-aware network exposes path properties to hosts or other entities,
 these entities may use this information to achieve different goals.
 This section lists several use cases for path properties.
+
 Note that this is not an exhaustive list, as with every new technology and protocol, novel use cases may emerge, and new path properties may become relevant.
+Moreover, different technologies may have visibility of and control over different path elements and path properties, and consider them on different levels of abstraction.
+Therefore, a new technology may implement an existing use case, but related to different path elements or on a new level of abstraction.
 
 ## Path Selection
 
@@ -166,16 +170,14 @@ Another example is a connection which is composed of multiple streams where each
 
 This Section gives some examples of path properties which may be useful, e.g., for the use cases described in {{use-cases}}.
 
+Within the context of any particular technology, entities may or may not have insight into and be able to influence specific path elements and their path properties.
+Therefore, the path properties available in each such context may differ.
+For example, a host may have some visibility into path elements that are close, i.e., within the first few hops, or they may include path elements that are far away and/or on a different level of abstraction, e.g., the list of ASes traversed.
+The visibility of path elements and path properties to a specific entity may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the entity and the path element(s).
+
 Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an Ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
 The merit of a momentary measurement of a dynamic path property diminishes greatly as time goes on, e.g. the merit of an RTT measurement from a few seconds ago is quite small, while a non-dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
-
-From the point of view of a host, path properties may relate to path elements close to the host, i.e., within the first few hops, or they may include path elements far from the host, e.g., list of ASes traversed.
-The visibility of path properties to a specific entity may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the entity and the path element(s).
-
-Furthermore, entities may or may not be able to influence the path elements on their path and their path properties.
-For example, a user might select between multiple potential adjacent links by selecting between multiple available Wi-Fi Access Points. Or when connected to an Access Point, the user may move closer to enable their device to use a different access technology, potentially increasing the data rate available to the device.
-Another example is a user changing their data plan to reduce the Monetary Cost to transmit or receive a given amount of data across a network.
 
 
 Access Technology:
