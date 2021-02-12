@@ -132,7 +132,7 @@ these entities may use this information to achieve different goals.
 This section lists several use cases for path properties.
 
 Note that this is not an exhaustive list, as with every new technology and protocol, novel use cases may emerge, and new path properties may become relevant.
-Moreover, different technologies may have visibility of and control over different path elements and path properties, and consider them on different levels of abstraction.
+Moreover, for any particular technology, entities may have visibility of and control over different path elements and path properties, and consider them on different levels of abstraction.
 Therefore, a new technology may implement an existing use case, but related to different path elements or on a new level of abstraction.
 
 ## Path Selection
