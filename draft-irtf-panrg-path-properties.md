@@ -84,21 +84,24 @@ Note that this document does not assume that any of the listed path properties a
 # Terminology
 
 Node:
-: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device or a service function provided as a virtual element. A node may also be the collection of multiple entities which, as a collection, processes packets, e.g., an entire Autonomous System (AS).
+: An entity which processes packets.
+: A node can send, receive, forward, or modify packets. A node may be physical or virtual, e.g., a physical device or a service function provided as a virtual element. A node may also be the collection of multiple entities which, as a collection, processes packets, e.g., an entire Autonomous System (AS).
 
 Host:
 : A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
-Note that hosts include both client nodes (e.g., running a web browser) and server nodes (e.g., running a web server).
+: Note that hosts include both client nodes (e.g., running a web browser) and server nodes (e.g., running a web server).
 
 Link:
 : A medium or communication facility that connects two or more nodes with each other. A link enables a node to send packets to other nodes.
-Links can be physical, e.g., a Wi-Fi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional. As such, bidirectional communication can be modeled as two links between the same nodes in opposite directions.
+: Links can be physical, e.g., a Wi-Fi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional. As such, bidirectional communication can be modeled as two links between the same nodes in opposite directions.
 
 Path element:
-: Either a node or a link. For example, a path element can be an Abstract Network Element (ANE) as defined in {{I-D.ietf-alto-path-vector}}.
+: Either a node or a link.
+: For example, a path element can be an Abstract Network Element (ANE) as defined in {{I-D.ietf-alto-path-vector}}.
 
 Path:
-: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. A path is unidirectional. Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change. A path is defined between two nodes. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node; these paths do not have to be disjoint. Note that an entity may have only partial visibility of the path elements that comprise a path and visibility may change over time. Different entities may have different visibility of a path and/or treat path elements at different levels of abstraction. For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, or it may be given as a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO). Similarly, the representation of a path and its properties, as it is known to a specific entity, may be more complex and include details about the physical layer technology, or it may be more abstract and only consist of a specific source and destination which is known to be reachable from that source.
+: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. A path is unidirectional and time-dependent.
+: Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node; these paths do not have to be disjoint. Note that an entity may have only partial visibility of the path elements that comprise a path and visibility may change over time. Different entities may have different visibility of a path and/or treat path elements at different levels of abstraction. For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, or it may be given as a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO). Similarly, the representation of a path and its properties, as it is known to a specific entity, may be more complex and include details about the physical layer technology, or it may be more abstract and only consist of a specific source and destination which is known to be reachable from that source.
 
 Reverse Path:
 : The path that is used by a remote node in the context of bidirectional communication.
@@ -107,22 +110,26 @@ Subpath:
 : Given a path, a subpath is a sequence of adjacent path elements of this path.
 
 Flow:
-: An entity made of packets to which the traits of a path or set of subpaths may be applied in a functional sense. For example, a flow can consist of all packets sent within a TCP session with the same five-tuple between two hosts, or it can consist of all packets sent on the same physical link.
+: An entity made of packets to which the traits of a path or set of subpaths may be applied in a functional sense.
+: For example, a flow can consist of all packets sent within a TCP session with the same five-tuple between two hosts, or it can consist of all packets sent on the same physical link.
 
 Property:
-: A trait of one or a sequence of path elements, or a trait of a flow with respect to one or a sequence of path elements. An example of a link property is the maximum data rate that can be sent over the link. An example of a node property is the administrative domain that the node belongs to. An example of a property of a flow with respect to a subpath is the aggregated one-way delay of the flow being sent from one node to another node over this subpath.
-A property is thus described by a tuple containing the path element(s), the flow or an empty set if no packets are relevant for the property, the name of the property (e.g., maximum data rate), and the value of the property (e.g., 1Gbps).
+: A trait of one or a sequence of path elements, or a trait of a flow with respect to one or a sequence of path elements.
+A property is thus described by a tuple containing the path element(s), the flow or an empty set if no packets are relevant for the property, the name of the property, and the value of the property.
+: An example of a link property is the maximum data rate that can be sent over the link. An example of a node property is the administrative domain that the node belongs to. An example of a property of a flow with respect to a subpath is the aggregated one-way delay of the flow being sent from one node to another node over this subpath.
 
 Aggregated property:
-: A collection of multiple values of a property into a single value, according to a function. A property can be aggregated over multiple path elements (i.e., a subpath), e.g., the MTU of a path as the minimum MTU of all links on the path, over multiple packets (i.e., a flow), e.g., the median one-way latency of all packets between two nodes, or over both, e.g., the mean of the queueing delays of a flow on all nodes along a path.
+: A collection of multiple values of a property into a single value, according to a function.
+: A property can be aggregated over multiple path elements (i.e., a subpath), e.g., the MTU of a path as the minimum MTU of all links on the path, over multiple packets (i.e., a flow), e.g., the median one-way latency of all packets between two nodes, or over both, e.g., the mean of the queueing delays of a flow on all nodes along a path.
 The aggregation function can be numerical, e.g., median, sum, minimum, it can be logical, e.g., "true if all are true", "true if at least 50\% of values are true", or an arbitrary function which maps multiple input values to an output value.
 
 Observed property:
-: A property that is observed for a specific path element, subpath, or path, e.g., using measurements. For example, the one-way delay of a specific packet transmitted from one node to another node can be measured.
+: A property that is observed for a specific path element, subpath, or path, e.g., using measurements.
+: For example, the one-way delay of a specific packet transmitted from one node to another node can be measured.
 
 Assessed property:
 : An approximate calculation or assessment of the value of a property. An assessed property includes the reliability of the calculation or assessment. The notion of reliability depends on the property.
-For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
+: For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
 
 # Use Cases for Path Properties {#use-cases}
 
