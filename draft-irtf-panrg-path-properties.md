@@ -133,7 +133,7 @@ This section lists several use cases for path properties.
 
 Note that this is not an exhaustive list, as with every new technology and protocol, novel use cases may emerge, and new path properties may become relevant.
 Moreover, for any particular technology, entities may have visibility of and control over different path elements and path properties, and consider them on different levels of abstraction.
-Therefore, a new technology may implement an existing use case, but related to different path elements or on a new level of abstraction.
+Therefore, a new technology may implement an existing use case related to different path elements or on a different level of abstraction.
 
 ## Path Selection
 
@@ -170,10 +170,10 @@ Another example is a connection which is composed of multiple streams where each
 
 This Section gives some examples of path properties which may be useful, e.g., for the use cases described in {{use-cases}}.
 
-Within the context of any particular technology, entities may or may not have insight into and be able to influence specific path elements and their path properties.
-Therefore, the path properties available in each such context may differ.
-For example, a host may have some visibility into path elements that are close, i.e., within the first few hops, or they may include path elements that are far away and/or on a different level of abstraction, e.g., the list of ASes traversed.
-The visibility of path elements and path properties to a specific entity may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the entity and the path element(s).
+Within the context of any particular technology, available path properties may differ
+as entities have insight into and are able to influence different path elements and path properties.
+For example, a host may have some visibility into path elements that are on a low level of abstraction and close, e.g., individual nodes within the first few hops, or it may have visibility into path elements that are far away and/or on a higher level of abstraction, e.g., the list of ASes traversed.
+This visibility may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the host and the path element(s).
 
 Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an Ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
