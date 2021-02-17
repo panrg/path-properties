@@ -124,6 +124,13 @@ Assessed property:
 : An approximate calculation or assessment of the value of a property. An assessed property includes the reliability of the calculation or assessment. The notion of reliability depends on the property.
 For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
 
+## Terminology usage for specific technologies
+
+The terminology described in this document is intended to be general and applicable to existing and future path-aware technologies.
+This document attempts to unify terminology which is used inconsistently between different path aware technologies.
+Using the terminology defined in this document, a path-aware technology can define its path elements on a specific level of abstraction.
+For example, a technology might define paths as sequence of IP routers as in source routing ({{?RFC1940}}), on different layers ({{?RFC1122}}), or as a collection of entities such as an AS or an ERO.
+
 # Use Cases for Path Properties {#use-cases}
 
 When a path-aware network exposes path properties to hosts or other entities,
