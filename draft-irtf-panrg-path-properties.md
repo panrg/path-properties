@@ -127,7 +127,7 @@ For example, a path property based on an approximate calculation may describe th
 ## Terminology usage for specific technologies
 
 The terminology described in this document is intended to be general and applicable to existing and future path-aware technologies.
-This document attempts to unify terminology which is used inconsistently between different path aware technologies.
+This document attempts to unify terminology which is used inconsistently between different path-aware technologies.
 Using the terminology defined in this document, a path-aware technology can define its path elements on a specific level of abstraction.
 For example, a technology might define paths as sequence of IP routers as in source routing ({{?RFC1940}}), on different layers ({{?RFC1122}}), or as a collection of entities such as an AS or an ERO.
 
@@ -155,7 +155,7 @@ As a baseline, a path selection algorithm should aim to not perform worse than t
 
 Path selection can be done both by hosts and by entities within the network:
 A network (e.g., an AS) can adjust its path selection for internal or external routing based on path properties.
-In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
+In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path-aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
 
 ## Protocol Selection
 
