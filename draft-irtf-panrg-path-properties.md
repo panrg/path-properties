@@ -125,6 +125,12 @@ Assessed property:
 : An approximate calculation or assessment of the value of a property. An assessed property includes the reliability of the calculation or assessment. The notion of reliability depends on the property.
 For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
 
+## Terminology usage for specific technologies
+
+The terminology defined in this document is intended to be general and applicable to existing and future path-aware technologies.
+Using this terminology, a path-aware technology can define and consider specific path elements and path properties on a specific level of abstraction.
+For instance, a technology may define path elements as IP routers, e.g., in source routing ({{?RFC1940}}). Alternatively, it may consider path elements on a different layer of the Internet Architecture ({{?RFC1122}}) or as a collection of entities not tied to a specific layer, such as an AS or an ERO.
+
 # Use Cases for Path Properties {#use-cases}
 
 When a path-aware network exposes path properties to hosts or other entities,
@@ -152,7 +158,7 @@ As a baseline, a path selection algorithm should aim to not perform worse than t
 
 Path selection can be done both by hosts and by entities within the network:
 A network (e.g., an AS) can adjust its path selection for internal or external routing based on path properties.
-In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
+In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-making process to select which path to choose among those having the same AS PATH length and origin {{RFC4271}}; in a path-aware network, instead of using this single MED value, other properties such as Link Capacity or Link Usage could additionally be used to improve load balancing or performance {{I-D.ietf-idr-performance-routing}}.
 
 ## Protocol Selection
 
