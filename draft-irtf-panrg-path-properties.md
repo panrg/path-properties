@@ -126,9 +126,8 @@ For example, a path property based on an approximate calculation may describe th
 
 ## Terminology usage for specific technologies
 
-The terminology described in this document is intended to be general and applicable to existing and future path-aware technologies.
-This document attempts to unify terminology which is used inconsistently between different path-aware technologies.
-Using the terminology defined in this document, a path-aware technology can define its path elements on a specific level of abstraction.
+The terminology defined in this document is intended to be general and applicable to existing and future path-aware technologies.
+Using this terminology, a path-aware technology can define and consider specific path elements and path properties on a specific level of abstraction.
 For example, a technology might define paths as sequence of IP routers as in source routing ({{?RFC1940}}), on different layers ({{?RFC1122}}), or as a collection of entities such as an AS or an ERO.
 
 # Use Cases for Path Properties {#use-cases}
