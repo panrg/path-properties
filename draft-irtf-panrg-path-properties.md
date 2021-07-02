@@ -85,10 +85,10 @@ Note that this document does not assume that any of the listed path properties a
 # Terminology
 
 Entity:
-: A physical or virtual device or function which can process packets (i.e., a node or host), measure path properties, or access information about paths. With respect to a given communication (i.e., a flow), an entity may be on the data plane or control plane, and it may be on-path or off-path.
+: A physical or virtual device or function, or a collection of devices or functions, which can, for example, process packets, measure path properties, or access information about paths. With respect to a given communication, an entity may be on the data plane or control plane, and it may be on-path or off-path.
 
 Node:
-: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device or a service function provided as a virtual element. A node may also be the collection of multiple entities which, as a collection, processes packets, e.g., an entire Autonomous System (AS).
+: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device or a service function provided as a virtual element. A node may also be an entity which, as a collection, processes packets, e.g., an entire Autonomous System (AS).
 
 Host:
 : A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
@@ -146,7 +146,7 @@ Therefore, a new technology may implement an existing use case related to differ
 
 ## Path Selection
 
-Nodes may be able to send flows via one out of multiple possible paths, or via a subsets of paths, and an entity may be able to select which path(s) to use.
+Nodes may be able to send flows via one (or a subset) out of multiple possible paths, and an entity may be able to influence the decision which path(s) to use.
 Path Selection may be feasible if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
 Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
 
