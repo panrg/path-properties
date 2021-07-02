@@ -218,6 +218,7 @@ Transport Protocols available:
 
 Protocol Features available:
 : Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
+A protocol feature can also be related to a single link, for example in the form of the replication efficiency of sending multiple flows over links that support point-to-multipoint communication, such as RTP translator, multicast-capable switch, or a broadcast-capable physical link.
 
 
 Some path properties express the performance of the transmission of a packet or flow over a link or subpath.
