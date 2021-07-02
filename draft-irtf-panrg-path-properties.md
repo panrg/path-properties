@@ -168,7 +168,7 @@ A video streaming application may choose an (initial) video quality based on the
 
 ## Service Invocation
 
-Conversely to path or protocol selection, in addition to selecting a protocol to use over a specific adjacent path element, an entity may choose to invoke additional functions influencing the nodes to be involved in the path.
+In addition to path or protocol selection, an entity may choose to invoke additional functions in the context of Service Function Chaining {{RFC7665}}, which may influence what nodes are on the path.
 For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path.
 Another example is a connection which is composed of multiple streams where each stream has specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
