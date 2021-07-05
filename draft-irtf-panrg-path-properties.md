@@ -205,7 +205,7 @@ Transparency:
 Actions can for example be blocking packets or reading and modifying (other protocol) headers or payloads.
 An IP router could be transparent to transport protocol headers such as TCP/UDP but not transparent to IP headers as it actively modifies them.
 A TCP SYN flooding firewall that drops TCP SYN packets after reaching a limit is transparent to IP but not to TCP/UDP.
-And a NAT that actively modifies IP and TCP/UDP header information based on their content is not transparent to either IP or TCP/UDP headers.
+Finally, a NAT that actively modifies IP and TCP/UDP header information based on their content is not transparent to either IP or TCP/UDP headers.
 Note that according to this definition, a node that modifies packets in accordance with the hosts, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and acting to implicit or explicit signals, see {{RFC8558}}, would not be considered transparent.
 
 Administrative Domain:
