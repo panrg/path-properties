@@ -200,7 +200,7 @@ Service function:
 : A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
 
 Transparency:
-: A node is transparent to a flow with respect to some (meta-)information for an action if the node performs this action independently of the given (meta-)information.
+: When a node performs an action on a flow, the node is transparent to the flow with respect to some (meta-)information if the node performs this action independently of the given (meta-)information.
 (Meta-)information can for example be the existence of a protocol (header) in a packet or the content of a protocol header, payload, or both.
 Actions can for example be blocking packets or reading and modifying (other protocol) headers or payloads.
 An IP router could be transparent to transport protocol headers such as TCP/UDP but not transparent to IP headers as it actively modifies them.
