@@ -88,7 +88,7 @@ Entity:
 : A physical or virtual device or function, or a collection of devices or functions, which can, for example, process packets, measure path properties, or access information about paths. With respect to a given communication, an entity may be on the data plane or control plane, and it may be on-path or off-path.
 
 Node:
-: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device or a service function provided as a virtual element. A node may also be an entity which consists of a collection of devices or functions, e.g., an entire Autonomous System (AS).
+: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device, a service function provided as a virtual element, or even a single queue within a switch. A node may also be an entity which consists of a collection of devices or functions, e.g., an entire Autonomous System (AS).
 
 Host:
 : A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
