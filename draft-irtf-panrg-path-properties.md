@@ -39,6 +39,8 @@ informative:
 
     I-D.ietf-alto-performance-metrics:
 
+    RFC2616:
+
     RFC3357:
 
     RFC3393:
@@ -58,6 +60,8 @@ informative:
     RFC7680:
 
     RFC8175:
+
+    RFC8558:
 
 --- abstract
 
@@ -199,9 +203,13 @@ Service function:
 : A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
 
 Transparency:
-: A node is transparent with respect to a protocol header, payload, or both for a specific action if the node performs this action independently of the given (meta-)information.
+: When a node performs an action on a flow, the node is transparent to the flow with respect to some (meta-)information if the node performs this action independently of the given (meta-)information.
+(Meta-)information can for example be the existence of a protocol (header) in a packet or the content of a protocol header, payload, or both.
 Actions can for example be blocking packets or reading and modifying (other protocol) headers or payloads.
-An IP router could be transparent for transport protocol headers such as TCP and UDP, in contrast to a NAT that actively modifies TCP and UDP header information.
+An IP router could be transparent to transport protocol headers such as TCP/UDP but not transparent to IP headers since its forwarding behavior depends on the IP headers.
+A firewall that only allows outgoing TCP connections by blocking all incoming TCP SYN packets regardless of their IP address is transparent to IP but not to TCP headers.
+Finally, a NAT that actively modifies IP and TCP/UDP headers based on their content is not transparent to either IP or TCP/UDP headers.
+Note that according to this definition, a node that modifies packets in accordance with the hosts, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
 
 Administrative Domain:
 : The administrative domain, e.g., the IGP area, AS, or Service provider network to which a path element belongs.
