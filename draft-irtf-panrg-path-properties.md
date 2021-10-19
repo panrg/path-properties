@@ -89,7 +89,7 @@ Note that this document does not assume that any of the listed path properties a
 # Terminology
 
 Entity:
-: A physical or virtual device or function, or a collection of devices or functions, which can, for example, process packets, measure path properties, or access information about paths. With respect to a given communication, an entity may be on the data plane or control plane, and it may be on-path or off-path.
+: A physical or virtual device or function, or a collection of devices or functions, which can, for example, process packets, measure path properties, or access information about paths. An entity may be on-path or off-path. With respect to a given communication, an entity may participate in controlling how packets are forwarded, i.e., what may be called control plane functionality, or it may actually forward the packets, i.e., what may be called data plane functionality.
 
 Node:
 : An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device, a service function provided as a virtual element, or even a single queue within a switch. A node may also be an entity which consists of a collection of devices or functions, e.g., an entire Autonomous System (AS).
