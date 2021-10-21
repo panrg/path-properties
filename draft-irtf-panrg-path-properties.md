@@ -89,10 +89,13 @@ Note that this document does not assume that any of the listed path properties a
 # Terminology
 
 Entity:
-: A physical or virtual device or function, or a collection of devices or functions, which can, for example, process packets, measure path properties, or access information about paths. With respect to a given communication, an entity may be on the data plane or control plane, and it may be on-path or off-path.
+: A physical or virtual device or function, or a collection of devices or functions, which plays a role related to path-aware networking for particular paths and flows.
+An entity can be on-path or off-path: On the path, an entity may participate in forwarding the flow, i.e., what may be called data plane functionality.
+On or off the path, an entity may influence aspects of how the flow is forwarded, i.e., what may be called control plane functionality, such as Path Selection or Service Invocation.
+An entity influencing forwarding aspects is usually aware of path properties, e.g., by observing or measuring them or by learning them from another entity.
 
 Node:
-: An entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device, a service function provided as a virtual element, or even a single queue within a switch. A node may also be an entity which consists of a collection of devices or functions, e.g., an entire Autonomous System (AS).
+: An on-path entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device, a service function provided as a virtual element, or even a single queue within a switch. A node may also be an entity which consists of a collection of devices or functions, e.g., an entire Autonomous System (AS).
 
 Host:
 : A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
@@ -261,11 +264,11 @@ Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be e
 
 # Security Considerations
 
-If nodes are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
-In order to be able to trust such path properties, nodes may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another node.
+If entities are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
+In order to be able to trust such path properties, entities may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another entity.
 
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
-Likewise, properties for trust relations between nodes cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
+Likewise, properties for trust relations between entities cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
 Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document.
 Such properties are tied to the communicating nodes and the protocols they use (e.g., client and server using HTTPS, or client and remote network node using VPN) while the path is typically oblivious to them.
 Intuitively, the path describes what function the network applies to packets, while confidentiality, integrity, and trust describe what function the communicating parties apply to packets.
