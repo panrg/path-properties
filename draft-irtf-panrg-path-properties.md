@@ -206,9 +206,11 @@ Service function:
 : A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
 
 Transparency:
-: When a node performs an action on a flow, the node is transparent to the flow with respect to some (meta-)information if the node performs this action independently of the given (meta-)information.
-(Meta-)information can for example be the existence of a protocol (header) in a packet or the content of a protocol header, payload, or both.
-Actions can for example be blocking packets or reading and modifying (other protocol) headers or payloads.
+: When a node performs an action A on a flow F, the node is transparent to F with respect to some (meta-)information M if the node performs A independently of M.
+M can for example be the existence of a protocol (header) in a packet or the content of a protocol header, payload, or both.
+A can for example be blocking packets or reading and modifying (other protocol) headers or payloads.
+Transparency can be modeled using a function f, which takes as input F and M and outputs the action taken by the node.
+If a taint analysis shows that the output of f is not tainted (impacted) by M or if the output of f is constant for arbitrary values of M, then the node is considered to be transparent.
 An IP router could be transparent to transport protocol headers such as TCP/UDP but not transparent to IP headers since its forwarding behavior depends on the IP headers.
 A firewall that only allows outgoing TCP connections by blocking all incoming TCP SYN packets regardless of their IP address is transparent to IP but not to TCP headers.
 Finally, a NAT that actively modifies IP and TCP/UDP headers based on their content is not transparent to either IP or TCP/UDP headers.
