@@ -66,9 +66,9 @@ informative:
 --- abstract
 
 Path properties express information about paths across a network and the services provided via such paths.
-In a path-aware network, path properties may be fully or partially available to entities such as hosts.
+In a path-aware network, path properties may be fully or partially available to entities such as endpoints.
 This document defines and categorizes path properties.
-Furthermore, the document specifies several path properties which might be useful to hosts or other entities,
+Furthermore, the document specifies several path properties which might be useful to endpoints or other entities,
 e.g., for selecting between paths or for invoking some of the provided services.
 
 --- middle
@@ -97,10 +97,6 @@ An entity influencing forwarding aspects is usually aware of path properties, e.
 Node:
 : An on-path entity which processes packets, e.g., sends, receives, forwards, or modifies them. A node may be physical or virtual, e.g., a physical device, a service function provided as a virtual element, or even a single queue within a switch. A node may also be an entity which consists of a collection of devices or functions, e.g., an entire Autonomous System (AS).
 
-Host:
-: A node that generally executes application programs on behalf of user(s), employing network and/or Internet communication services in support of this function, as defined in {{?RFC1122}}.
-Note that hosts include both client nodes (e.g., running a web browser) and server nodes (e.g., running a web server).
-
 Link:
 : A medium or communication facility that connects two or more nodes with each other. A link enables a node to send packets to other nodes.
 Links can be physical, e.g., a Wi-Fi network which connects an Access Point to stations, or virtual, e.g., a virtual switch which connects two virtual machines hosted on the same physical machine. A link is unidirectional. As such, bidirectional communication can be modeled as two links between the same nodes in opposite directions.
@@ -110,6 +106,9 @@ Path element:
 
 Path:
 : A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. A path is unidirectional. Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change. A path is defined between two nodes. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node; these paths do not have to be disjoint. Note that an entity may have only partial visibility of the path elements that comprise a path and visibility may change over time. Different entities may have different visibility of a path and/or treat path elements at different levels of abstraction. For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, or it may be given as a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO). Similarly, the representation of a path and its properties, as it is known to a specific entity, may be more complex and include details about the physical layer technology, or it may be more abstract and only consist of a specific source and destination which is known to be reachable from that source.
+
+Endpoint:
+: The endpoints of a path are the first and the last node on the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
 
 Reverse Path:
 : The path that is used by a remote node in the context of bidirectional communication.
@@ -143,7 +142,7 @@ For instance, a technology may define path elements as IP routers, e.g., in sour
 
 # Use Cases for Path Properties {#use-cases}
 
-When a path-aware network exposes path properties to hosts or other entities,
+When a path-aware network exposes path properties to endpoints or other entities,
 these entities may use this information to achieve different goals.
 This section lists several use cases for path properties.
 
@@ -154,7 +153,7 @@ Therefore, a new technology may implement an existing use case related to differ
 ## Path Selection
 
 Nodes may be able to send flows via one (or a subset) out of multiple possible paths, and an entity may be able to influence the decision which path(s) to use.
-Path Selection may be feasible if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing hosts a better-than-random peer selection).
+Path Selection may be feasible if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
 Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
 
 Entities may select their paths to fulfill a specific goal, e.g., related to security or performance.
@@ -173,14 +172,14 @@ In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-mak
 ## Protocol Selection
 
 Before sending data over a specific path, an entity may select an appropriate protocol or configure protocol parameters depending on path properties.
-A host may cache state on whether a path allows the use of QUIC {{I-D.ietf-quic-transport}} and if so, first attempt to connect using QUIC before falling back to another protocol when connecting over this path again.
+For example, an endpoint may cache state on whether a path allows the use of QUIC {{I-D.ietf-quic-transport}} and if so, first attempt to connect using QUIC before falling back to another protocol when connecting over this path again.
 A video streaming application may choose an (initial) video quality based on the achievable data rate or the monetary cost of sending data (e.g., volume-base or flat-rate cost model).
 
 ## Service Invocation
 
 In addition to path or protocol selection, an entity may choose to invoke additional functions in the context of Service Function Chaining {{RFC7665}}, which may influence what nodes are on the path.
-For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by a host; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path.
-Another example is a connection which is composed of multiple streams where each stream has specific service requirements. A host may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
+For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by an endpoint; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path.
+Another example is a connection which is composed of multiple streams where each stream has specific service requirements. An endpoint may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
 # Examples of Path Properties
 
@@ -188,8 +187,9 @@ This Section gives some examples of path properties which may be useful, e.g., f
 
 Within the context of any particular technology, available path properties may differ
 as entities have insight into and are able to influence different path elements and path properties.
-For example, a host may have some visibility into path elements that are on a low level of abstraction and close, e.g., individual nodes within the first few hops, or it may have visibility into path elements that are far away and/or on a higher level of abstraction, e.g., the list of ASes traversed.
-This visibility may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the host and the path element(s).
+For example, an endpoint may have some visibility into path elements that are on a low level of abstraction and close, e.g., individual nodes within the first few hops, or it may have visibility into path elements that are far away and/or on a higher level of abstraction, e.g., the list of ASes traversed.
+This visibility may depend on factors such as the physical or network distance or the existence of trust or contractual relationships between the endpoint and the path element(s).
+A path property can be defined relative to individual path elements, a sequence of path elements, or "end-to-end", i.e., relative to a path that comprises of two endpoints and a single virtual link connecting them.
 
 Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an Ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
@@ -214,7 +214,7 @@ If a taint analysis shows that the output of f is not tainted (impacted) by M or
 An IP router could be transparent to transport protocol headers such as TCP/UDP but not transparent to IP headers since its forwarding behavior depends on the IP headers.
 A firewall that only allows outgoing TCP connections by blocking all incoming TCP SYN packets regardless of their IP address is transparent to IP but not to TCP headers.
 Finally, a NAT that actively modifies IP and TCP/UDP headers based on their content is not transparent to either IP or TCP/UDP headers.
-Note that according to this definition, a node that modifies packets in accordance with the hosts, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
+Note that according to this definition, a node that modifies packets in accordance with the endpoints, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
 
 Administrative Domain:
 : The administrative domain, e.g., the IGP area, AS, or Service provider network to which a path element belongs.
@@ -237,7 +237,7 @@ Protocol Features available:
 
 
 Some path properties express the performance of the transmission of a packet or flow over a link or subpath.
-Such transmission performance properties can be measured or approximated, e.g., by hosts or by path elements on the path, or they may be available as cost metrics, see {{I-D.ietf-alto-performance-metrics}}.
+Such transmission performance properties can be measured or approximated, e.g., by endpoints or by path elements on the path, or they may be available as cost metrics, see {{I-D.ietf-alto-performance-metrics}}.
 Transmission performance properties may be made available in an aggregated form, such as averages or minimums.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
@@ -287,4 +287,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Specifically, thanks to Mohamed Boudacair for the detailed review and various text suggestions, thanks to Brian Trammell for suggesting the flow definition, and thanks to Adrian Perrig and Matthias Rost for the detailed feedback. Thanks to Paul Hoffman for the editorial changes.
+Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Specifically, thanks to Mohamed Boudacair for the detailed review and various text suggestions, thanks to Brian Trammell for suggesting the flow definition, thanks to Adrian Perrig and Matthias Rost for the detailed feedback, thanks to Paul Hoffman for the editorial changes, thanks to Luis M. Contreras and Jake Holland for the reviews, and thanks to Spencer Dawkins for the comments and suggestions.
