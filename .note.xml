@@ -1,0 +1,8 @@
+<note title="Discussion Venues" removeInRFC="true">
+<t>Discussion of this document takes place on the
+      "Path-Aware Networking Research Group" mailing list (PANRG),
+    which is archived at <eref target="https://mailarchive.ietf.org/arch/browse/panrg/"/>.
+    Subscription information is at <eref target="https://www.ietf.org/mailman/listinfo/panrg/"/>.</t>
+<t>Source for this draft and an issue tracker can be found at
+    <eref target="https://github.com/panrg/path-properties/"/>.</t>
+</note>
