@@ -5,8 +5,8 @@
 PANRG                                                        T. Enghardt
 Internet-Draft                                                   Netflix
 Intended status: Informational                             C. Krähenbühl
-Expires: 28 August 2022                                       ETH Zürich
-                                                        24 February 2022
+Expires: 2 September 2022                                     ETH Zürich
+                                                            1 March 2022
 
 
                     A Vocabulary of Path Properties
@@ -49,13 +49,13 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 August 2022.
+   This Internet-Draft will expire on 2 September 2022.
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 1]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 1]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 2]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 2]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    As terms related to paths have been used with different meanings in
@@ -165,9 +165,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 3]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 3]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    Path element:  Either a node or a link.  For example, a path element
@@ -221,9 +221,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 4]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 4]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
       of a flow with respect to one or a sequence of path elements.  An
@@ -277,9 +277,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 5]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 5]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    Architecture ([RFC1122]) or as a collection of entities not tied to a
@@ -333,9 +333,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 6]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 6]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    and Link Capacity), and entities may influence these trade-offs with
@@ -389,9 +389,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 7]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 7]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    Within the context of any particular technology, available path
@@ -445,9 +445,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 8]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 8]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
       protocol header, payload, or both.  A can for example be blocking
@@ -501,9 +501,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                 [Page 9]
+Enghardt & Krähenbühl   Expires 2 September 2022                [Page 9]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
       can be used to establish a connection over a path or subpath,
@@ -557,9 +557,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                [Page 10]
+Enghardt & Krähenbühl   Expires 2 September 2022               [Page 10]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
 5.  Security Considerations
@@ -596,26 +596,26 @@ Internet-Draft               Path Properties               February 2022
    [I-D.ietf-alto-path-vector]
               Gao, K., Lee, Y., Randriamasy, S., Yang, Y. R., and J. J.
               Zhang, "An ALTO Extension: Path Vector", Work in Progress,
-              Internet-Draft, draft-ietf-alto-path-vector-21, 2 February
-              2022, <https://www.ietf.org/archive/id/draft-ietf-alto-
-              path-vector-21.txt>.
+              Internet-Draft, draft-ietf-alto-path-vector-22, 25
+              February 2022, <https://www.ietf.org/archive/id/draft-
+              ietf-alto-path-vector-22.txt>.
 
    [I-D.ietf-alto-performance-metrics]
               Wu, Q., Yang, Y. R., Lee, Y., Dhody, D., Randriamasy, S.,
               and L. M. C. Murillo, "ALTO Performance Cost Metrics",
               Work in Progress, Internet-Draft, draft-ietf-alto-
-              performance-metrics-21, 19 December 2021,
+              performance-metrics-25, 28 February 2022,
               <https://www.ietf.org/archive/id/draft-ietf-alto-
-              performance-metrics-21.txt>.
+              performance-metrics-25.txt>.
 
 
 
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                [Page 11]
+Enghardt & Krähenbühl   Expires 2 September 2022               [Page 11]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    [I-D.ietf-idr-performance-routing]
@@ -669,9 +669,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                [Page 12]
+Enghardt & Krähenbühl   Expires 2 September 2022               [Page 12]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    [RFC3357]  Koodli, R. and R. Ravikanth, "One-way Loss Pattern Sample
@@ -725,9 +725,9 @@ Internet-Draft               Path Properties               February 2022
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                [Page 13]
+Enghardt & Krähenbühl   Expires 2 September 2022               [Page 13]
 
-Internet-Draft               Path Properties               February 2022
+Internet-Draft               Path Properties                  March 2022
 
 
    [RFC8558]  Hardie, T., Ed., "Transport Protocol Path Signals",
@@ -781,4 +781,4 @@ Authors' Addresses
 
 
 
-Enghardt & Krähenbühl    Expires 28 August 2022                [Page 14]
+Enghardt & Krähenbühl   Expires 2 September 2022               [Page 14]
