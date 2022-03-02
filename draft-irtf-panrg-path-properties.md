@@ -141,7 +141,7 @@ The terminology defined in this document is intended to be general and applicabl
 Using this terminology, a path-aware technology can define and consider specific path elements and path properties on a specific level of abstraction.
 For instance, a technology may define path elements as IP routers, e.g., in source routing ({{?RFC1940}}). Alternatively, it may consider path elements on a different layer of the Internet Architecture ({{?RFC1122}}) or as a collection of entities not tied to a specific layer, such as an AS or an ERO.
 Even within a single path-aware technology, specific definitions might differ depending on the context in which they are used.
-For example, the start or end node might be the communicating host in the data-plane context, and the AS of the respective host in the control-plane context.
+For example, the endpoints might be the communicating hosts in the context of the transport layer, ASes that contain the hosts in the context of routing, or specific applications in the context of the application layer.
 
 # Use Cases for Path Properties {#use-cases}
 
