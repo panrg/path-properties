@@ -224,7 +224,7 @@ Examples of administrative domains are an IGP area, an AS, or a service provider
 
 Routing Domain Identifier:
 : An identifier indicating the routing domain of a path element.
-All path elements with the same routing domain identifier are in the same administrative domain and use a common routing protocol to communicate with each other.
+Path elements in the same routing domain are in the same administrative domain and use a common routing protocol to communicate with each other.
 An example of a routing domain identifier is the globally unique autonomous system number (ASN) as defined in {{RFC1930}}.
 
 Disjointness:
