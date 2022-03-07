@@ -219,7 +219,7 @@ Finally, a NAT that actively modifies IP and TCP/UDP headers based on their cont
 Note that according to this definition, a node that modifies packets in accordance with the hosts, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
 
 Administrative Domain:
-: An individual or an organization that owns a path element (or several path elements).
+: The identity of an individual or an organization that owns a path element (or several path elements).
 Examples of administrative domains are an IGP area, an AS, or a service provider network.
 
 Routing Domain Identifier:
