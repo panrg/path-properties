@@ -828,7 +828,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Enghardt &amp; Krähenbühl</td>
-<td class="center">Expires 3 September 2022</td>
+<td class="center">Expires 8 September 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -841,12 +841,12 @@ address div.right {
 <dd class="internet-draft">draft-irtf-panrg-path-properties-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-02" class="published">2 March 2022</time>
+<time datetime="2022-03-07" class="published">7 March 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-03">3 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-09-08">8 September 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -900,7 +900,7 @@ e.g., for selecting between paths or for invoking some of the provided services.
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1183,33 +1183,41 @@ Note that according to this definition, a node that modifies packets in accordan
         <dd class="break"></dd>
 <dt id="section-4-4.9">Administrative Domain:</dt>
         <dd style="margin-left: 1.5em" id="section-4-4.10">
-          <p id="section-4-4.10.1">The administrative domain, e.g., the IGP area, AS, or Service provider network to which a path element belongs.<a href="#section-4-4.10.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.10.1">The identity of an individual or an organization that owns a path element (or several path elements).
+Examples of administrative domains are an IGP area, an AS, or a service provider network.<a href="#section-4-4.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-4-4.11">Disjointness:</dt>
+<dt id="section-4-4.11">Routing Domain Identifier:</dt>
         <dd style="margin-left: 1.5em" id="section-4-4.12">
-          <p id="section-4-4.12.1">For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.<a href="#section-4-4.12.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.12.1">An identifier indicating the routing domain of a path element.
+Path elements in the same routing domain are in the same administrative domain and use a common routing protocol to communicate with each other.
+An example of a routing domain identifier is the globally unique autonomous system number (ASN) as defined in <span>[<a href="#RFC1930" class="xref">RFC1930</a>]</span>.<a href="#section-4-4.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-4-4.13">Symmetric Path:</dt>
+<dt id="section-4-4.13">Disjointness:</dt>
         <dd style="margin-left: 1.5em" id="section-4-4.14">
-          <p id="section-4-4.14.1">Two paths are symmetric if the path and its reverse path consist of the same path elements on the same level of abstraction, but in reverse order.
-For example, a path which consists of layer 3 switches and links between them and a reverse path with the same path elements but in reverse order are considered "routing" symmetric, as the same path elements on the same level of abstraction (IP forwarding) are traversed in the opposite direction.<a href="#section-4-4.14.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.14.1">For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.<a href="#section-4-4.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-4-4.15">Path MTU:</dt>
+<dt id="section-4-4.15">Symmetric Path:</dt>
         <dd style="margin-left: 1.5em" id="section-4-4.16">
-          <p id="section-4-4.16.1">The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.<a href="#section-4-4.16.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.16.1">Two paths are symmetric if the path and its reverse path consist of the same path elements on the same level of abstraction, but in reverse order.
+For example, a path which consists of layer 3 switches and links between them and a reverse path with the same path elements but in reverse order are considered "routing" symmetric, as the same path elements on the same level of abstraction (IP forwarding) are traversed in the opposite direction.<a href="#section-4-4.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-4-4.17">Transport Protocols available:</dt>
+<dt id="section-4-4.17">Path MTU:</dt>
         <dd style="margin-left: 1.5em" id="section-4-4.18">
-          <p id="section-4-4.18.1">Whether a specific transport protocol can be used to establish a connection over a path or subpath, e.g., whether the path is QUIC-capable or MPTCP-capable, based on cached knowledge.<a href="#section-4-4.18.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.18.1">The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.<a href="#section-4-4.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-4-4.19">Protocol Features available:</dt>
+<dt id="section-4-4.19">Transport Protocols available:</dt>
         <dd style="margin-left: 1.5em" id="section-4-4.20">
-          <p id="section-4-4.20.1">Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.<a href="#section-4-4.20.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.20.1">Whether a specific transport protocol can be used to establish a connection over a path or subpath, e.g., whether the path is QUIC-capable or MPTCP-capable, based on cached knowledge.<a href="#section-4-4.20.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-4-4.21">Protocol Features available:</dt>
+        <dd style="margin-left: 1.5em" id="section-4-4.22">
+          <p id="section-4-4.22.1">Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.<a href="#section-4-4.22.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1281,7 +1289,7 @@ Intuitively, the path describes what function the network applies to packets, wh
 <dl class="references">
 <dt id="I-D.ietf-alto-path-vector">[I-D.ietf-alto-path-vector]</dt>
       <dd>
-<span class="refAuthor">Gao, K.</span>, <span class="refAuthor">Lee, Y.</span>, <span class="refAuthor">Randriamasy, S.</span>, <span class="refAuthor">Yang, Y. R.</span>, and <span class="refAuthor">J. J. Zhang</span>, <span class="refTitle">"An ALTO Extension: Path Vector"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-alto-path-vector-22</span>, <time datetime="2022-02-25" class="refDate">25 February 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-alto-path-vector-22.txt">https://www.ietf.org/archive/id/draft-ietf-alto-path-vector-22.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Gao, K.</span>, <span class="refAuthor">Lee, Y.</span>, <span class="refAuthor">Randriamasy, S.</span>, <span class="refAuthor">Yang, Y. R.</span>, and <span class="refAuthor">J. J. Zhang</span>, <span class="refTitle">"An ALTO Extension: Path Vector"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-alto-path-vector-24</span>, <time datetime="2022-03-07" class="refDate">7 March 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-alto-path-vector-24.txt">https://www.ietf.org/archive/id/draft-ietf-alto-path-vector-24.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-alto-performance-metrics">[I-D.ietf-alto-performance-metrics]</dt>
       <dd>
@@ -1306,6 +1314,10 @@ Intuitively, the path describes what function the network applies to packets, wh
 <dt id="RFC1122">[RFC1122]</dt>
       <dd>
 <span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Communication Layers"</span>, <span class="seriesInfo">STD 3</span>, <span class="seriesInfo">RFC 1122</span>, <span class="seriesInfo">DOI 10.17487/RFC1122</span>, <time datetime="1989-10" class="refDate">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1122">https://www.rfc-editor.org/info/rfc1122</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1930">[RFC1930]</dt>
+      <dd>
+<span class="refAuthor">Hawkinson, J.</span> and <span class="refAuthor">T. Bates</span>, <span class="refTitle">"Guidelines for creation, selection, and registration of an Autonomous System (AS)"</span>, <span class="seriesInfo">BCP 6</span>, <span class="seriesInfo">RFC 1930</span>, <span class="seriesInfo">DOI 10.17487/RFC1930</span>, <time datetime="1996-03" class="refDate">March 1996</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1930">https://www.rfc-editor.org/info/rfc1930</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC1940">[RFC1940]</dt>
       <dd>
