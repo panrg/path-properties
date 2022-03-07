@@ -39,6 +39,8 @@ informative:
 
     I-D.ietf-alto-performance-metrics:
 
+    RFC1930:
+
     RFC2616:
 
     RFC3357:
@@ -219,7 +221,13 @@ Finally, a NAT that actively modifies IP and TCP/UDP headers based on their cont
 Note that according to this definition, a node that modifies packets in accordance with the endpoints, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
 
 Administrative Domain:
-: The administrative domain, e.g., the IGP area, AS, or Service provider network to which a path element belongs.
+: The identity of an individual or an organization that owns a path element (or several path elements).
+Examples of administrative domains are an IGP area, an AS, or a service provider network.
+
+Routing Domain Identifier:
+: An identifier indicating the routing domain of a path element.
+Path elements in the same routing domain are in the same administrative domain and use a common routing protocol to communicate with each other.
+An example of a routing domain identifier is the globally unique autonomous system number (ASN) as defined in {{RFC1930}}.
 
 Disjointness:
 : For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
