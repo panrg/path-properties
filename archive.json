@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-03T00:29:24.022809+00:00",
+  "timestamp": "2022-03-08T00:27:08.895191+00:00",
   "repo": "panrg/path-properties",
   "labels": [
     {
@@ -893,15 +893,15 @@
       "id": "I_kwDOCPnxh8499-Qp",
       "title": "Add \"routing domain identifier\"",
       "url": "https://github.com/panrg/path-properties/issues/58",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SpencerDawkins",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "In PANRG discussion about draft-irtf-panrg-questions, we tripped over that draft using the term \"control plane address\", with no definition, either in draft-irtf-panrg-questions or in the path-properties draft. \r\n\r\nBased on discussion on the PANRG mailing list, we seem to be changing that to \"routing domain identifier\" (discussion thread is at https://mailarchive.ietf.org/arch/msg/panrg/BzPUTAZo0apm1HQ-wTE7xIq6g30/).\r\n\r\nShould this term be added to \"path properties\", since it's being used in our research group documents? \r\n\r\n(This is probably also a good question for @britram and @furry13}",
       "createdAt": "2021-10-29T14:56:35Z",
-      "updatedAt": "2022-02-24T03:51:18Z",
-      "closedAt": null,
+      "updatedAt": "2022-03-07T16:28:50Z",
+      "closedAt": "2022-03-07T16:28:50Z",
       "comments": [
         {
           "author": "theri",
@@ -5426,24 +5426,26 @@
       "id": "PR_kwDOCPnxh84zrdtH",
       "title": "Rephrase administrative domain and add routing domain identifier definition",
       "url": "https://github.com/panrg/path-properties/pull/66",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cyrill-k",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "I rephrased the definition of administrative domain and added a definition for routing domain identifier as discussed in #58.\r\n\r\nI'm wondering if it may be more elegant to define \"routing domain\" and then only mention its identifier in this definition:\r\n\"A routing domain is an administrative domain, in which all path elements use a common routing protocol to communicate with each other.\r\nThe routing domain identifier is a unique identifier of a routing domain.\r\nAn example of a routing domain identifier is the globally unique autonomous system number (ASN) as defined in {{RFC1930}}.\"\r\n\r\nWhat do you think?",
       "createdAt": "2022-02-28T17:39:37Z",
-      "updatedAt": "2022-03-02T18:42:20Z",
+      "updatedAt": "2022-03-07T16:28:40Z",
       "baseRepository": "panrg/path-properties",
       "baseRefName": "master",
       "baseRefOid": "a060d2d1bff05f6acc2495ca02d309fd10514f07",
       "headRepository": "panrg/path-properties",
       "headRefName": "cyrill/routing-domain-identifier",
-      "headRefOid": "dca7cd7d8f804dfe309a04a07c2ea224c597797a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "8d0587a3a86a9271c5e2fd64a5b2a0bf0503c0e0",
+      "closedAt": "2022-03-07T16:28:40Z",
+      "mergedAt": "2022-03-07T16:28:39Z",
+      "mergedBy": "cyrill-k",
+      "mergeCommit": {
+        "oid": "17283e023e53c90e5c02c9629632a71def6180b1"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5549,6 +5551,26 @@
               "body": "(Responding to the above question, but having to \"comment\" on two lines to make the suggestion work)\r\n\r\nGood point that identifiers for administrative domain are less clearly defined. Perhaps we can leave this as \"Administrative domain\", and then defining an administrative domain implies providing some kind of identifier or identity that refers to the individual or organization that owns the path element(s) - at least that's the only way I see how one would do that.\r\n\r\nIf we want to include the word \"identity\", how about:\r\n```suggestion\r\n: The identity of an individual or an organization that owns a path element (or several path elements).\r\nExamples of administrative domains are an IGP area, an AS, or a service provider network.\r\n```",
               "createdAt": "2022-03-02T18:40:42Z",
               "updatedAt": "2022-03-02T18:42:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOCPnxh841wnOp",
+          "commit": {
+            "abbreviatedOid": "dca7cd7"
+          },
+          "author": "cyrill-k",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-07T16:27:07Z",
+          "updatedAt": "2022-03-07T16:27:07Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "Yes, I think that is a good compromise.",
+              "createdAt": "2022-03-07T16:27:07Z",
+              "updatedAt": "2022-03-07T16:27:07Z"
             }
           ]
         }
