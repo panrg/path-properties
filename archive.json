@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-08T00:27:08.895191+00:00",
+  "timestamp": "2022-03-10T00:26:28.114279+00:00",
   "repo": "panrg/path-properties",
   "labels": [
     {
@@ -1049,6 +1049,22 @@
           "updatedAt": "2022-02-22T18:36:38Z"
         }
       ]
+    },
+    {
+      "number": 67,
+      "id": "I_kwDOCPnxh85FTXLz",
+      "title": "Update some references",
+      "url": "https://github.com/panrg/path-properties/issues/67",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "OLD: \r\n\r\n```\r\nI-D.ietf-tcpm-converters:\r\n\r\nI-D.ietf-quic-transport:\r\n```\r\n\r\nNEW:\r\n\r\n```\r\nRFC8803:\r\n\r\nRFC9000:\r\n```",
+      "createdAt": "2022-03-08T14:10:16Z",
+      "updatedAt": "2022-03-08T14:10:16Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
