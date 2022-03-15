@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-10T00:26:28.114279+00:00",
+  "timestamp": "2022-03-15T00:27:55.962852+00:00",
   "repo": "panrg/path-properties",
   "labels": [
     {
@@ -1063,6 +1063,22 @@
       "body": "OLD: \r\n\r\n```\r\nI-D.ietf-tcpm-converters:\r\n\r\nI-D.ietf-quic-transport:\r\n```\r\n\r\nNEW:\r\n\r\n```\r\nRFC8803:\r\n\r\nRFC9000:\r\n```",
       "createdAt": "2022-03-08T14:10:16Z",
       "updatedAt": "2022-03-08T14:10:16Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 68,
+      "id": "I_kwDOCPnxh85Fqmnn",
+      "title": "Nit: \"true if at least 50\\% of values are true\"",
+      "url": "https://github.com/panrg/path-properties/issues/68",
+      "state": "OPEN",
+      "author": "theri",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Finally fix the nit in the \"Aggregated property\" definition by removing a backslash - currently it says \"true if at least 50\\% of values are true\"",
+      "createdAt": "2022-03-14T19:11:44Z",
+      "updatedAt": "2022-03-14T19:11:44Z",
       "closedAt": null,
       "comments": []
     }
