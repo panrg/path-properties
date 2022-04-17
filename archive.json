@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-15T00:27:55.962852+00:00",
+  "timestamp": "2022-04-17T00:33:39.229849+00:00",
   "repo": "panrg/path-properties",
   "labels": [
     {
@@ -1058,13 +1058,23 @@
       "state": "OPEN",
       "author": "boucadair",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "theri"
+      ],
       "labels": [],
       "body": "OLD: \r\n\r\n```\r\nI-D.ietf-tcpm-converters:\r\n\r\nI-D.ietf-quic-transport:\r\n```\r\n\r\nNEW:\r\n\r\n```\r\nRFC8803:\r\n\r\nRFC9000:\r\n```",
       "createdAt": "2022-03-08T14:10:16Z",
-      "updatedAt": "2022-03-08T14:10:16Z",
+      "updatedAt": "2022-04-15T17:14:13Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "theri",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thank you for your comments, we'll address these in the next revision!\r\n\r\nI'm sorry for misspelling your name.\r\n\r\nCopying additional comments from the Last Call to make sure we address them all:\r\n\r\n>  (3) You may also consider adding pointers for TCPinc and MPTCP. \r\n\r\n> (4) cite 9097 in addition to 5136. \r\n\r\n> (5) s/Boudacair/Boucadair\r\n",
+          "createdAt": "2022-04-15T17:14:11Z",
+          "updatedAt": "2022-04-15T17:14:11Z"
+        }
+      ]
     },
     {
       "number": 68,
@@ -1079,6 +1089,72 @@
       "body": "Finally fix the nit in the \"Aggregated property\" definition by removing a backslash - currently it says \"true if at least 50\\% of values are true\"",
       "createdAt": "2022-03-14T19:11:44Z",
       "updatedAt": "2022-03-14T19:11:44Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 69,
+      "id": "I_kwDOCPnxh85H3gmE",
+      "title": "Consider adding \"Target property\"",
+      "url": "https://github.com/panrg/path-properties/issues/69",
+      "state": "OPEN",
+      "author": "theri",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Via Last Call comment by @boucadair:\r\n\r\n(1) Several application/services manipulate not only observed/assessed values, but can also set objectives/targets. I suggest we provision a new entry to cover that: \r\n\r\nNEW:\r\n   Target property:  An objective that is set for a property over a path,\r\n      subpath, or network.  For example, the maximum one-way delay to be \r\n      observed by packets transmitted from a node. Such properties can be\r\n      captured on service requests (e.g., Section 4.1.1.1 of [I-D.ietf-teas-ietf-network-slices]).      \r\n",
+      "createdAt": "2022-04-15T17:11:48Z",
+      "updatedAt": "2022-04-15T17:12:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 70,
+      "id": "I_kwDOCPnxh85H3ltn",
+      "title": "Try to make path definition clearer/more readable",
+      "url": "https://github.com/panrg/path-properties/issues/70",
+      "state": "OPEN",
+      "author": "theri",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Via @SpencerDawkins in Last Call:\r\n\r\n> In the definition of \u201cPath\u201d, \r\n>\r\n> For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node; these paths do not have to be disjoint.\r\n>\r\n> I think the point this text is making is that if a sending node performs broadcast or multicast over multiple paths, that\u2019s not relevant to the definition of a path in this document - each one of the paths from sender to receiver(s) is just another path, according to this definition. \r\n>\r\n> Is that correct? If so, perhaps this could be a second paragraph on its own within the definition, to be clearer. \r\n\r\nYes, I would say that this is correct.\r\n\r\nIn general, I think the Path definition is quite long and includes lots of aspects. I'll see what we can do to make it clearer.",
+      "createdAt": "2022-04-15T17:41:00Z",
+      "updatedAt": "2022-04-15T17:41:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 71,
+      "id": "I_kwDOCPnxh85H3l0P",
+      "title": "Rephrase sentence in Transparency definition",
+      "url": "https://github.com/panrg/path-properties/issues/71",
+      "state": "OPEN",
+      "author": "theri",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Via @SpencerDawkins in Last Call:\r\n\r\n> In the definition of \u201cTransparency\u201d, I found this sentence difficult to parse: \r\n>\r\n> A can for example be blocking packets or reading and modifying (other protocol) headers or payloads.\r\n>\r\n> Perhaps\r\n>\r\n> For example, A can be blocking packets or reading and modifying (other protocol) headers or payloads.",
+      "createdAt": "2022-04-15T17:41:46Z",
+      "updatedAt": "2022-04-15T17:41:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 72,
+      "id": "I_kwDOCPnxh85H3l7R",
+      "title": "Add point about the usefulness of dynamic path properties",
+      "url": "https://github.com/panrg/path-properties/issues/72",
+      "state": "OPEN",
+      "author": "theri",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "theri"
+      ],
+      "labels": [],
+      "body": "Via @SpencerDawkins in Last Call:\r\n\r\n> I\u2019m not sure where to put it, but some of the dynamic path properties can be so dynamic that they aren\u2019t useful in path-aware networking. For example, link usage for bursty traffic may vary so dramatically that this property can\u2019t be used to select between paths without applying dampening or otherwise avoiding oscillation. This is somewhat related to https://www.rfc-editor.org/rfc/rfc9049.html#name-reacting-to-distant-signals, and has been mentioned about every two years for the entire time ALTO has been chartered. \ud83d\ude42\r\n>\r\n> Perhaps following this paragraph? \r\n>\r\n> Some path properties express the performance of the transmission of a packet or flow over a link or subpath. Such transmission performance properties can be measured or approximated, e.g., by endpoints or by path elements on the path, or they may be available as cost metrics, see [I-D.ietf-alto-performance-metrics]. Transmission performance properties may be made available in an aggregated form, such as averages or minimums. Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to [RFC8175].",
+      "createdAt": "2022-04-15T17:42:35Z",
+      "updatedAt": "2022-04-15T17:42:40Z",
       "closedAt": null,
       "comments": []
     }
