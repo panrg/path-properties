@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-05-15T00:44:03.652577+00:00",
+  "timestamp": "2022-05-22T00:35:32.346975+00:00",
   "repo": "panrg/path-properties",
   "labels": [
     {
@@ -1106,7 +1106,7 @@
       "labels": [],
       "body": "Via Last Call comment by @boucadair:\r\n\r\n(1) Several application/services manipulate not only observed/assessed values, but can also set objectives/targets. I suggest we provision a new entry to cover that: \r\n\r\nNEW:\r\n   Target property:  An objective that is set for a property over a path,\r\n      subpath, or network.  For example, the maximum one-way delay to be \r\n      observed by packets transmitted from a node. Such properties can be\r\n      captured on service requests (e.g., Section 4.1.1.1 of [I-D.ietf-teas-ietf-network-slices]).      \r\n",
       "createdAt": "2022-04-15T17:11:48Z",
-      "updatedAt": "2022-05-12T15:13:06Z",
+      "updatedAt": "2022-05-20T18:18:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -1115,6 +1115,13 @@
           "body": "If I understand the idea of a target property and the IETF network slicing draft correctly, then a target property would be either an SLO or an SLE, right?\r\n\r\nI think it could be useful to have a target property, but I'm not convinced it is necessary to have a separate definition for it.\r\nIn Section 3.1, we more-or-less describe such a target property with different objectives (must involve specific nodes such as firewalls, low one-way delay paths, high BW paths).\r\nIf we introduce a new definition of target property, then some of this text could be written more concisely.\r\n\r\nAlso, similar to Spencer's point, since target properties relate to how endpoints interact with the PAN, it may make more sense to not define it in this document but a later, more appropriate document. In this document in Section 3.1, we could then just use existing terms to describe the use cases, such as SLO and SLE and reference the IETF network slicing draft.\r\n\r\n@theri what do you think?\r\n",
           "createdAt": "2022-05-12T15:13:05Z",
           "updatedAt": "2022-05-12T15:13:05Z"
+        },
+        {
+          "author": "theri",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Having read Section 4.1 of draft-ietf-teas-ietf-network-slices, I agree that an SLO is essentially a target path property. Not sure about SLEs, they appear to be somewhat more abstract, and Section 4.1.2 of draft-ietf-teas-ietf-network-slices says \"SLEs may be seen as aspirational on the part of the customer, and they are expressed as behaviors that the provider is expected to apply to the network resources used to deliver the IETF Network Slice service. Of course, over time, it is possible that mechanisms will be developed that enable a customer to verify the provision of an SLE, at which point it effectively becomes an SLO.\"\r\nPath properties in draft-irtf-panrg-path-properties can be observed/measured or assessed (we have definitions for these), which means that there are \"mechanisms [\u2026] that enable a customer to verify the provision of an SLE\".\r\nThat said, I guess Section 3.1 of draft-irtf-panrg-path-properties does describe both SLOs and SLEs, i.e., involving a specific firewall seems more like a \"Security SLE\" than an SLO.\r\n\r\nI am not sure if draft-irtf-panrg-path-properties should attempt to neatly classify target properties as SLOs or SLEs, and I actually think it might be easier to just add the \"Target Property\" definition, give SLOs and SLEs as an example (there are other ways to conceptualize target properties for sure), and then use \"target property\" in Section 3.1.\r\nWhen doing so, Section 3.1 could also explicitly point out the relationship between target properties and observed/assessed properties. Currently, we define observed property and assessed property, but we never use these definitions.\r\n\r\nI agree that a future document could expand on the interaction between entities when doing Path Selection, who exactly measures properties and how, etc. But I don't think this should preclude us from talking about target properties in this draft already.\r\n\r\nSo, what do you think about adding the \"target property\"\u202fdefinition and rewriting Section 2.1 to use that definition as well as the \"observed property\" and \"assessed property\"?",
+          "createdAt": "2022-05-20T18:18:30Z",
+          "updatedAt": "2022-05-20T18:18:30Z"
         }
       ]
     },
@@ -1152,11 +1159,13 @@
       "state": "OPEN",
       "author": "theri",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "theri"
+      ],
       "labels": [],
       "body": "Via @SpencerDawkins in Last Call:\r\n\r\n> In the definition of \u201cTransparency\u201d, I found this sentence difficult to parse: \r\n>\r\n> A can for example be blocking packets or reading and modifying (other protocol) headers or payloads.\r\n>\r\n> Perhaps\r\n>\r\n> For example, A can be blocking packets or reading and modifying (other protocol) headers or payloads.",
       "createdAt": "2022-04-15T17:41:46Z",
-      "updatedAt": "2022-05-12T15:26:44Z",
+      "updatedAt": "2022-05-20T18:19:02Z",
       "closedAt": null,
       "comments": [
         {
@@ -1182,7 +1191,7 @@
       "labels": [],
       "body": "Via @SpencerDawkins in Last Call:\r\n\r\n> I\u2019m not sure where to put it, but some of the dynamic path properties can be so dynamic that they aren\u2019t useful in path-aware networking. For example, link usage for bursty traffic may vary so dramatically that this property can\u2019t be used to select between paths without applying dampening or otherwise avoiding oscillation. This is somewhat related to https://www.rfc-editor.org/rfc/rfc9049.html#name-reacting-to-distant-signals, and has been mentioned about every two years for the entire time ALTO has been chartered. \ud83d\ude42\r\n>\r\n> Perhaps following this paragraph? \r\n>\r\n> Some path properties express the performance of the transmission of a packet or flow over a link or subpath. Such transmission performance properties can be measured or approximated, e.g., by endpoints or by path elements on the path, or they may be available as cost metrics, see [I-D.ietf-alto-performance-metrics]. Transmission performance properties may be made available in an aggregated form, such as averages or minimums. Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to [RFC8175].",
       "createdAt": "2022-04-15T17:42:35Z",
-      "updatedAt": "2022-05-12T15:37:40Z",
+      "updatedAt": "2022-05-20T18:19:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -1191,6 +1200,13 @@
           "body": "I agree with you that a clear classification of properties is difficult.\r\nMaybe we can add some text to discuss that some properties are more dynamic or more distant than others?",
           "createdAt": "2022-05-12T15:37:40Z",
           "updatedAt": "2022-05-12T15:37:40Z"
+        },
+        {
+          "author": "theri",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yes. I can take a first stab at this text.",
+          "createdAt": "2022-05-20T18:19:41Z",
+          "updatedAt": "2022-05-20T18:19:41Z"
         }
       ]
     }
