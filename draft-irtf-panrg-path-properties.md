@@ -251,6 +251,7 @@ Such transmission performance properties can be measured or approximated, e.g., 
 Transmission performance properties may be made available in an aggregated form, such as averages or minimums.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
 
+It is possible that the momentary values of transmission performance properties change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of transmission performance properties need to apply caution when applying them, e.g., by aggregating them appropriately or dampening their changes to avoiding oscillation.
 
 Link Capacity:
 : The link capacity is the maximum data rate at which data that was sent over a link can correctly be received at the node adjacent to the link.
