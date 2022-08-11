@@ -39,6 +39,8 @@ informative:
 
     I-D.ietf-alto-performance-metrics:
 
+    I-D.ietf-teas-ietf-network-slices:
+
     RFC1930:
 
     RFC2616:
@@ -136,6 +138,10 @@ Assessed property:
 : An approximate calculation or assessment of the value of a property. An assessed property includes the reliability of the calculation or assessment. The notion of reliability depends on the property.
 For example, a path property based on an approximate calculation may describe the expected median one-way latency of packets sent on a path within the next second, including the confidence level and interval. A non-numerical assessment may instead include the likelihood that the property holds.
 
+Target property:
+: An objective that is set for a property over a path element, subpath, or path.
+Note that a target property can be set for observable properties, such as one-way delay, but also for properties that are not (easily) observable, such as inclusion of certain nodes on a path.
+
 ## Terminology usage for specific technologies
 
 The terminology defined in this document is intended to be general and applicable to existing and future path-aware technologies.
@@ -158,14 +164,18 @@ Therefore, a new technology may implement an existing use case related to differ
 
 Nodes may be able to send flows via one (or a subset) out of multiple possible paths, and an entity may be able to influence the decision which path(s) to use.
 Path Selection may be feasible if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
-Care needs to be taken when selecting paths based on path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
+Care needs to be taken when selecting paths based on observed path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
 
-Entities may select their paths to fulfill a specific goal, e.g., related to security or performance.
-As an example of security-related path selection, an entity may allow or disallow sending flows over paths involving specific networks or nodes to enforce traffic policies. In an enterprise network where all traffic has to go through a specific firewall, a path-aware entity can implement this policy using path selection.
-As an example of performance-related path selection,
-an entity may prefer paths with performance properties that best match application requirements.
-For example, for sending a small delay sensitive query, the entity may select a path with a short One-Way Delay,
-while for retrieving a large file, it may select a path with high Link Capacities on all links.
+Entities may select their paths to fulfill a specific goal by specifying target properties for their selected paths, e.g., related to performance or security.
+
+Target properties relating to network performance typically refer to observable properties, such as delay, loss, or bandwidth.
+Entities then select paths based on their target property and the assessed property of the available paths that best match the application requirements.
+For such performance-related target properties, the observed property is similar to a service level indicator (SLI) and the assessed property is similar to a service level objective (SLO) for IETF network slices {{I-D.ietf-teas-ietf-network-slices}}.
+For example, for sending a small delay-sensitive query, the entity selects a path with a short One-Way Delay, while for retrieving a large file, it selects a path with high Link Capacities on all links.
+
+Target properties relating to security are typically not (directly) observable, similar to service level expectations (SLEs).
+Examples are allowing or disallowing sending flows over paths that involve specific networks or nodes to enforce traffic policies or mandating that all enterprise traffic goes through a specific firewall.
+
 Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
 
