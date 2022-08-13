@@ -27,12 +27,6 @@ author:
 
 informative:
 
-    I-D.irtf-panrg-questions:
-
-    I-D.ietf-tcpm-converters:
-
-    I-D.ietf-quic-transport:
-
     I-D.ietf-idr-performance-routing:
 
     I-D.ietf-alto-path-vector:
@@ -63,7 +57,21 @@ informative:
 
     RFC8175:
 
+    RFC8547:
+
+    RFC8548:
+
     RFC8558:
+
+    RFC8684:
+
+    RFC8803:
+
+    RFC9000:
+
+    RFC9097:
+
+    RFC9217:
 
 --- abstract
 
@@ -78,9 +86,9 @@ e.g., for selecting between paths or for invoking some of the provided services.
 # Introduction
 
 The current Internet architecture does not explicitly support endpoint discovery of forwarding paths through the network as well as the discovery of properties and services associated with these paths.
-Path-aware networking, as defined in Section 1.1 of {{I-D.irtf-panrg-questions}}, describes
+Path-aware networking, as defined in Section 1.1 of {{RFC9217}}, describes
 "endpoint discovery of the properties of paths they use for communication across an internetwork, and endpoint reaction to these properties that affects routing and/or data transfer".
-This document provides a generic definition of path properties, addressing the first of the questions in path-aware networking {{I-D.irtf-panrg-questions}}.
+This document provides a generic definition of path properties, addressing the first of the questions in path-aware networking {{RFC9217}}.
 
 As terms related to paths have been used with different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and flows. Based on these terms, the document defines path properties.
 Then, this document provides some examples of use cases for path properties.
@@ -127,7 +135,7 @@ A property is thus described by a tuple containing the path element(s), the flow
 
 Aggregated property:
 : A collection of multiple values of a property into a single value, according to a function. A property can be aggregated over multiple path elements (i.e., a subpath), e.g., the MTU of a path as the minimum MTU of all links on the path, over multiple packets (i.e., a flow), e.g., the median one-way latency of all packets between two nodes, or over both, e.g., the mean of the queueing delays of a flow on all nodes along a path.
-The aggregation function can be numerical, e.g., median, sum, minimum, it can be logical, e.g., "true if all are true", "true if at least 50\% of values are true", or an arbitrary function which maps multiple input values to an output value.
+The aggregation function can be numerical, e.g., median, sum, minimum, it can be logical, e.g., "true if all are true", "true if at least 50% of values are true", or an arbitrary function which maps multiple input values to an output value.
 
 Observed property:
 : A property that is observed for a specific path element, subpath, or path, e.g., using measurements. For example, the one-way delay of a specific packet transmitted from one node to another node can be measured.
@@ -176,13 +184,13 @@ In BGP, the Multi Exit Discriminator (MED) attribute is used in the decision-mak
 ## Protocol Selection
 
 Before sending data over a specific path, an entity may select an appropriate protocol or configure protocol parameters depending on path properties.
-For example, an endpoint may cache state on whether a path allows the use of QUIC {{I-D.ietf-quic-transport}} and if so, first attempt to connect using QUIC before falling back to another protocol when connecting over this path again.
+For example, an endpoint may cache state on whether a path allows the use of QUIC {{RFC9000}} and if so, first attempt to connect using QUIC before falling back to another protocol when connecting over this path again.
 A video streaming application may choose an (initial) video quality based on the achievable data rate or the monetary cost of sending data (e.g., volume-base or flat-rate cost model).
 
 ## Service Invocation
 
 In addition to path or protocol selection, an entity may choose to invoke additional functions in the context of Service Function Chaining {{RFC7665}}, which may influence what nodes are on the path.
-For example, a 0-RTT Transport Converter {{I-D.ietf-tcpm-converters}} will be involved in a path only when invoked by an endpoint; such invocation will lead to the use of MPTCP or TCPinc capabilities while such use is not supported via the default forwarding path.
+For example, a 0-RTT Transport Converter {{RFC8803}} will be involved in a path only when invoked by an endpoint; such invocation will lead to the use of MPTCP {{RFC8684}} or TCPinc {{RFC8547}} {{RFC8548}} capabilities while such use is not supported via the default forwarding path.
 Another example is a connection which is composed of multiple streams where each stream has specific service requirements. An endpoint may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
 # Examples of Path Properties
@@ -254,11 +262,11 @@ Properties related to a path element which constitutes a single layer 2 domain a
 
 Link Capacity:
 : The link capacity is the maximum data rate at which data that was sent over a link can correctly be received at the node adjacent to the link.
-This property is analogous to the link capacity defined in {{RFC5136}} but not restricted to IP-layer traffic.
+This property is analogous to the link capacity defined in {{RFC5136}} and {{RFC9097}} but not restricted to IP-layer traffic.
 
 Link Usage:
 : The link usage is the actual data rate at which data that was sent over a link is correctly received at the node adjacent to the link.
-This property is analogous to the link usage defined in {{RFC5136}} but not restricted to IP-layer traffic.
+This property is analogous to the link usage defined in {{RFC5136}} and {{RFC9097}} but not restricted to IP-layer traffic.
 
 One-Way Delay:
 : The one-way delay is the delay between a node sending a packet and another node on the same path receiving the packet.
@@ -297,4 +305,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Specifically, thanks to Mohamed Boudacair for the detailed review and various text suggestions, thanks to Brian Trammell for suggesting the flow definition, thanks to Adrian Perrig and Matthias Rost for the detailed feedback, thanks to Paul Hoffman for the editorial changes, thanks to Luis M. Contreras and Jake Holland for the reviews, and thanks to Spencer Dawkins for the comments and suggestions.
+Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Specifically, thanks to Mohamed Boucadair for the detailed review and various text suggestions, thanks to Brian Trammell for suggesting the flow definition, thanks to Adrian Perrig and Matthias Rost for the detailed feedback, thanks to Paul Hoffman for the editorial changes, thanks to Luis M. Contreras and Jake Holland for the reviews, and thanks to Spencer Dawkins for the comments and suggestions.
