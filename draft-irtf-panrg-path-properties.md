@@ -212,7 +212,7 @@ Service function:
 Transparency:
 : When a node performs an action A on a flow F, the node is transparent to F with respect to some (meta-)information M if the node performs A independently of M.
 M can for example be the existence of a protocol (header) in a packet or the content of a protocol header, payload, or both.
-A can for example be blocking packets or reading and modifying (other protocol) headers or payloads.
+For example, A can be blocking packets or reading and modifying (other protocol) headers or payloads.
 Transparency can be modeled using a function f, which takes as input F and M and outputs the action taken by the node.
 If a taint analysis shows that the output of f is not tainted (impacted) by M or if the output of f is constant for arbitrary values of M, then the node is considered to be transparent.
 An IP router could be transparent to transport protocol headers such as TCP/UDP but not transparent to IP headers since its forwarding behavior depends on the IP headers.
