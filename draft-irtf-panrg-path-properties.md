@@ -197,8 +197,9 @@ A path property can be defined relative to individual path elements, a sequence 
 
 Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an Ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
-The merit of a momentary measurement of a dynamic path property diminishes greatly as time goes on, e.g. the merit of an RTT measurement from a few seconds ago is quite small, while a non-dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
-
+The merit of a momentarily observed dynamic path propety may diminish greatly as time goes on, e.g.,
+it is possible for the observed values of One-Way Delay to change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of transmission performance properties need to apply caution when applying them, e.g., by aggregating them appropriately or dampening their changes to avoiding oscillation.
+In contrast, the observed value of a less dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
 
 Access Technology:
 : The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements. If known, the Access Technology may be given as an abstract link type, e.g., as Wi-Fi, Wired Ethernet, or Cellular. It may also be given as a specific technology used on a link, e.g., 2G, 3G, 4G, or 5G cellular, or 802.11a, b, g, n, or ac Wi-Fi. Other path elements relevant to the access technology may include nodes related to processing packets on the physical or link layer, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
@@ -247,11 +248,9 @@ Protocol Features available:
 
 
 Some path properties express the performance of the transmission of a packet or flow over a link or subpath.
-Such transmission performance properties can be measured or approximated, e.g., by endpoints or by path elements on the path, or they may be available as cost metrics, see {{I-D.ietf-alto-performance-metrics}}.
+Such transmission performance properties can be observed or assessed, e.g., by endpoints or by path elements on the path, or they may be available as cost metrics, see {{I-D.ietf-alto-performance-metrics}}.
 Transmission performance properties may be made available in an aggregated form, such as averages or minimums.
 Properties related to a path element which constitutes a single layer 2 domain are abstracted from the used physical and link layer technology, similar to {{RFC8175}}.
-
-It is possible that the momentary values of transmission performance properties change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of transmission performance properties need to apply caution when applying them, e.g., by aggregating them appropriately or dampening their changes to avoiding oscillation.
 
 Link Capacity:
 : The link capacity is the maximum data rate at which data that was sent over a link can correctly be received at the node adjacent to the link.
