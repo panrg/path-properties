@@ -198,7 +198,7 @@ A path property can be defined relative to individual path elements, a sequence 
 Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an Ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
 The merit of a momentarily observed dynamic path propety may diminish greatly as time goes on, e.g.,
-it is possible for the observed values of One-Way Delay to change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of transmission performance properties need to apply caution when applying them, e.g., by aggregating them appropriately or dampening their changes to avoiding oscillation.
+it is possible for the observed values of One-Way Delay to change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of dynamic performance properties need to apply caution when applying them, e.g., by aggregating them appropriately or dampening their changes to avoiding oscillation.
 In contrast, the observed value of a less dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
 
 Access Technology:
