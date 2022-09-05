@@ -171,10 +171,10 @@ Entities may select their paths to fulfill a specific goal by specifying target 
 Target properties relating to network performance typically refer to observable properties, such as delay, loss, or bandwidth.
 Entities then select paths based on their target property and the assessed property of the available paths that best match the application requirements.
 For such performance-related target properties, the observed property is similar to a service level indicator (SLI) and the assessed property is similar to a service level objective (SLO) for IETF network slices {{I-D.ietf-teas-ietf-network-slices}}.
-For example, for sending a small delay-sensitive query, the entity selects a path with a short One-Way Delay, while for retrieving a large file, it selects a path with high Link Capacities on all links.
+As an example path selection strategy, for sending a small delay-sensitive query, an entity may select a path with a short One-Way Delay, while for retrieving a large file, it may select a path with high Link Capacities on all links.
 
-Target properties relating to security are typically not (directly) observable, similar to service level expectations (SLEs).
-Examples are allowing or disallowing sending flows over paths that involve specific networks or nodes to enforce traffic policies or mandating that all enterprise traffic goes through a specific firewall.
+It is also possible for an entity to set target properties which it cannot (directly) observe, similar to service level expectations (SLEs) for IETF network slices {{I-D.ietf-teas-ietf-network-slices}}.
+For example, this can apply to security-related target properties and path selection, such as allowing or disallowing sending flows over paths that involve specific networks or nodes to enforce traffic policies or mandating that all enterprise traffic goes through a specific firewall.
 
 Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
