@@ -168,7 +168,7 @@ Care needs to be taken when selecting paths based on observed path properties, a
 
 Entities may select their paths to fulfill a specific goal by specifying target properties for their selected paths, e.g., related to performance or security.
 
-Target properties relating to network performance typically refer to observable properties, such as delay, loss, or bandwidth.
+Target properties relating to network performance typically refer to observed properties, such as One-Way Delay, One-Way Packet Loss, and Link Capacity.
 Entities then select paths based on their target property and the assessed property of the available paths that best match the application requirements.
 For such performance-related target properties, the observed property is similar to a service level indicator (SLI) and the assessed property is similar to a service level objective (SLO) for IETF network slices {{I-D.ietf-teas-ietf-network-slices}}.
 As an example path selection strategy, for sending a small delay-sensitive query, an entity may select a path with a short One-Way Delay, while for retrieving a large file, it may select a path with high Link Capacities on all links.
