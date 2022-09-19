@@ -140,7 +140,7 @@ For example, a path property based on an approximate calculation may describe th
 
 Target property:
 : An objective that is set for a property over a path element, subpath, or path.
-Note that a target property can be set for observable properties, such as one-way delay, but also for properties that are not (easily) observable, such as inclusion of certain nodes on a path.
+Note that a target property can be set for observed properties, such as one-way delay, but also for properties that cannot be observed by the entity setting the target, such as inclusion of certain nodes on a path.
 
 ## Terminology usage for specific technologies
 
