@@ -115,7 +115,16 @@ Path element:
 : Either a node or a link. For example, a path element can be an Abstract Network Element (ANE) as defined in {{I-D.ietf-alto-path-vector}}.
 
 Path:
-: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node. A path is unidirectional. Paths are time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change. A path is defined between two nodes. For multicast or broadcast, a packet may be sent by one node and received by multiple nodes. In this case, the packet is sent over multiple paths at once, one path for each combination of sending and receiving node; these paths do not have to be disjoint. Note that an entity may have only partial visibility of the path elements that comprise a path and visibility may change over time. Different entities may have different visibility of a path and/or treat path elements at different levels of abstraction. For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, or it may be given as a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO). Similarly, the representation of a path and its properties, as it is known to a specific entity, may be more complex and include details about the physical layer technology, or it may be more abstract and only consist of a specific source and destination which is known to be reachable from that source.
+: A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node.
+
+  Paths are unidirectional and time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change.
+
+  The representation of a path and its properties may depend on the entity considering the path.
+  On the one hand, the representation may differ due to entities having partial visibility of path elements comprising a path or their visibility changing over time.
+  On the other hand, the representation may differ due to treating path elements at different levels of abstraction.
+  For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO), or only consist of a specific source and destination which is known to be reachable from that source.
+
+  A multicast or broadcast setting, where a packet is sent by one node and received by multiple nodes, is described by multiple paths over which the packet is sent, one path for each combination of sending and receiving node; these paths do not have to be disjoint.
 
 Endpoint:
 : The endpoints of a path are the first and the last node on the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
