@@ -164,8 +164,6 @@ Therefore, a new technology may implement an existing use case related to differ
 
 Nodes may be able to send flows via one (or a subset) out of multiple possible paths, and an entity may be able to influence the decision which path(s) to use.
 Path Selection may be feasible if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
-Care needs to be taken when selecting paths based on observed path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops.
-
 Entities may select their paths to fulfill a specific goal by specifying target properties for their selected paths, e.g., related to performance or security.
 
 Target properties relating to network performance typically refer to observed properties, such as One-Way Delay, One-Way Packet Loss, and Link Capacity.
@@ -176,7 +174,8 @@ As an example path selection strategy, for sending a small delay-sensitive query
 It is also possible for an entity to set target properties which it cannot (directly) observe, similar to service level expectations (SLEs) for IETF network slices {{I-D.ietf-teas-ietf-network-slices}}.
 For example, this can apply to security-related target properties and path selection, such as allowing or disallowing sending flows over paths that involve specific networks or nodes to enforce traffic policies or mandating that all enterprise traffic goes through a specific firewall.
 
-Note, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
+Care needs to be taken when selecting paths based on observed path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops. Also, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
+
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
 
 Path selection can be done either by the communicating node(s) or by other entities within the network:
