@@ -181,7 +181,8 @@ Therefore, a new technology may implement an existing use case related to differ
 
 Nodes may be able to send flows via one (or a subset) out of multiple possible paths, and an entity may be able to influence the decision which path(s) to use.
 Path Selection may be feasible if there are several paths to the same destination (e.g., in case of a mobile device with two wireless interfaces, both providing a path), or if there are several destinations, and thus several paths, providing the same service (e.g., Application-Layer Traffic Optimization (ALTO) {{RFC5693}}, an application layer peer-to-peer protocol allowing endpoints a better-than-random peer selection).
-Entities may select their paths to fulfill a specific goal by specifying target properties for their selected paths, e.g., related to performance or security.
+Entities can achieve a specific goal by specifying target properties for their paths, e.g., related to performance or security.
+Such paths can be provided by the network or selected by the entity itself from all available paths.
 
 Target properties relating to network performance typically refer to observed properties, such as One-Way Delay, One-Way Packet Loss, and Link Capacity.
 Entities then select paths based on their target property and the assessed property of the available paths that best match the application requirements.
