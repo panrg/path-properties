@@ -77,6 +77,7 @@ informative:
 
 --- abstract
 
+This document is a product of the Path Aware Networking Research Group (PANRG).
 Path properties express information about paths across a network and the services provided via such paths.
 In a path-aware network, path properties may be fully or partially available to entities such as endpoints.
 This document defines and categorizes path properties.
@@ -97,6 +98,8 @@ Then, this document provides some examples of use cases for path properties.
 Finally, the document lists several path properties that may be useful for the mentioned use cases.
 
 Note that this document does not assume that any of the listed path properties are actually available to any entity. The question of how entities can discover and distribute path properties in a trustworthy way is out of scope for this document.
+
+This document represents the consensus of the Path Aware Networking Research Group (PANRG).
 
 # Terminology
 
