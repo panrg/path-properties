@@ -75,6 +75,8 @@ informative:
 
     RFC9217:
 
+    RFC9298:
+
 --- abstract
 
 This document is a product of the Path Aware Networking Research Group (PANRG).
@@ -195,6 +197,8 @@ It is also possible for an entity to set target properties which it cannot (dire
 For example, this can apply to security-related target properties and path selection, such as allowing or disallowing sending flows over paths that involve specific networks or nodes to enforce traffic policies or mandating that all enterprise traffic goes through a specific firewall.
 
 Care needs to be taken when selecting paths based on observed path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops. Also, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
+Finally, path selection may impact fairness, since the used paths have different properties depending on the path selection strategy or the entity's access to diverse paths and observed path properties.
+Also, if target properties depend on the application used, path selection may allow network operators to re-prioritize traffic of certain applications.
 
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
 
@@ -308,6 +312,9 @@ Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be e
 If entities are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
 In order to be able to trust such path properties, entities may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another entity.
 
+Entities that act based on their target path properties can negatively impact their privacy, e.g., if the target property leaks personal information about a user, such as his identity or which (type of) application is used.
+Conversely, in privacy enhancing technologies, e.g., MASQUE proxies [RFC9298], the path may only be partially known.
+This can have an impact on the path awareness and diminish the usefulness of observed path properties.
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
 Likewise, properties for trust relations between entities cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
 Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document.
