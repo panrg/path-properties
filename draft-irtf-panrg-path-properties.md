@@ -15,8 +15,8 @@ pi: [toc, sortrefs, symrefs]
 
 author:
  -
-    ins: T. Enghardt
-    name: Theresa Enghardt
+    ins: R. Enghardt
+    name: Reese Enghardt
     organization: Netflix
     email: ietf@tenghardt.net
  -
