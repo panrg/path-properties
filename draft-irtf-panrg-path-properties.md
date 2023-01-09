@@ -326,4 +326,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Specifically, thanks to Mohamed Boucadair for the detailed review and various text suggestions, thanks to Brian Trammell for suggesting the flow definition, thanks to Adrian Perrig and Matthias Rost for the detailed feedback, thanks to Paul Hoffman for the editorial changes, thanks to Luis M. Contreras and Jake Holland for the reviews, and thanks to Spencer Dawkins for the comments and suggestions.
+Thanks to the Path-Aware Networking Research Group for the discussion and feedback. Specifically, thanks to Mohamed Boucadair for the detailed review, and various text suggestions, and shepherding, thanks to Brian Trammell for suggesting the flow definition, and thanks to Luis M. Contreras, Spencer Dawkins, Paul Hoffman, Jake Holland, Colin Perkins, Adrian Perrig, and Matthias Rost for the reviews, comments, and/or suggestions.
