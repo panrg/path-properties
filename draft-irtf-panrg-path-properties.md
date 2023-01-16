@@ -313,8 +313,8 @@ If entities are basing policy or path selection decisions on path properties, th
 In order to be able to trust such path properties, entities may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another entity.
 
 Entities that act based on their target path properties can negatively impact their privacy, e.g., if the target property leaks personal information about a user, such as his identity or which (type of) application is used.
-Conversely, in privacy enhancing technologies, e.g., MASQUE proxies [RFC9298], the path may only be partially known.
-This can have an impact on the path awareness and diminish the usefulness of observed path properties.
+Conversely, if privacy enhancing technologies, e.g., MASQUE proxies [RFC9298], are used on a path, the path may only be partially visible to any single entity.
+This may diminish the usefulness of path-aware technologies over this path.
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
 Likewise, properties for trust relations between entities cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
 Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document.
