@@ -312,7 +312,8 @@ Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be e
 If entities are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
 In order to be able to trust such path properties, entities may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another entity.
 
-Entities that act based on their target path properties can negatively impact their privacy, e.g., if the target property leaks personal information about a user, such as his identity or which (type of) application is used.
+Entities that reveal their target path properties to the network can negatively impact their own privacy, e.g., if the target property leaks personal information about a user, such as their identity or which (type of) application is used.
+Such information could then allow network operators to block or re-prioritize traffic for certain users and/or application.
 Conversely, if privacy enhancing technologies, e.g., MASQUE proxies [RFC9298], are used on a path, the path may only be partially visible to any single entity.
 This may diminish the usefulness of path-aware technologies over this path.
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
