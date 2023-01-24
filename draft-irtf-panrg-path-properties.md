@@ -197,8 +197,8 @@ It is also possible for an entity to set target properties which it cannot (dire
 For example, this can apply to security-related target properties and path selection, such as allowing or disallowing sending flows over paths that involve specific networks or nodes to enforce traffic policies or mandating that all enterprise traffic goes through a specific firewall.
 
 Care needs to be taken when selecting paths based on observed path properties, as path properties that were previously measured may not be helpful in predicting current or future path properties and such path selection may lead to unintended feedback loops. Also, there may be trade-offs between path properties (e.g., One-Way Delay and Link Capacity), and entities may influence these trade-offs with their choices.
-Finally, path selection may impact fairness, since the used paths have different properties depending on the path selection strategy or the entity's access to diverse paths and observed path properties.
-Also, if target properties depend on the application used, path selection may allow network operators to re-prioritize traffic of certain applications.
+Finally, path selection may impact fairness.
+For example, if multiple entities concurrently attempt to meet their target properties using the same network resources, one entity's choices may influence the conditions on the path as experienced by flows of another entity.
 
 As a baseline, a path selection algorithm should aim to not perform worse than the default case most of the time.
 
