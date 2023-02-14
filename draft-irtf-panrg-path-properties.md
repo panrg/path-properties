@@ -275,7 +275,7 @@ Path MTU:
 : The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.
 
 Transport Protocols available:
-: Whether a specific transport protocol can be used to establish a connection over a path or subpath, e.g., whether the path is QUIC-capable or MPTCP-capable, based on cached knowledge.
+: Whether a specific transport protocol can be used to establish a connection over a path or subpath, e.g., whether the path is QUIC-capable or MPTCP-capable, based on input such as policy, cached knowledge, or probing results.
 
 Protocol Features available:
 : Whether a specific protocol feature is available over a path or subpath, e.g., Explicit Congestion Notification (ECN), or TCP Fast Open.
