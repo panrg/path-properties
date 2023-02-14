@@ -83,21 +83,21 @@ This document is a product of the Path Aware Networking Research Group (PANRG).
 Path properties express information about paths across a network and the services provided via such paths.
 In a path-aware network, path properties may be fully or partially available to entities such as endpoints.
 This document defines and categorizes path properties.
-Furthermore, the document specifies several path properties which might be useful to endpoints or other entities,
+Furthermore, the document identifies several path properties which might be useful to endpoints or other entities,
 e.g., for selecting between paths or for invoking some of the provided services.
 
 --- middle
 
 # Introduction
 
-The current Internet architecture does not explicitly support endpoint discovery of forwarding paths through the network as well as the discovery of properties and services associated with these paths.
+The current Internet architecture does not explicitly support endpoint discovery of forwarding paths through the network nor the discovery of properties and services associated with these paths.
 Path-aware networking, as defined in Section 1.1 of {{RFC9217}}, describes
 "endpoint discovery of the properties of paths they use for communication across an internetwork, and endpoint reaction to these properties that affects routing and/or data transfer".
 This document provides a generic definition of path properties, addressing the first of the questions in path-aware networking {{RFC9217}}.
 
 As terms related to paths have been used with different meanings in different areas of networking, first, this document provides a common terminology to define paths, path elements, and flows. Based on these terms, the document defines path properties.
 Then, this document provides some examples of use cases for path properties.
-Finally, the document lists several path properties that may be useful for the mentioned use cases.
+Finally, the document lists several path properties that may be useful for the mentioned use cases. This list is intended to be neither exhaustive nor definitive.
 
 Note that this document does not assume that any of the listed path properties are actually available to any entity. The question of how entities can discover and distribute path properties in a trustworthy way is out of scope for this document.
 
@@ -131,7 +131,7 @@ Path:
   On the other hand, the representation may differ due to treating path elements at different levels of abstraction.
   For example, a path may be given as a sequence of physical nodes and the links connecting these nodes, a sequence of logical nodes such as a sequence of ASes or an Explicit Route Object (ERO), or only consist of a specific source and destination which is known to be reachable from that source.
 
-  A multicast or broadcast setting, where a packet is sent by one node and received by multiple nodes, is described by multiple paths over which the packet is sent, one path for each combination of sending and receiving node; these paths do not have to be disjoint.
+  A multicast or broadcast setting, where a packet is sent by one node and received by multiple nodes, is described by multiple paths over which the packet is sent, one path for each combination of sending and receiving node; these paths do not have to be disjoint as defined by the Disjointness path property, see {{examples}}.
 
 Endpoint:
 : The endpoints of a path are the first and the last node on the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
@@ -219,7 +219,7 @@ In addition to path or protocol selection, an entity may choose to invoke additi
 For example, a 0-RTT Transport Converter {{RFC8803}} will be involved in a path only when invoked by an endpoint; such invocation will lead to the use of MPTCP {{RFC8684}} or TCPinc {{RFC8547}} {{RFC8548}} capabilities while such use is not supported via the default forwarding path.
 Another example is a connection which is composed of multiple streams where each stream has specific service requirements. An endpoint may decide to invoke a given service function (e.g., transcoding) only for some streams while others are not processed by that service function.
 
-# Examples of Path Properties
+# Examples of Path Properties {#examples}
 
 This Section gives some examples of path properties which may be useful, e.g., for the use cases described in {{use-cases}}.
 
@@ -232,17 +232,17 @@ A path property can be defined relative to individual path elements, a sequence 
 Path properties may be relatively dynamic, e.g., the one-way delay of a packet sent over a specific path, or non-dynamic, e.g., the MTU of an Ethernet link which only changes infrequently.
 Usefulness over time differs depending on how dynamic a property is:
 The merit of a momentarily observed dynamic path propety may diminish greatly as time goes on, e.g.,
-it is possible for the observed values of One-Way Delay to change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of dynamic path properties need to apply caution when using them, e.g., by aggregating them appropriately or dampening their changes to avoiding oscillation.
-In contrast, the observed value of a less dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a specific path during the lifetime of a connection involving packets sent over this path.
+it is possible for the observed values of One-Way Delay to change on timescales which are shorter than the One-Way Delay between the measurement point and an entity making a decision such as Path Selection, which may cause the measurement to be outdated when it reaches the decision-making entity. Therefore, consumers of dynamic path properties need to apply caution when using them, e.g., by aggregating them appropriately or applying a dampening function to their changes to avoiding oscillation.
+In contrast, the observed value of a less dynamic path property might stay relevant for a longer period of time, e.g. a NAT typically stays on a particular path during the lifetime of a connection involving packets sent over this path.
 
 Access Technology:
-: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements. If known, the Access Technology may be given as an abstract link type, e.g., as Wi-Fi, Wired Ethernet, or Cellular. It may also be given as a specific technology used on a link, e.g., 2G, 3G, 4G, or 5G cellular, or 802.11a, b, g, n, or ac Wi-Fi. Other path elements relevant to the access technology may include nodes related to processing packets on the physical or link layer, such as elements of a cellular backbone network. Note that there is no common registry of possible values for this property.
+: The physical or link layer technology used for transmitting or receiving a flow on one or multiple path elements. If known, the Access Technology may be given as an abstract link type, e.g., as Wi-Fi, Wired Ethernet, or Cellular. It may also be given as a specific technology used on a link, e.g., 3GPP cellular, or 802.11 WiFi. Other path elements relevant to the access technology may include nodes related to processing packets on the physical or link layer, such as elements of a cellular core network. Note that there is no common registry of possible values for this property.
 
 Monetary Cost:
 : The price to be paid to transmit or receive a specific flow across a network to which one or multiple path elements belong.
 
 Service function:
-: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP optimizers. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
+: A service function that a path element applies to a flow, see {{RFC7665}}. Examples of abstract service functions include firewalls, Network Address Translation (NAT), and TCP Performance Enhancing Proxies. Some stateful service functions, such as NAT, need to observe the same flow in both directions, e.g., by being an element of both the path and the reverse path.
 
 Transparency:
 : When a node performs an action A on a flow F, the node is transparent to F with respect to some (meta-)information M if the node performs A independently of M.
@@ -256,7 +256,7 @@ Finally, a NAT that actively modifies IP and TCP/UDP headers based on their cont
 Note that according to this definition, a node that modifies packets in accordance with the endpoints, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
 
 Administrative Domain:
-: The identity of an individual or an organization that owns a path element (or several path elements).
+: The identity of an individual or an organization that controls access to a path element (or several path elements).
 Examples of administrative domains are an IGP area, an AS, or a service provider network.
 
 Routing Domain Identifier:
