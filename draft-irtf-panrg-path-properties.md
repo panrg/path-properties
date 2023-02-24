@@ -124,7 +124,7 @@ Path element:
 Path:
 : A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node.
 
-  Paths are unidirectional and time-dependent, i.e., there can be a variety of paths from one node to another, and the path over which packets are transmitted may change during the lifetime of a flow.
+  Paths are unidirectional and time-dependent, i.e., there can be a variety of paths from one node to another, and the path over which packets are transmitted may change.
 
   The representation of a path and its properties may depend on the entity considering the path.
   On the one hand, the representation may differ due to entities having partial visibility of path elements comprising a path or their visibility changing over time.
