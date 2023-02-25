@@ -311,7 +311,7 @@ Metrics such as loss patterns {{RFC3357}} and loss episodes {{RFC6534}} can be e
 # Security Considerations
 
 If entities are basing policy or path selection decisions on path properties, they need to rely on the accuracy of path properties that other devices communicate to them.
-In order to be able to trust such path properties, entities may need to establish a trust relationship or be able to verify the authenticity, integrity, and correctness of path properties received from another entity.
+In order to be able to trust such path properties, entities may need to establish a trust relationship or be able to independently verify the authenticity, integrity, and correctness of path properties received from another entity.
 
 Entities that reveal their target path properties to the network can negatively impact their own privacy, e.g., if the target property leaks personal information about a user, such as their identity or which (type of) application is used.
 Such information could then allow network operators to block or re-prioritize traffic for certain users and/or application.
@@ -320,7 +320,7 @@ This may diminish the usefulness of path-aware technologies over this path.
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
 Likewise, properties for trust relations between entities cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
 Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document.
-Such properties are tied to the communicating nodes and the protocols they use (e.g., client and server using HTTPS, or client and remote network node using VPN) while the path is typically oblivious to them.
+Such properties are tied to the communicating nodes and the protocols they use (e.g., client and server using HTTPS, or client and remote network node using VPN) as well as additional context such as keying material and who has access to this context. In constrast, the path as defined in this document is typically oblivious to these aspects.
 Intuitively, the path describes what function the network applies to packets, while confidentiality, integrity, and trust describe what function the communicating parties apply to packets.
 
 
