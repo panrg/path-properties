@@ -125,7 +125,7 @@ Path:
 : A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node.
 
   Paths are unidirectional and time-dependent, i.e., there can be a variety of paths from one node to another, and the path over which packets are transmitted may change.
-  A path definition can be strict, i.e., the sequence of path elements remains the same, or loose, i.e., the sequence of path elements may vary over time.
+  A path definition can be strict (i.e., the exact sequence of path elements remains the same) or loose (i.e., a subset of path elements may vary over time).
 
   The representation of a path and its properties may depend on the entity considering the path.
   On the one hand, the representation may differ due to entities having partial visibility of path elements comprising a path or their visibility changing over time.
