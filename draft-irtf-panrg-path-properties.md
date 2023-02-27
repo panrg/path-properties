@@ -272,7 +272,7 @@ Symmetric Path:
 For example, a path which consists of layer 3 switches and links between them and a reverse path with the same path elements but in reverse order are considered "routing" symmetric, as the same path elements on the same level of abstraction (IP forwarding) are traversed in the opposite direction.
 
 Path MTU:
-: The maximum size, in octets, of an IP packet that can be transmitted without fragmentation.
+: The maximum size, in octets, of a packet that can be transmitted without fragmentation.
 
 Transport Protocols available:
 : Whether a specific transport protocol can be used to establish a connection over a path or subpath, e.g., whether the path is QUIC-capable or MPTCP-capable, based on input such as policy, cached knowledge, or probing results.
