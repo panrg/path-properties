@@ -254,6 +254,7 @@ An IP router could be transparent to transport protocol headers such as TCP/UDP 
 A firewall that only allows outgoing TCP connections by blocking all incoming TCP SYN packets regardless of their IP address is transparent to IP but not to TCP headers.
 Finally, a NAT that actively modifies IP and TCP/UDP headers based on their content is not transparent to either IP or TCP/UDP headers.
 Note that according to this definition, a node that modifies packets in accordance with the endpoints, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
+Transparency only applies to nodes and not to links, as a link cannot modify or perform any other action on the packet by itself. For example, if a GRE tunnel reads or modifies the content of a packet, we consider as nodes the software instance(s) adjacent to the tunnel which perform the actions, and apply the transparency definition to these nodes.
 
 Administrative Domain:
 : The identity of an individual or an organization that controls access to a path element (or several path elements).
