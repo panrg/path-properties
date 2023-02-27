@@ -201,7 +201,7 @@ Care needs to be taken when selecting paths based on observed path properties, a
 Finally, path selection may impact fairness.
 For example, if multiple entities concurrently attempt to meet their target properties using the same network resources, one entity's choices may influence the conditions on the path as experienced by flows of another entity.
 
-As a baseline, a path selection algorithm should aim to not perform worse than the default case of not selecting a path most of the time.
+As a baseline, a path selection algorithm should aim to do a better job at meeting the target properties or accomodating the user's requirements than the default case of not selecting a path most of the time.
 
 Path selection can be done either by the communicating node(s) or by other entities within the network:
 A network (e.g., an AS) can adjust its path selection for internal or external routing based on path properties.
