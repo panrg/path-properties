@@ -320,7 +320,7 @@ This may diminish the usefulness of path-aware technologies over this path.
 Security related properties such as confidentiality and integrity protection of payloads are difficult to characterize since they are only meaningful with respect to a threat model which depends on the use case, application, environment, and other factors.
 Likewise, properties for trust relations between entities cannot be meaningfully defined without a concrete threat model, and defining a threat model is out of scope for this draft.
 Properties related to confidentiality, integrity, and trust are orthogonal to the path terminology and path properties defined in this document.
-Such properties are tied to the communicating nodes and the protocols they use (e.g., client and server using HTTPS, or client and remote network node using VPN) as well as additional context such as keying material and who has access to this context. In constrast, the path as defined in this document is typically oblivious to these aspects.
+Such properties are tied to the communicating nodes and the protocols they use (e.g., client and server using HTTPS, or client and remote network node using a VPN service) as well as additional context, such as keying material and who has access to such a context. In contrast, the path as defined in this document is typically oblivious to these aspects.
 Intuitively, the path describes what function the network applies to packets, while confidentiality, integrity, and trust describe what function the communicating parties apply to packets.
 
 
