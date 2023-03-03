@@ -267,7 +267,7 @@ Path elements in the same routing domain are in the same administrative domain a
 An example of a routing domain identifier is the globally unique autonomous system number (ASN) as defined in {{RFC1930}}.
 
 Disjointness:
-: For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure.
+: For a set of two paths or subpaths, the number of shared path elements can be a measure of intersection (e.g., Jaccard coefficient, which is the number of shared elements divided by the total number of elements). Conversely, the number of non-shared path elements can be a measure of disjointness (e.g., 1 - Jaccard coefficient). A multipath protocol might use disjointness as a metric to reduce the number of single points of failure. As paths can be defined at different levels of abstraction, two paths may be disjoint at one level of abstraction, but not on another.
 
 Symmetric Path:
 : Two paths are symmetric if the path and its reverse path consist of the same path elements on the same level of abstraction, but in reverse order.
