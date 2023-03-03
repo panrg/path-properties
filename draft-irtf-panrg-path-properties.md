@@ -255,6 +255,8 @@ A firewall that only allows outgoing TCP connections by blocking all incoming TC
 Finally, a NAT that actively modifies IP and TCP/UDP headers based on their content is not transparent to either IP or TCP/UDP headers.
 Note that according to this definition, a node that modifies packets in accordance with the endpoints, such as a transparent HTTP proxy, as defined in {{RFC2616}}, and a node listening and reacting to implicit or explicit signals, see {{RFC8558}}, are not considered transparent.
 
+  Transparency only applies to nodes and not to links, as a link cannot modify or perform any other actions on the packets by itself. For example, if the content of a packet is altered when forwarded over a Generic Routing Encapsulation (GRE) tunnel {{?RFC2784}}{{?RFC7676}}, this document considers as nodes the software instances that terminate the tunnel over which the actions are performed; thus, the transparency definition applies to these nodes.
+
 Administrative Domain:
 : The identity of an individual or an organization that controls access to a path element (or several path elements).
 Examples of administrative domains are an IGP area, an AS, or a service provider network.
