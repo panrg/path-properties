@@ -135,7 +135,7 @@ Path:
   A multicast or broadcast setting, where a packet is sent by one node and received by multiple nodes, is described by multiple paths over which the packet is sent, one path for each combination of sending and receiving node; these paths do not have to be disjoint.
 
 Endpoint:
-: The endpoints of a path are the first and the last node on the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
+: The endpoints of a path are the start and end node of the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
 
 Reverse Path:
 : The path that is used by a remote node in the context of bidirectional communication.
