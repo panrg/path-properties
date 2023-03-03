@@ -272,6 +272,7 @@ Disjointness:
 Symmetric Path:
 : Two paths are symmetric if the path and its reverse path consist of the same path elements on the same level of abstraction, but in reverse order.
 For example, a path which consists of layer 3 switches and links between them and a reverse path with the same path elements but in reverse order are considered "routing" symmetric, as the same path elements on the same level of abstraction (IP forwarding) are traversed in the opposite direction.
+Symmetry can depend on the level of abstraction on which the path is defined or modeled: If there are two parallel physical links between two nodes, modeling them as separate links may result in a flow using asymmetric paths, and modeling them as a single virtual link may result in symmetric paths, e.g., if the difference between the two physical links is irrelevant in a particular context.
 
 Path MTU:
 : The maximum size, in octets, of a packet or frame that can be transmitted without fragmentation.
