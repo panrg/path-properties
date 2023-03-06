@@ -124,7 +124,8 @@ Path element:
 Path:
 : A sequence of adjacent path elements over which a packet can be transmitted, starting and ending with a node.
 
-  Paths are unidirectional and time-dependent, i.e., the sequence of path elements over which packets are sent from one node to another may change.
+  Paths are unidirectional and time-dependent, i.e., there can be a variety of paths from one node to another, and the path over which packets are transmitted may change.
+  A path definition can be strict (i.e., the exact sequence of path elements remains the same) or loose (i.e., the start and end node remain the same, but the path elements between them may vary over time).
 
   The representation of a path and its properties may depend on the entity considering the path.
   On the one hand, the representation may differ due to entities having partial visibility of path elements comprising a path or their visibility changing over time.
@@ -134,7 +135,7 @@ Path:
   A multicast or broadcast setting, where a packet is sent by one node and received by multiple nodes, is described by multiple paths over which the packet is sent, one path for each combination of sending and receiving node; these paths do not have to be disjoint as defined by the Disjointness path property, see {{examples}}.
 
 Endpoint:
-: The endpoints of a path are the first and the last node on the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
+: The endpoints of a path are the start and end node of the path. For example, an endpoint can be a host as defined in {{?RFC1122}}, which can be a client (e.g., a node running a web browser) or a server (e.g., a node running a web server).
 
 Reverse Path:
 : The path that is used by a remote node in the context of bidirectional communication.
